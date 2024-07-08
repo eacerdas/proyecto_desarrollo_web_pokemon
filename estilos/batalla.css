@@ -1,0 +1,129 @@
+.sct {
+    padding: 25px;
+    background-color: #f4f4f4;
+}
+
+h2 {
+    font-size: 23px; 
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+#sct_iniciar_batalla_button .div_generico {
+    border: red 3px;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+}
+
+#start-duel-button {
+    font-weight: bold;
+    background-color: #ffcc0f;
+    color:  #1e3c74;
+    font-size: 24px;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#start-duel-button:hover {
+    background-color: #1e3c74;
+    color: #ffcc0f;
+}
+
+.div_generico {
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+}
+
+#sct_batalla{
+    text-align: center;
+}
+
+#duelos {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;    
+}
+
+.container {
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.pokemon-container {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 45%;
+    text-align: center;
+}
+
+.pokemon-info {
+    margin-top: 20px;
+}
+
+.pokemon-info img {
+    width: 100px;
+    height: 100px;
+}
+
+.duel-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.attacks-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.attack {
+    border: 2px solid #1e3c74;
+    background-color: #ffcc0f;
+    color: #1e3c74;
+    padding: 10px;
+    border-radius: 10px;
+    width: 150px;
+    text-align: center;
+    font-weight: bold;
+}
+
+strong {
+    font-weight: bold;
+}
+.pokemon-info p {
+    margin-top: 10px; /* Espacio entre los párrafos y otros elementos */
+}
+
+.health-bar-container {
+    width: 100%;
+    height: 20px;
+    background-color: #ccc;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 10px; /* Espacio entre los cuadritos de los ataques y la barra de vida */
+}
+
+.health-bar {
+    height: 100%;
+    background-color: green;
+    border-radius: 10px;
+    transition: width 0.3s ease-in-out;
+}
