@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="stylesheet" href="estilos/reset.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PokeDuels</title>
+    <link rel="stylesheet" href="estilos/general.css">
+    <link rel="stylesheet" href="estilos/settings.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-left">PókeDuels</div>
+        <div class="header-right">
+            <span>About us</span>
+        </div>
+    </header>
+    
+    <!-- Sección de Configuracion -->
+    <section id="sct-settings">
+        <h1 class="titulo-settings">Configuraciones</h1>
+        <button id="btn-regresar">Regresar</button>
+        <div id="container-general">
+            <div class="container-settings">
+                <div class="titulo-generales">
+                    <i class="fa fa-gear" style="font-size:36px; color: rgb(0, 0, 0);">   Generales</i>
+                </div>
+                <ul class="texto-opciones">
+                    <li class="opciones-generales">- Cambiar Foto de Perfil:</li>
+                    <div class="profile-pic">
+                        <img id="profileImage" src="default-profile.png" alt="Foto de Perfil">
+                    </div>
+                    <input type="file" id="profilePicInput" accept="image/*">
+                    <button id="btn-cambiar-foto">Cambiar Foto</button>
+                    
+                    <li class="titulo-cambiar-contraseña">- Cambiar contraseña:</li>
+                    <form id="passwordForm">
+                        <label for="newPassword">Nueva Contraseña:</label>
+                        <input type="password" id="newPassword" required>
+                        <label for="confirmPassword">Confirmar Nueva Contraseña:</label>
+                        <input type="password" id="confirmPassword" required>
+                        <button id="btn-crear-contraseña" type="submit">Cambiar Contraseña</button>
+                    </form>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contactos">
+        <div class="footer-left">
+            <div><i class="fa fa-facebook-official"><span>Facebook</span></i></div>
+            <div><i class="fa fa-linkedin-square"><span>Linkedin</span></i></div>
+            <div><i class="fa fa-instagram"><span>Instagram</span></i></div>
+        </div>
+        <div class="footer-right">
+            <p>Contact us</p>
+        </div>
+    </footer>
+    
+    <!--Link sweet alert-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!--Link al script.js-->
+    <script src="/js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,145 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Fondo del título */
+#sct-settings {
+    background-color: #375FAD;
+}
+
+.titulo-settings {
+    font-weight: bold;
+    font-size: 42px;
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    color: #ffffff;
+}
+
+#btn-regresar {
+    margin-top: -50px;
+    margin-bottom: 20px; 
+    margin-left: 50px;
+    font-weight: bold;
+    background-color: #da3335;
+    color: white;
+    font-size: 24px;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#btn-regresar:hover {
+    background-color: #a72a2c;
+    color: white;
+}
+
+.titulo-generales {
+    margin-top: 10px;
+    margin-bottom: -20px;
+}
+
+.opciones-generales {
+    margin-bottom: 50px;
+    margin-top: 20px;
+    font-size: 24px;
+}
+
+#container-general {
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.container-settings {
+    height: 650px;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    border-radius: 15px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.texto-opciones {
+    margin-top: 50px;
+    font-size: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    color: rgb(0, 0, 0);
+}
+
+.profile-pic {
+    margin-bottom: 30px;
+}
+
+.profile-pic img {
+    width: 100px;
+    height: 100px;
+}
+
+#btn-cambiar-foto{
+    margin-top: -15px;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #da3335;
+    color: white;
+    font-size: 24px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#btn-cambiar-foto:hover{
+    background-color: #a72a2c;
+}
+
+input[type="file"] {
+    margin-bottom: 60px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.titulo-cambiar-contraseña{
+    margin-bottom: 25px;
+}
+
+label {
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+input[type="password"] {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#btn-crear-contraseña{
+    padding: 10px;
+    background-color: #da3335;
+    color: white;
+    font-size: 24px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#btn-crear-contraseña:hover {
+    background-color: #a72a2c;
+}
+
+.error {
+    border: 1px solid red;
+}
