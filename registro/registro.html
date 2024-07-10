@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="stylesheet" href="/proyecto_desarrollo_web_pokemon/estilos/reset.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PokeDuels</title>
+    <link rel="stylesheet" href="/proyecto_desarrollo_web_pokemon/estilos/general.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/proyecto_desarrollo_web_pokemon/estilos/registro.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-left">PókeDuels</div>
+        <div class="header-right">
+            <a href="about_us.html"><span>About us</span></a>
+        </div>
+    </header>
+    
+    <!-- Sección del div generico -->
+    <section id="sct_banner">
+        <main>
+            <div class="div_generico"> 
+                <h2 class="registro">Registrarse</h2>
+            </div>
+            <div class="registration-container">
+                <form id="form">
+                    <label for="nombre">Ingresa tu nombre</label>
+                    <input type="text" id="nombre" name="nombre" required>
+
+                    <label for="apellido">Ingresa tu apellido</label>
+                    <input type="text" id="apellido" name="apellido"  required>
+
+                    <label for="username">Nombre de usuario</label>
+                    <input type="text" id="username" name="username" required>
+
+                    <label for="email">Ingresa tu correo electronico</label>
+                    <input type="email" id="email" name="email"  required>
+
+                    <label for="id">Ingresa tu cédula/ DIMEX</label>
+                    <div class="id-options">
+                        <input type="radio" id="cedula" name="id-type" value="cedula" required>
+                        <label for="cedula">Cédula nacional</label>
+                        <input type="radio" id="dimex" name="id-type" value="dimex">
+                        <label for="dimex">DIMEX</label>
+                    </div>
+                    <input type="text" id="id" name="id" required>
+                    
+                    <label for="birthdate">Ingresa tu fecha de nacimiento</label>
+                    <input type="text" id="birthdate" name="birthdate" placeholder="DD/MM/AAAA" required>
+            
+                    <button type="submit">Registrarse</button> 
+                </form>
+                <p>¿Ya tienes cuenta? <a href="#">Inicia sesión aquí</a></p>
+            </div>
+        </main>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contactos">
+        <div class="footer-left">
+            <div><a href="https://www.facebook.com"><i class="fa fa-facebook-official"></i><span>Facebook</span></a></div>
+            <div><a href="https://www.linkedin.com"><i class="fa fa-linkedin-square"></i><span>Linkedin</span></a></div>
+            <div><a href="https://www.instagram.com"><i class="fa fa-instagram"></i><span>Instagram</span></a></div>
+        </div>
+        <div class="footer-right">
+            <a href="contact_us.html"><p>Contact us</p></a>
+        </div>
+    </footer>
+    <script src="registro.js"></script>
+</body>
+</html>
+

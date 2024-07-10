@@ -1,0 +1,211 @@
+
+/* Estilos Generales */
+
+/* Header */
+header {
+    width: 100%;
+    height: 100px;
+    background-color: #1e3c74;
+    color: #ffcc0f;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-left {
+    font-size: 34px;
+    font-weight: bold;
+    padding-left: 50px;
+}
+
+.partida {
+    font-size: 34px;
+    font-weight: bold;
+    padding-left: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-right {
+    padding-right: 100px;
+    font-size: 20px;
+}
+
+.header-right a {
+    margin-left: 20px;
+    cursor: pointer;
+    color: #ffcc0f;
+    text-decoration: none;
+}
+
+.header-right a:hover {
+    text-decoration: underline;
+}
+
+#sct_banner {
+    width: 100%;
+    height: 820px;
+    background-color: #f4f4f4;
+}
+
+/* Footer */
+footer {
+    font-size: 20px;
+    width: 100%;
+    height: 200px;
+    background-color: #1e3c74;
+    color: #ffcc0f;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-left, .footer-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: baseline;
+    padding: 100px;
+    color: #ffcc0f;
+}
+
+.footer-left a, .footer-right a {
+    margin-bottom: 15px;
+    color: #ffcc0f;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.footer-left a:hover, .footer-right a:hover {
+    text-decoration: underline;
+}
+
+#contactos span {
+    font-family: sans-serif;
+    padding-left: 10px;
+}
+
+#contactos:hover {
+    text-decoration: underline;
+}
+
+/* CSS Juego */
+main {
+    display: flex;
+    justify-content: space-between;
+    align-items: space-between;
+    width: 80%;
+    margin: 2rem 0;
+}
+
+/* Contenedor de team */
+.team-selection {
+    height: 500px;
+    background-color: #FFFFFF;
+    padding: 1rem;
+    border-radius: 8px;
+    width: 400px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* Sección que tiene pokemon y jugar */
+.selection-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+/* Contenedor de pokemons */
+.pokemon-selection {
+    height: 400px;
+    background-color: #FFFFFF;
+    padding: 1rem;
+    border-radius: 8px;
+    width: 400px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* Contenedor de jugar */
+.boton-jugar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    font-size: 42px;
+    font-weight: 700;
+    color: #070707;
+}
+
+h2 {
+    font-size: 34px;
+    font-weight: 500;
+    background-color: #FFFFFF;
+    color: #070707;
+    padding: 0.5rem;
+    text-align: center;
+    border-radius: 4px;
+}
+
+p {
+    font-size: 24px;
+    font-weight: 300;
+    color: #070707;
+}
+
+.team-list {
+    height: 300px;
+    margin: 1rem 0;
+    padding: 1rem;
+    background-color: #f4f4f4;
+    border-radius: 4px;
+    max-height: 296px;
+    overflow-y: auto;
+}
+
+.pokemon-list {
+    height: 230px;
+    margin: 1rem 0;
+    padding: 1rem;
+    background-color: #f4f4f4;
+    border-radius: 4px;
+    max-height: 225px;
+    overflow-y: auto;
+}
+
+label {
+    display: block;
+    margin: 0.5rem 0;
+    font-size: 24px;
+    font-weight: 300;
+    color: #070707;
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    margin-top: 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.link-button, .list-button, .play-button {
+    background-color: #DA3335;
+    color: #FFFFFF;
+}
+
+.link-button:hover, .list-button:hover, .play-button:hover {
+    background-color: #B22222; /* Rojo más oscuro */
+    color: #FFFFFF;
+}
+
+.play-button {
+    width: 428px;
+    height: 80px;
+    margin-top: 1rem;
+}
