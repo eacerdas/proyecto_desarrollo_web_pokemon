@@ -59,8 +59,8 @@ strong {
 
 .pokemon-button {
     font-weight: bold;
-    background-color: #ffcc0f;
-    color:  #1e3c74;
+    background-color: #da3335;
+    color:  white;
     font-size: 24px;
     padding: 15px 30px;
     border: none;
@@ -70,8 +70,8 @@ strong {
 }
 
 .pokemon-button:hover {
-    background-color: #1e3c74;
-    color: #ffcc0f;
+    background-color: #a72a2c;
+    color: white;
 }
 
 .div_generico {

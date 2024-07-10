@@ -53,9 +53,6 @@ function populateDropdownMenu(pokemonList,containerId){
         option.textContent = capitalizeFirstLetter(pokemon.name)
         selectElement.appendChild(option)
     })
-
-    
-    
 }
 
 function capitalizeFirstLetter(string){
@@ -178,7 +175,3 @@ function startDuel() {
         `
     });
 }
-
-
-
-

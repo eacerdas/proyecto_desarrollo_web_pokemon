@@ -11,7 +11,6 @@ h2 {
 }
 
 #sct_iniciar_batalla_button .div_generico {
-    border: red 3px;
     display: flex; 
     justify-content: center; 
     align-items: center; 
@@ -19,8 +18,8 @@ h2 {
 
 #start-duel-button {
     font-weight: bold;
-    background-color: #ffcc0f;
-    color:  #1e3c74;
+    background-color: #da3335;
+    color:  white;
     font-size: 24px;
     padding: 15px 30px;
     border: none;
@@ -30,8 +29,8 @@ h2 {
 }
 
 #start-duel-button:hover {
-    background-color: #1e3c74;
-    color: #ffcc0f;
+    background-color: #a72a2c;
+    color: white;
 }
 
 .div_generico {
@@ -95,9 +94,8 @@ h2 {
 }
 
 .attack {
-    border: 2px solid #1e3c74;
-    background-color: #ffcc0f;
-    color: #1e3c74;
+    background-color: #da3335;
+    color: white;
     padding: 10px;
     border-radius: 10px;
     width: 150px;
