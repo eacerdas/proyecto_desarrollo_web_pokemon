@@ -75,14 +75,14 @@ header {
     width: 100%;
     height: 25px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 /* BOTONES */
 .buttons_boxes {
     background-color: #da3335;
     color: #ffffff;
-    width: 70px;
+    width: 80px;
     height: 25px;
     border-radius: 10px;
     text-align: center;
