@@ -6,6 +6,8 @@ const buttonTeam = document.querySelector('#openTeamButton');
 const closebuttonTeam = document.querySelector('#closeTeamButton');
 const buttonFriend = document.querySelector('#openFriendButton');
 const closebuttonFriend = document.querySelector('#closeFriendButton');
+const teamList = document.querySelector('#teamList');
+const friendList = document.querySelector('#friendList');
 
 // Función para abrir la ventana emergente de equipos
 function openTeamPopup() {
@@ -47,6 +49,36 @@ formTeam.addEventListener('submit', function (event) {
     let isValid = true;
     let errorMessage = '';
     console.log(userNameTeam.value);
+    console.log(isAlphanN(userNameTeam.value.trim()));
+
+    // Validar Nombre amistad
+    if (userNameTeam && isAlphanN(userNameTeam.value.trim())) {
+        userNameTeam.classList.remove('invalid');
+    } else {
+        isValid = false;
+        errorMessage += 'Ingresa tu nombre.\n';
+        userNameTeam.classList.add('invalid');
+    }
+
+    if (isValid) {
+        // Redirigir a otra página si todas las validaciones son correctas
+        window.location.href = '#'; // Reemplazar con la URL deseada
+        const newTeam = document.createElement("li");
+        newTeam.textContent = userNameTeam.value;
+        teamList.appendChild(newTeam);
+        closeTeamPopup();
+    } else {
+        alert(errorMessage);
+    }
+});
+
+formFriend.addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    // Validaciones
+    let isValid = true;
+    let errorMessage = '';
+    console.log(userNameFriend.value);
     console.log(isAlphanN(userNameFriend.value.trim()));
 
     // Validar Nombre amistad
@@ -61,6 +93,10 @@ formTeam.addEventListener('submit', function (event) {
     if (isValid) {
         // Redirigir a otra página si todas las validaciones son correctas
         window.location.href = '#'; // Reemplazar con la URL deseada
+        const newFriend = document.createElement("li");
+        newFriend.textContent = userNameFriend.value;
+        friendList.appendChild(newFriend);
+        closeFriendPopup();
     } else {
         alert(errorMessage);
     }
