@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <link rel="stylesheet" href="/proyecto_desarrollo_web_pokemon/estilos/reset.css">
+    <link rel="stylesheet" href="../estilos/reset.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PokeDuels</title>
-    <link rel="stylesheet" href="/proyecto_desarrollo_web_pokemon/estilos/general.css">
+    <link rel="stylesheet" href="../estilos/general.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/proyecto_desarrollo_web_pokemon/estilos/juego.css">
+    <link rel="stylesheet" href="../estilos/juego.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 </head>
 <body>
     <!-- Header -->
@@ -34,7 +35,7 @@
             </section>
             <section class="selection-container">
                 <div class="pokemon-selection">
-                    <h2>Elije tus Pokémones</h2>
+                    <h2>Elige tus Pokémones</h2>
                     <div class="pokemon-list">
                         <!-- Aquí se cargarán los Pokémones desde el backend -->
                         <p>Lista de Pokémones vacía</p>
@@ -50,16 +51,18 @@
     </section>
 
     <!-- Footer -->
-    <footer id="contactos">
-        <div class="footer-left">
-            <div><a href="https://www.facebook.com" target="_blank"><i class="fa fa-facebook-official"></i><span>Facebook</span></a></div>
-            <div><a href="https://www.linkedin.com" target="_blank"><i class="fa fa-linkedin-square"></i><span>Linkedin</span></a></div>
-            <div><a href="https://www.instagram.com" target="_blank"><i class="fa fa-instagram"></i><span>Instagram</span></a></div>
+    <footer>
+        <div id="contactos">
+            <div><i class="fa fa-facebook-official"><a href="https://www.facebook.com/" target="_blank">Facebook</a></i></div>
+            <div><i class="fa fa-linkedin-square"><a href="https://www.linkedin.com/" target="_blank">Linkedin</a></i></div>
+            <div><i class="fa fa-instagram"><a href="https://www.instagram.com/" target="_blank">Instagram</a></i></div>
         </div>
-        <div class="footer-right">
-            <p><a href="contact.html">Contact us</a></p>
+
+        <div id="menu-footer">
+                <a href="#">Contact us</a>
         </div>
     </footer>
-    <script src="juego.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../js/juego.js"></script>
 </body>
 </html>

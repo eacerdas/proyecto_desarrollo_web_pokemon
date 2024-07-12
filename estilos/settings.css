@@ -4,7 +4,7 @@ body {
 
 /* Fondo del título */
 #sct-settings {
-    background-color: #375FAD;
+    background-color: #f4f4f4;
 }
 
 .titulo-settings {
@@ -13,7 +13,7 @@ body {
     text-align: center;
     padding-top: 50px;
     padding-bottom: 50px;
-    color: #ffffff;
+    color: #000000;
 }
 
 #btn-regresar {
@@ -37,6 +37,7 @@ body {
 }
 
 .titulo-generales {
+    font-family: Arial, Helvetica, sans-serif;
     margin-top: 10px;
     margin-bottom: -20px;
 }
@@ -142,4 +143,38 @@ input[type="password"] {
 
 .error {
     border: 1px solid red;
+}
+
+footer{
+    height: 120px;
+    background-color: #1e3c74;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #ffcc0f;
+}
+
+#contactos{
+    display: flex;
+    flex-direction: column;
+    padding-left: 40px;
+}
+
+#contactos a{
+    font-family: "Oswald", sans-serif;
+    padding-left: 12px;
+}
+
+#contactos :hover{
+    text-decoration: underline;
+}
+
+footer a{
+    color: #ffcc0f;
+    text-decoration: none;
+    padding-right: 40px;
+}
+
+footer a:hover{
+    text-decoration: underline;
 }

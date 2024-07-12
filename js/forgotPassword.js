@@ -25,8 +25,12 @@ function mostrarAlerta(mensaje) {
         text: mensaje,
         icon: "error",
         confirmButtonText: "Ok",
-        confirmButtonColor: "red"
+        confirmButtonColor: "#FF4E4E"
     });
+}
+
+function limpiarCampos() {
+    inputCorreo.value = "";
 }
 
 function enviarDatos(event) {
@@ -38,9 +42,10 @@ function enviarDatos(event) {
             text: "Hemos enviado un enlace a tu correo para restablecer tu contraseña.",
             icon: "success",
             confirmButtonText: "Ok",
-            confirmButtonColor: "green"
+            confirmButtonColor: "#96C78C"
         });
-        // lógica para enviar el enlace por correo, por ejemplo.
+        limpiarCampos()
+        // lógica para enviar el enlace por correo
     }
 }
 

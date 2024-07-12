@@ -1,5 +1,7 @@
-
 /* Estilos Generales */
+body{
+    font-family: Arial, Helvetica, sans-serif;
+}
 
 /* Header */
 header {
@@ -50,41 +52,37 @@ header {
 }
 
 /* Footer */
-footer {
-    font-size: 20px;
-    width: 100%;
-    height: 200px;
+footer{
+    height: 120px;
     background-color: #1e3c74;
-    color: #ffcc0f;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    color: #ffcc0f;
 }
 
-.footer-left, .footer-right {
+#contactos{
     display: flex;
     flex-direction: column;
-    justify-content: baseline;
-    padding: 100px;
-    color: #ffcc0f;
+    padding-left: 40px;
 }
 
-.footer-left a, .footer-right a {
-    margin-bottom: 15px;
-    color: #ffcc0f;
-    text-decoration: none;
-    cursor: pointer;
+#contactos a{
+    font-family: "Oswald", sans-serif;
+    padding-left: 12px;
 }
 
-.footer-left a:hover, .footer-right a:hover {
+#contactos :hover{
     text-decoration: underline;
 }
 
-#contactos span {
-    font-family: sans-serif;
-    padding-left: 10px;
+footer a{
+    color: #ffcc0f;
+    text-decoration: none;
+    padding-right: 40px;
 }
 
-#contactos:hover {
+footer a:hover{
     text-decoration: underline;
 }
 
@@ -200,7 +198,7 @@ button {
 }
 
 .link-button:hover, .list-button:hover, .play-button:hover {
-    background-color: #B22222; /* Rojo más oscuro */
+    background-color: #9e1a1d; /* Rojo más oscuro */
     color: #FFFFFF;
 }
 
@@ -208,4 +206,5 @@ button {
     width: 428px;
     height: 80px;
     margin-top: 1rem;
+    font-size: 25px;
 }

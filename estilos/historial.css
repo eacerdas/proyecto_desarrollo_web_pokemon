@@ -18,7 +18,7 @@ body{
 
 /* Fondo del título */
 #sct-historial{
-    background-color: #375FAD;
+    background-color: #f4f4f4;
 }
 
 #btn-regresar{
@@ -61,7 +61,7 @@ table {
     text-align: center;
     padding-top: 50px;
     padding-bottom: 50px;
-    color: #ffffff;
+    color: #000000;
 }
   
 .tabla-historial th{
@@ -88,3 +88,37 @@ table {
     background-color: #FFCC0F;
   }
 */
+
+footer{
+    height: 120px;
+    background-color: #1e3c74;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #ffcc0f;
+}
+
+#contactos{
+    display: flex;
+    flex-direction: column;
+    padding-left: 40px;
+}
+
+#contactos a{
+    font-family: "Oswald", sans-serif;
+    padding-left: 12px;
+}
+
+#contactos :hover{
+    text-decoration: underline;
+}
+
+footer a{
+    color: #ffcc0f;
+    text-decoration: none;
+    padding-right: 40px;
+}
+
+footer a:hover{
+    text-decoration: underline;
+}

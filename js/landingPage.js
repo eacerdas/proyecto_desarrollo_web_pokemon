@@ -72,7 +72,7 @@ function mostrarContra() {
               text: "Por favor rellena todos los espacios.",
               icon: "error",
               confirmButtonText: "Ok",
-              confirmButtonColor: "red"
+              confirmButtonColor: "#FF4E4E"
           });
       } else if (errorCorreo) {
           Swal.fire({
@@ -80,7 +80,7 @@ function mostrarContra() {
               text: "Ingresa un email válido.",
               icon: "error",
               confirmButtonText: "Ok",
-              confirmButtonColor: "red"
+              confirmButtonColor: "#FF4E4E"
           });
       } else if (errorContrasenna) {
           Swal.fire({
@@ -88,11 +88,11 @@ function mostrarContra() {
               text: "Ingresa una contraseña válida.",
               icon: "error",
               confirmButtonText: "Ok",
-              confirmButtonColor: "red"
+              confirmButtonColor: "#FF4E4E"
           });
       } else {
           limpiarCampos();
-          window.location.href = "pagina_de_sesion.html";  // Cambia "pagina_de_sesion.html" por la URL de tu página de sesión
+          window.location.href = "mainpage.html";  
       }
   }
 
