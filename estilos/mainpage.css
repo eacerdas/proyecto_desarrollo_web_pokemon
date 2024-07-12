@@ -7,11 +7,11 @@ body {
 
 /* SECCION MEDIA */
 .main_container {
-  /*  background-image: url("../images/fondo_main.jpg"); /* Meeter aqui la imagen 
-    background-size: cover;
+    background-image: url("../images/fondomain.png"); 
+    background-color: #ffffff;
+    background-size:contain;
     background-position: center;
-    background-repeat: no-repeat;*/
-    background-color: #f4f4f4;
+    background-repeat: no-repeat;
     width: 100%;
     height: 500px;
     border: none;
@@ -20,7 +20,7 @@ body {
 }
 
 .main_menu {
-    background-color: transparent;
+    background-color: #ffffff;
     border: none;
     height: 100%;
     width: 16%;
@@ -54,6 +54,7 @@ body {
 
 /* Clase de la */
 .banners_container {
+    background-color: #ffffff;
     display: flex;
     flex-direction: column;
     justify-content: center;

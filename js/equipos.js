@@ -10,10 +10,15 @@ const closebuttonFriend = document.querySelector('#closeFriendButton');
 const teamList = document.querySelector('#teamList');
 const friendList = document.querySelector('#friendList');
 
+function disableCreateButton (state) {
+    buttonTeam.disabled = state;
+    buttonFriend.disabled = state;
+}
+
 // Función para abrir la ventana emergente de equipos
 function openTeamPopup() {
     let popUpWindow = document.querySelector('#teamWindow');
-    console.log(popUpWindow);
+    disableCreateButton(true);
     popUpWindow.style.display = 'flex'; // Cambiar a display flex
 }
 
@@ -21,13 +26,14 @@ function openTeamPopup() {
 function closeTeamPopup() {
     userNameTeam.value = "";
     let popUpWindow = document.getElementById('teamWindow');
+    disableCreateButton(false);
     popUpWindow.style.display = 'none'; // Ocultar la ventana emergente
 }
 
 // Función para abrir la ventana emergente de amistades
 function openFriendPopup() {
-    console.log('Abriendo ventana de amistad');
     let popUpWindow = document.getElementById('friendWindow');
+    disableCreateButton(true);
     popUpWindow.style.display = 'flex'; // Cambiar a display flex
 }
 
@@ -35,6 +41,7 @@ function openFriendPopup() {
 function closeFriendPopup() {
     userNameFriend.value = "";
     let popUpWindow = document.getElementById('friendWindow');
+    disableCreateButton(false);
     popUpWindow.style.display = 'none'; // Ocultar la ventana emergente
 }
 
