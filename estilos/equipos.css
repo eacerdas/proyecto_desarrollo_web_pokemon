@@ -11,6 +11,7 @@ body {
     width: 100%;
     height: 500px; 
     display: flex; 
+    position: relative;
     column-gap: 50px;
     justify-content: center;
     padding-top: 50px;
@@ -25,6 +26,8 @@ body {
     flex-direction: column;
     justify-content: space-between;
     padding: 40px 80px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 /* TÍTULOS DE LAS CAJAS */
@@ -44,16 +47,18 @@ body {
     width: 100%;
     height: 25px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 /* BOTONES */
 .buttons_boxes {
     background-color: #da3335;
     color: #ffffff;
-    width: 70px;
+    width: 80px;
     height: 25px;
     border-radius: 10px;
+    font-weight: bold;
+    border: none;
     text-align: center;
     cursor: pointer;
     transition: background-color 0.3s;
@@ -62,4 +67,39 @@ body {
 .buttons_boxes:hover {
     background-color: #a72a2c;
     color: white;    
+}
+
+.add_teamfriend{
+    width: 400px; /* Ancho fijo */
+    display: none;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    top: calc(50% - 90px);
+    background-color: #ffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form_teamfriend{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    row-gap: 20px;
+    background-color: #ffff;
+
+}
+
+.windowButtons{
+    width: 80px;
+    height: 25px;
+    border-radius: 10px;
+    background-color: #da3335;
+    color:  white; 
+    text-align: center;
+    font-weight: bold;
+    border: none;
 }
