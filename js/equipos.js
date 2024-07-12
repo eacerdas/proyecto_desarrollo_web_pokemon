@@ -94,6 +94,7 @@ formTeam.addEventListener('submit', function (event) {
         deleteButton.textContent = 'Eliminar';
         deleteButton.addEventListener('click', function () {
             deleteTeam(newTeam); // Llama a la función deleteTeam pasando el elemento a eliminar
+            mostrarAlerta("¡Listo!", "Se ha borrado con éxito\n", "Exitoso", "Ok", "#96C78C");
         });
 
         // Agregar el botón de eliminar al elemento de lista
@@ -141,6 +142,7 @@ formFriend.addEventListener('submit', function (event) {
         deleteButton.textContent = 'Eliminar';
         deleteButton.addEventListener('click', function () {
             deleteTeam(newFriend); // Llama a la función deleteTeam pasando el elemento a eliminar
+            mostrarAlerta("¡Listo!", "Se ha borrado con éxito\n", "Exitoso", "Ok", "#96C78C");
         });
 
         // Agregar el botón de eliminar al elemento de lista
@@ -152,7 +154,7 @@ formFriend.addEventListener('submit', function (event) {
         // Limpiar el campo de nombre de equipo y cerrar la ventana emergente
         userNameFriend.value = "";
         closeFriendPopup();
-        mostrarAlerta("¡Enhorabuena!", "Nombre agregado a la lista\n", "Error", "Ok", "#96C78C");
+        mostrarAlerta("¡Enhorabuena!", "Nombre agregado a la lista\n", "Exitoso", "Ok", "#96C78C");
     } else {
         mostrarAlerta("Error", "Nombre inválido, ingresa tu nombre sin caracteres especiales\n", "Error", "Ok", "#FF4E4E");
     }
