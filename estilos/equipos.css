@@ -88,6 +88,8 @@ header {
     width: 80px;
     height: 25px;
     border-radius: 10px;
+    font-weight: bold;
+    border: none;
     text-align: center;
     cursor: pointer;
     transition: background-color 0.3s;
@@ -161,4 +163,15 @@ footer {
 
 .invalid{
     border: 1px solid red;
+}
+
+.windowButtons{
+    width: 80px;
+    height: 25px;
+    border-radius: 10px;
+    background-color: #da3335;
+    color:  white; 
+    text-align: center;
+    font-weight: bold;
+    border: none;
 }
