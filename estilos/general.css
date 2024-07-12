@@ -21,6 +21,8 @@ header {
     font-size: 34px;
     font-weight: bold;
     padding-left: 50px;
+    text-decoration: none;
+    color: #ffcc0f;
 }
 
 .header-right {

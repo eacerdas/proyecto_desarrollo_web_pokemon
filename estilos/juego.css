@@ -25,37 +25,20 @@ body{
 /* CSS Juego */
 main {
     display: flex;
-    justify-content: space-between;
-    align-items: space-between;
+    justify-content: center;
+    align-items:center;
     width: 80%;
     margin: 2rem 0;
 }
 
 /* Contenedor de team */
 .team-selection {
-    height: 500px;
-    background-color: #FFFFFF;
+    height: 550px;
+    background-color: #1e3c74;
     padding: 1rem;
     border-radius: 8px;
     width: 400px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
-
-/* Sección que tiene pokemon y jugar */
-.selection-container {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-}
-
-/* Contenedor de pokemons */
-.pokemon-selection {
-    height: 400px;
-    background-color: #FFFFFF;
-    padding: 1rem;
-    border-radius: 8px;
-    width: 400px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  
 }
 
 /* Contenedor de jugar */
@@ -98,15 +81,6 @@ p {
     overflow-y: auto;
 }
 
-.pokemon-list {
-    height: 230px;
-    margin: 1rem 0;
-    padding: 1rem;
-    background-color: #f4f4f4;
-    border-radius: 4px;
-    max-height: 225px;
-    overflow-y: auto;
-}
 
 label {
     display: block;
@@ -139,7 +113,7 @@ button {
 }
 
 .play-button {
-    width: 428px;
+    width: 400px;
     height: 80px;
     margin-top: 1rem;
     font-size: 25px;
