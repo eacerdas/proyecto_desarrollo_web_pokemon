@@ -55,6 +55,16 @@ function deleteTeam(element) {
     element.remove();
 }
 
+function mostrarAlerta(title, message, icon, confirmButtonText, messagecolor) {
+    Swal.fire({
+        title: title,
+        text: message,
+        icon: icon,
+        confirmButtonText: confirmButtonText,
+        confirmButtonColor: messagecolor
+    });
+}
+
 formTeam.addEventListener('submit', function (event) {
     event.preventDefault();
 
@@ -69,7 +79,6 @@ formTeam.addEventListener('submit', function (event) {
         userNameTeam.classList.remove('invalid');
     } else {
         isValid = false;
-        errorMessage += 'Nombre inválido, ingresa tu nombre sin caracteres especiales\n';
         userNameTeam.classList.add('invalid');
     }
 
@@ -96,8 +105,9 @@ formTeam.addEventListener('submit', function (event) {
         // Limpiar el campo de nombre de equipo y cerrar la ventana emergente
         userNameTeam.value = "";
         closeTeamPopup();
+        mostrarAlerta("¡Enhorabuena!", "Nombre agregado a la lista\n", "Error", "Ok", "#96C78C");
     } else {
-        alert(errorMessage);
+        mostrarAlerta("Error", "Nombre inválido, ingresa tu nombre sin caracteres especiales\n", "Error", "Ok", "#FF4E4E");
     }
 });
 
@@ -142,8 +152,9 @@ formFriend.addEventListener('submit', function (event) {
         // Limpiar el campo de nombre de equipo y cerrar la ventana emergente
         userNameFriend.value = "";
         closeFriendPopup();
+        mostrarAlerta("¡Enhorabuena!", "Nombre agregado a la lista\n", "Error", "Ok", "#96C78C");
     } else {
-        alert(errorMessage);
+        mostrarAlerta("Error", "Nombre inválido, ingresa tu nombre sin caracteres especiales\n", "Error", "Ok", "#FF4E4E");
     }
 });
 
