@@ -93,7 +93,7 @@ function displayPokemonInfo(pokemon, containerId) {
     dataContainer.dataset.hp = hp;
 
     dataContainer.innerHTML = `
-    <h2>Informacion de Pokemon: ${capitalizeFirstLetter(pokemon.name)}</h2>
+    <h2>Información de Pokémon: ${capitalizeFirstLetter(pokemon.name)}</h2>
     <img src="${pokemon.sprites.front_default}" alt="${pokemon.name}">
     <p><strong>Height: </strong>${pokemon.height}dm</p>
     <p><strong>Weight: </strong>${pokemon.weight} g</p>
