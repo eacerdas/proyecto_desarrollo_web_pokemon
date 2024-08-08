@@ -78,7 +78,9 @@ body {
 }
 
 .profile-pic {
-    margin-bottom: 30px;
+    margin: auto;
+    width: 100px;
+    height: 100px;
 }
 
 .profile-pic img {
