@@ -124,7 +124,7 @@ function startDuel() {
     const attackPokemon1 = JSON.parse(dataContainer1.dataset.attacks || '[]');
     const attackPokemon2 = JSON.parse(dataContainer2.dataset.attacks || '[]');
 
-    if (attackPokemon1.length == 0 || attackPokemon2.length == 0) {
+    if (attackPokemon1.length === 0 || attackPokemon2.length === 0) {
         Swal.fire({
             icon: 'error',
             text: 'Seleccione primero un Pokémon'
@@ -150,23 +150,33 @@ function startDuel() {
     healthBar1.style.width = `${hp1Percentage}%`;
     healthBar2.style.width = `${hp2Percentage}%`;
 
-    if (hp1 === 0 || hp2 === 0) {
-        let resultText;
-        if (hp1 === 0 && hp2 === 0) {
-            resultText = '¡Es un empate!';
-        } else {
-            const winner = hp1 > hp2 ? 'Pokémon 1' : 'Pokémon 2';
-            resultText = `${winner} ha ganado la batalla`;
-        }
+    let ganador;
+    let empate = false;
 
+    if (hp1 === 0 && hp2 === 0) {
+        ganador = 'Empate';
+        empate = true;
         Swal.fire({
-            icon: 'success',
-            title: '¡Batalla terminada!',
-            text: resultText,
+            icon: 'info',
+            title: '¡Empate!',
+            text: 'Ambos Pokémon han sido derrotados',
             confirmButtonText: 'Aceptar'
         }).then(() => {
             disableDuelButton();
             showNewGameButton();
+            registrarResultado(dataContainer1, dataContainer2, ganador, empate);
+        });
+    } else if (hp1 === 0 || hp2 === 0) {
+        ganador = hp1 > hp2 ? 'Pokémon 1' : 'Pokémon 2';
+        Swal.fire({
+            icon: 'success',
+            title: '¡Batalla terminada!',
+            text: `${ganador} ha ganado la batalla`,
+            confirmButtonText: 'Aceptar'
+        }).then(() => {
+            disableDuelButton();
+            showNewGameButton();
+            registrarResultado(dataContainer1, dataContainer2, ganador, empate);
         });
     } else {
         Swal.fire({
@@ -180,6 +190,14 @@ function startDuel() {
     }
 }
 
+function registrarResultado(dataContainer1, dataContainer2, ganador, empate) {
+    const jugador1 = 'Jugador 1'; // Puedes ajustar esto para obtener los nombres reales
+    const jugador2 = 'Jugador 2';
+    const pokemon1 = dataContainer1.querySelector('h2').textContent.split(': ')[1];
+    const pokemon2 = dataContainer2.querySelector('h2').textContent.split(': ')[1];
+
+    registrar_resultado(jugador1, jugador2, pokemon1, pokemon2, ganador, empate);
+}
 
 function disableDuelButton() {
     buttonDuel.disabled = true;
