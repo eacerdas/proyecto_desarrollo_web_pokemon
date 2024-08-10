@@ -60,7 +60,7 @@ async function fetchPokemon(name, containerId) {
         const moves = pokemon.moves.slice(0, 4);
         const attacks = await Promise.all(moves.map(async (moveInfo) => {
             const moveResponse = await axios.get(moveInfo.move.url);
-            const power = moveResponse.data.power/5 || 25; // Si el poder es null, asigna 10 como valor predeterminado
+            const power = moveResponse.data.power/5 || 0; // Si el poder es null, asigna 10 como valor predeterminado
             return {
                 name: moveInfo.move.name,
                 power: power
