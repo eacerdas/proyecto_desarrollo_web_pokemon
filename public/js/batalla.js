@@ -1,53 +1,43 @@
 const buttonDuel = document.getElementById('start-duel-button')
 
-//Espera a que todo el contenido del DOM este cargado
-document.addEventListener('DOMContentLoaded',()=>{
-    fetchAllPokemon()//llenar cada uno de los selects
-    document.getElementById('pokemon-select-1').addEventListener('change',(event)=>{
-        //console.log(event.target.value);
+// Espera a que todo el contenido del DOM esté cargado
+document.addEventListener('DOMContentLoaded', () => {
+    fetchAllPokemon() // Llenar cada uno de los selects
+    document.getElementById('pokemon-select-1').addEventListener('change', (event) => {
         const pokemonSelected = event.target.value
-        if(pokemonSelected){
-            fetchPokemon(pokemonSelected,1)
+        if (pokemonSelected) {
+            fetchPokemon(pokemonSelected, 1)
         }
     })
 
-    document.getElementById('pokemon-select-2').addEventListener('change',(event)=>{
-        //console.log(event.target.value);
+    document.getElementById('pokemon-select-2').addEventListener('change', (event) => {
         const pokemonSelected = event.target.value
-        if(pokemonSelected){
-            fetchPokemon(pokemonSelected,2)
+        if (pokemonSelected) {
+            fetchPokemon(pokemonSelected, 2)
         }
     })
 
-    buttonDuel.addEventListener('click',startDuel)
+    buttonDuel.addEventListener('click', startDuel)
 })
 
-
-//funcion que recupera la informacion de TODOS los pokemones
-//url: https://pokeapi.co/api/v2/pokemon?limit=151
-async function fetchAllPokemon(){
+// Función que recupera la información de TODOS los pokemones
+async function fetchAllPokemon() {
     const url = 'https://pokeapi.co/api/v2/pokemon?limit=151'
-    try{
-        //solicitud GET al api
+    try {
         const response = await axios.get(url)
-        //console.log(response);
-        const pokemonList = response.data.results//aca es donde se almacena los datos de los 151 pokemons
-        //console.log(pokemonList);
-        populateDropdownMenu(pokemonList,1)
-        populateDropdownMenu(pokemonList,2)
+        const pokemonList = response.data.results
+        populateDropdownMenu(pokemonList, 1)
+        populateDropdownMenu(pokemonList, 2)
 
-    }catch(error){
-        //manejo de errores
-        console.log('Ocurrio el siguiente error: ',error);
+    } catch (error) {
+        console.log('Ocurrió el siguiente error: ', error);
     }
 }
 
-//Funcion para popular los selectores para cada pokemon
-function populateDropdownMenu(pokemonList,containerId){
-    //referenciar el select de forma dinamica
+// Función para popular los selectores para cada pokemon
+function populateDropdownMenu(pokemonList, containerId) {
     const selectElement = document.getElementById(`pokemon-select-${containerId}`)
-    //vamos a recorrer la lista donde estan los nombres de los pokemones
-    pokemonList.forEach(pokemon=>{
+    pokemonList.forEach(pokemon => {
         const option = document.createElement('option')
         option.value = pokemon.name
         option.textContent = capitalizeFirstLetter(pokemon.name)
@@ -55,26 +45,21 @@ function populateDropdownMenu(pokemonList,containerId){
     })
 }
 
-function capitalizeFirstLetter(string){
+function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1)
 }
 
-//funcion que devuelve la informacion de un pokemon seleccionado
-//url:https://pokeapi.co/api/v2/pokemon/venusaur
-async function fetchPokemon(name,containerId){
+// Función que devuelve la información de un Pokémon seleccionado
+async function fetchPokemon(name, containerId) {
     const url = `https://pokeapi.co/api/v2/pokemon/${name}`
     try {
-        //realizar la consulta a la api
         const response = await axios.get(url)
         const pokemon = response.data
-        //console.log(pokemon);
-        displayPokemonInfo(pokemon,containerId)
+        displayPokemonInfo(pokemon, containerId)
 
     } catch (error) {
-        console.log("Ocurrio el siguiente error: ",error);
-        
+        console.log("Ocurrió el siguiente error: ", error);
     }
-    
 }
 
 function displayPokemonInfo(pokemon, containerId) {
@@ -120,7 +105,6 @@ function displayPokemonInfo(pokemon, containerId) {
     dataContainer.dataset.attacks = JSON.stringify(attacks);
 }
 
-
 function startDuel() {
     const hp1Element = document.getElementById('hp-1');
     const hp2Element = document.getElementById('hp-2');
@@ -143,7 +127,7 @@ function startDuel() {
     if (attackPokemon1.length == 0 || attackPokemon2.length == 0) {
         Swal.fire({
             icon: 'error',
-            text: 'Seleccione primero un pokemon'
+            text: 'Seleccione primero un Pokémon'
         });
         return;
     }
@@ -151,8 +135,8 @@ function startDuel() {
     const attack1 = attackPokemon1[Math.floor(Math.random() * attackPokemon1.length)];
     const attack2 = attackPokemon2[Math.floor(Math.random() * attackPokemon2.length)];
 
-    hp1 = Math.max(hp1 - attack2.power, 0);  // No permitir que hp sea menor que 0
-    hp2 = Math.max(hp2 - attack1.power, 0);  // No permitir que hp sea menor que 0
+    hp1 = Math.max(hp1 - attack2.power, 0);
+    hp2 = Math.max(hp2 - attack1.power, 0);
 
     hp1Element.textContent = hp1;
     hp2Element.textContent = hp2;
@@ -166,12 +150,59 @@ function startDuel() {
     healthBar1.style.width = `${hp1Percentage}%`;
     healthBar2.style.width = `${hp2Percentage}%`;
 
-    Swal.fire({
-        icon: 'info',
-        title: 'Resultado del duelo',
-        html: `
-            <p>Pokemon 1 atacó con: ${attack1.name} y causó ${attack1.power} de daño</p>
-            <p>Pokemon 2 atacó con: ${attack2.name} y causó ${attack2.power} de daño</p>
-        `
+    if (hp1 === 0 || hp2 === 0) {
+        let resultText;
+        if (hp1 === 0 && hp2 === 0) {
+            resultText = '¡Es un empate!';
+        } else {
+            const winner = hp1 > hp2 ? 'Pokémon 1' : 'Pokémon 2';
+            resultText = `${winner} ha ganado la batalla`;
+        }
+
+        Swal.fire({
+            icon: 'success',
+            title: '¡Batalla terminada!',
+            text: resultText,
+            confirmButtonText: 'Aceptar'
+        }).then(() => {
+            disableDuelButton();
+            showNewGameButton();
+        });
+    } else {
+        Swal.fire({
+            icon: 'info',
+            title: 'Resultado del turno',
+            html: `
+                <p>Pokémon 1 atacó con: ${attack1.name} y causó ${attack1.power} de daño</p>
+                <p>Pokémon 2 atacó con: ${attack2.name} y causó ${attack2.power} de daño</p>
+            `
+        });
+    }
+}
+
+
+function disableDuelButton() {
+    buttonDuel.disabled = true;
+    buttonDuel.style.backgroundColor = '#aaa';
+    buttonDuel.style.cursor = 'not-allowed';
+}
+
+function showNewGameButton() {
+    const newGameButton = document.createElement('button');
+    newGameButton.textContent = 'Nueva Partida';
+    newGameButton.style.fontWeight = 'bold';
+    newGameButton.style.backgroundColor = '#da3335';
+    newGameButton.style.color = 'white';
+    newGameButton.style.fontSize = '24px';
+    newGameButton.style.padding = '15px 30px';
+    newGameButton.style.border = 'none';
+    newGameButton.style.borderRadius = '10px';
+    newGameButton.style.cursor = 'pointer';
+    newGameButton.style.marginTop = '20px';
+
+    newGameButton.addEventListener('click', () => {
+        location.reload(); // Recargar la página para comenzar una nueva partida
     });
+
+    document.querySelector('.duel-container').appendChild(newGameButton);
 }
