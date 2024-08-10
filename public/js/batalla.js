@@ -51,27 +51,34 @@ function capitalizeFirstLetter(string) {
 
 // Función que devuelve la información de un Pokémon seleccionado
 async function fetchPokemon(name, containerId) {
-    const url = `https://pokeapi.co/api/v2/pokemon/${name}`
+    const url = `https://pokeapi.co/api/v2/pokemon/${name}`;
     try {
-        const response = await axios.get(url)
-        const pokemon = response.data
-        displayPokemonInfo(pokemon, containerId)
+        const response = await axios.get(url);
+        const pokemon = response.data;
+
+        // Obtener los primeros 4 movimientos y sus poderes
+        const moves = pokemon.moves.slice(0, 4);
+        const attacks = await Promise.all(moves.map(async (moveInfo) => {
+            const moveResponse = await axios.get(moveInfo.move.url);
+            const power = moveResponse.data.power/5 || 25; // Si el poder es null, asigna 10 como valor predeterminado
+            return {
+                name: moveInfo.move.name,
+                power: power
+            };
+        }));
+
+        displayPokemonInfo(pokemon, attacks, containerId);
 
     } catch (error) {
         console.log("Ocurrió el siguiente error: ", error);
     }
 }
 
-function displayPokemonInfo(pokemon, containerId) {
+function displayPokemonInfo(pokemon, attacks, containerId) {
     const dataContainer = document.getElementById(`pokemon-info-${containerId}`);
 
     const hpstats = pokemon.stats.find(stat => stat.stat.name == 'hp');
     const hp = hpstats ? hpstats.base_stat : 100;
-
-    const attacks = pokemon.moves.slice(0, 4).map(moveInfo => ({
-        name: moveInfo.move.name,
-        power: moveInfo.move.power || 50
-    }));
 
     // Almacenar la vida máxima como atributo data
     dataContainer.dataset.maxHp = hp;
@@ -80,11 +87,11 @@ function displayPokemonInfo(pokemon, containerId) {
     dataContainer.innerHTML = `
     <h2>Información de Pokémon: ${capitalizeFirstLetter(pokemon.name)}</h2>
     <img src="${pokemon.sprites.front_default}" alt="${pokemon.name}">
-    <p><strong>Height: </strong>${pokemon.height}dm</p>
+    <p><strong>Height: </strong>${pokemon.height} dm</p>
     <p><strong>Weight: </strong>${pokemon.weight} g</p>
     <p><strong>Type: </strong>${pokemon.types.map(typeInfo => typeInfo.type.name).join(' ')}</p>
     <p><strong>Abilities: </strong>${pokemon.abilities.map(abilityInfo => abilityInfo.ability.name).join(' ')}</p>
-    <p><strong>Bases Stats: </strong></p>
+    <p><strong>Base Stats: </strong></p>
     <ul>
         ${pokemon.stats.map(statInfo => `<li>${statInfo.stat.name}: ${statInfo.base_stat}</li>`).join('')}
     </ul>
