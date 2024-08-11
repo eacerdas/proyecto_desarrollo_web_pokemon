@@ -2,6 +2,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser') 
 const cors = require('cors')
+const routesResultado = require('./routes/routesResultado.js')
 //const routesCliente = require('./routes/routesCliente.js')//importar las rutas para la gestion de clientes
 //const routesProducto = require('./routes/routesProducto.js')
 //const routesCategoria = require('./routes/routesCategoria.js')
@@ -23,6 +24,7 @@ app.use(bodyParser.urlencoded({extended:true}))
 //servir los archivos estaticos
 app.use(express.static('public'))
 
+app.use('/',routesResultado) //habilitando las rutas de Resultado
 //app.use('/',routesCliente) //habilitando las rutas del cliente
 //app.use('/',routesProducto) // habilitando las rutas del producto
 //app.use('/',routesCategoria)//habilitando las rutas de categoria
