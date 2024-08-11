@@ -1,25 +1,45 @@
-// hacer un controlador para el listado del historial
-//referencias al DOM
-const cuerpoTabla = document.querySelector("#tabla-historial tbody")
+const cuerpoTabla = document.querySelector("#tabla-historial tbody");
 
-let lista_historial_recuperado = []
+let lista_historial_recuperado = [];
 
-const mostrar_datos_en_tabla = async()=>{
-    lista_historial_recuperado = await listar_resultados()
-
-    //limpiar tabla
-    cuerpoTabla.innerHTML=""
-
-    for(let i=0; i<lista_historial_recuperado.length;i++){
-        let fila = cuerpoTabla.insertRow()
-
-        fila.insertCell().innerHTML = lista_historial_recuperado[i]['jugador2']
-        fila.insertCell().innerHTML = lista_historial_recuperado[i]['pokemon2']
-        fila.insertCell().innerHTML = lista_historial_recuperado[i]['pokemon1']
-        fila.insertCell().innerHTML = lista_historial_recuperado[i]['ganador']
-
+// Función para determinar el resultado del duelo 
+const determinarResultado = (ganador) => {
+    if (ganador === 'Pokémon 1') {
+        return 'Victoria';
+    } else if (ganador === 'Pokémon 2') {
+        return 'Derrota';
+    } else if (ganador === 'Empate') {
+        return 'Empate';
+    } else {
+        return 'Desconocido'; // Para cualquier caso inesperado
     }
+};
 
-}
+// Función para mostrar los datos en la tabla
+const mostrar_datos_en_tabla = async () => {
+    lista_historial_recuperado = await listar_resultados();
 
-mostrar_datos_en_tabla()
+    // Limpiar tabla
+    cuerpoTabla.innerHTML = "";
+
+    // Mostrar los datos en la tabla
+    for (let i = 0; i < lista_historial_recuperado.length; i++) {
+        let fila = cuerpoTabla.insertRow();
+
+        // Datos recuperados de la lista
+        const resultado = lista_historial_recuperado[i];
+        const jugador2 = resultado['jugador2'];
+        const pokemon2 = resultado['pokemon2'];
+        const pokemon1 = resultado['pokemon1'];
+        const ganador = resultado['ganador']; // 'Pokémon 1' = "Victoria", 'Pokémon 2' = "Derrota", o 'Empate'
+
+        // Insertar celdas en la fila
+        fila.insertCell().innerHTML = jugador2;
+        fila.insertCell().innerHTML = pokemon2;
+        fila.insertCell().innerHTML = pokemon1;
+        fila.insertCell().innerHTML = determinarResultado(ganador);
+    }
+};
+
+// Llamar a la función para mostrar los datos
+mostrar_datos_en_tabla();
