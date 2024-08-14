@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <link rel="stylesheet" href="../estilos/reset.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro</title>
+    <link rel="stylesheet" href="../estilos/reset.css">
     <link rel="stylesheet" href="../estilos/general.css">
     <link rel="stylesheet" href="../estilos/registro.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
 </head>
 <body>
@@ -22,32 +21,28 @@
     <!-- Sección del div generico -->
     <section id="sct_banner">
         <main>
-            <h2 >Registro</h2>
+            <h2>Registro</h2>
             <div class="registration-container">
                 <form id="form">
-                    <input type="text" id="nombre" name="nombre" placeholder="Nombre">
+                    <input type="text" id="nombre" name="nombre" placeholder="Nombre" autocomplete="given-name" required>
+                    <input type="text" id="apellido" name="apellido" placeholder="Apellido" autocomplete="family-name" required>
+                    <input type="text" id="username" name="username" placeholder="Nombre de usuario" autocomplete="username" required>
+                    <input type="email" id="email" name="email" placeholder="Correo electrónico" autocomplete="email" required>
 
-                    <input type="text" id="apellido" name="apellido" placeholder="Apellido">
-
-                    <input type="text" id="username" name="username" placeholder="Nombre de usuario">
-
-                    <input type="email" id="email" name="email" placeholder="Correo electrónico">
-
-                    <label for="id">Tipo de ID</label>
                     <div class="id-options">
-                        <input type="radio" id="cedula" name="id-type" value="cedula">
+                        <input type="radio" id="cedula" name="id-type" value="cedula" required>
                         <label for="cedula">Cédula nacional</label>
-                        <input type="radio" id="dimex" name="id-type" value="dimex">
+                        <input type="radio" id="dimex" name="id-type" value="dimex" required>
                         <label for="dimex">DIMEX</label>
                     </div>
-                    <input type="text" id="id" name="id" placeholder="ID">
-                    
+
+                    <input type="text" id="id" name="id" placeholder="ID" required>
                     <label for="birthdate">Fecha de nacimiento</label>
-                    <input type="text" id="birthdate" name="birthdate" placeholder="DD/MM/AAAA">
+                    <input type="date" id="birthdate" name="birthdate" autocomplete="bday"  required>
             
                     <button type="submit">Registrarse</button> 
                 </form>
-                <p>¿Ya tienes cuenta? <a href="landingPage.html">Inicia sesión aquí</a></p><!--aqui poner la pagina de inicio sesión-->
+                <p>¿Ya tienes cuenta? <a href="landingPage.html">Inicia sesión aquí</a></p>
             </div>
         </main>
     </section>
@@ -64,7 +59,14 @@
             <a href="softies-lp.html" target="_blank">Contact us</a>
         </div>
     </footer>
-    <script src="../js/registro.js"></script>
+
+    <!-- Axios para las solicitudes HTTP -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- SweetAlert para las notificaciones -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Conexión con el archivo de validaciones y manejo del registro -->
+    <script src="../js/registro.js"></script>
+    <!-- Conexión con el servicio para la interacción con el backend -->
+    <script src="../servicios/registroServicios.js"></script>
 </body>
 </html>

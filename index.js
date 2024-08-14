@@ -1,35 +1,47 @@
-const express = require('express')
-const mongoose = require('mongoose')
-const bodyParser = require('body-parser') 
-const cors = require('cors')
-//const routesCliente = require('./routes/routesCliente.js')//importar las rutas para la gestion de clientes
-//const routesProducto = require('./routes/routesProducto.js')
-//const routesCategoria = require('./routes/routesCategoria.js')
-//const auth = require('./routes/auth.js')
-require('dotenv').config()
+const express = require('express');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const registroRoutes = require('./routes/registroRoutes'); 
 
-//establecer la conexion con mongo
-mongoose.connect(process.env.MONGO_URI)
+// Importar rutas adicionales si son necesarias en el futuro
+// const routesCliente = require('./routes/routesCliente.js');
+// const routesProducto = require('./routes/routesProducto.js');
+// const routesCategoria = require('./routes/routesCategoria.js');
+// const auth = require('./routes/auth.js');
 
-const app = express()
+require('dotenv').config();
 
-//habilitar cors
+// Establecer la conexión con MongoDB
+mongoose.connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
+.then(() => console.log('Conectado a MongoDB'))
+.catch(err => console.error('Error al conectar a MongoDB:', err));
+
+const app = express();
+
+// Habilitar CORS
 app.use(cors());
 
-//habilitar body parser
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({extended:true}))
+// Habilitar body-parser
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-//servir los archivos estaticos
-app.use(express.static('public'))
+// Servir los archivos estáticos
+app.use(express.static('public'));
 
-//app.use('/',routesCliente) //habilitando las rutas del cliente
-//app.use('/',routesProducto) // habilitando las rutas del producto
-//app.use('/',routesCategoria)//habilitando las rutas de categoria
-//app.use('/',auth) //habilitar la autenticacion
+// Prefijo para todas las rutas de registro
+app.use('/registro', registroRoutes);
 
+// Rutas adicionales si se necesitan en el futuro
+// app.use('/', routesCliente);
+// app.use('/', routesProducto);
+// app.use('/', routesCategoria);
+// app.use('/', auth);
 
-const PORT = 3000
-app.listen(PORT,()=>{
+const PORT = 3000;
+app.listen(PORT, () => {
     console.log(`Servidor corriendo en el puerto: ${PORT}`);
-})
+});
