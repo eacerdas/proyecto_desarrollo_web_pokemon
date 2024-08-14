@@ -127,7 +127,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             const newTeam = document.createElement("li");
             newTeam.textContent = equipo.nombreEquipo;
             newTeam.dataset.id = equipo._id;
-
+            
+            // boton de eliminar
             const deleteButton = document.createElement("button");
             deleteButton.textContent = 'Eliminar';
             deleteButton.addEventListener('click', async function () {
@@ -135,8 +136,18 @@ document.addEventListener('DOMContentLoaded', async () => {
                 newTeam.remove();
                 mostrarAlerta("¡Listo!", "Equipo borrado con éxito", "success", "Ok", "#96C78C");
             });
+            
+            // boton de editar
+            const editButton = document.createElement("button");
+            editButton.textContent = 'Editar';
+            editButton.addEventListener('click', function () {
+                // poner aqui la logica de como editar, de momento no hace nada
+                editarEquipo(newTeam.dataset.id, equipo.nombreEquipo);
+            });
 
+            newTeam.appendChild(editButton);
             newTeam.appendChild(deleteButton);
+            
             teamList.appendChild(newTeam);
         });
     } catch (error) {
