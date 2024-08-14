@@ -60,7 +60,8 @@ function mostrarAlerta(title, message, icon, confirmButtonText, messagecolor) {
     });
 }
 
-formTeam.addEventListener('submit', function (event) {
+// Gestión de equipos
+formTeam.addEventListener('submit', async function (event) {
     event.preventDefault();
 
     let isValid = true;
@@ -73,15 +74,22 @@ formTeam.addEventListener('submit', function (event) {
     }
 
     if (isValid) {
-        // Código relacionado con la gestión de equipos
-        userNameTeam.value = "";
-        closeTeamPopup();
-        mostrarAlerta("¡Enhorabuena!", "Equipo agregado correctamente", "success", "Ok", "#96C78C");
+        const teamName = userNameTeam.value.trim();
+        try {
+            await registrar_equipo(teamName,"Jugador1", "Jugador2"); // Reemplaza con la lógica de registrar equipo
+
+            userNameTeam.value = "";
+            closeTeamPopup();
+            mostrarAlerta("¡Enhorabuena!", "Equipo agregado correctamente", "success", "Ok", "#96C78C");
+        } catch (error) {
+            mostrarAlerta("Error", "No se pudo agregar el equipo", "error", "Ok", "#FF4E4E");
+        }
     } else {
         mostrarAlerta("Error", "Nombre inválido, ingresa tu nombre sin caracteres especiales", "error", "Ok", "#FF4E4E");
     }
 });
 
+// Gestión de amistades
 formFriend.addEventListener('submit', async function (event) {
     event.preventDefault();
 
@@ -110,7 +118,32 @@ formFriend.addEventListener('submit', async function (event) {
     }
 });
 
+// Carga de amigos y equipos
 document.addEventListener('DOMContentLoaded', async () => {
+    // carga de equipos
+    try {
+        const equipos = await listar_equipos(); // Reemplaza con la lógica de listar equipos
+        equipos.forEach(equipo => {
+            const newTeam = document.createElement("li");
+            newTeam.textContent = equipo.nombreEquipo;
+            newTeam.dataset.id = equipo._id;
+
+            const deleteButton = document.createElement("button");
+            deleteButton.textContent = 'Eliminar';
+            deleteButton.addEventListener('click', async function () {
+                await eliminarEquipo(newTeam.dataset.id); // Reemplaza con la lógica de eliminar equipo
+                newTeam.remove();
+                mostrarAlerta("¡Listo!", "Equipo borrado con éxito", "success", "Ok", "#96C78C");
+            });
+
+            newTeam.appendChild(deleteButton);
+            teamList.appendChild(newTeam);
+        });
+    } catch (error) {
+        mostrarAlerta("Error", "No se pudieron cargar los equipos", "error", "Ok", "#FF4E4E");
+    }
+
+    // carga de amigos
     try {
         const amigos = await listar_amigos();
         amigos.forEach(amigo => {
@@ -123,7 +156,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             deleteButton.addEventListener('click', async function () {
                 await eliminarAmigo(newFriend.dataset.id);
                 newFriend.remove();
-                mostrarAlerta("¡Listo!", "Se ha borrado con éxito", "success", "Ok", "#96C78C");
+                mostrarAlerta("¡Listo!", "Amigo borrado con éxito", "success", "Ok", "#96C78C");
             });
 
             newFriend.appendChild(deleteButton);
