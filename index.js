@@ -1,16 +1,16 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
-const cors = require('cors');
-const registroRoutes = require('./routes/registroRoutes'); 
-
-// Importar rutas adicionales si son necesarias en el futuro
-// const routesCliente = require('./routes/routesCliente.js');
-// const routesProducto = require('./routes/routesProducto.js');
-// const routesCategoria = require('./routes/routesCategoria.js');
-// const auth = require('./routes/auth.js');
-
-require('dotenv').config();
+const express = require('express')
+const mongoose = require('mongoose')
+const bodyParser = require('body-parser') 
+const cors = require('cors')
+const routesResultado = require('./routes/routesResultado.js')
+const routesAmigo = require('./routes/routesAmigo.js')
+const routesEquipo = require('./routes/routesEquipo.js')
+const registroRoutes = require('./routes/registroRoutes.js')
+//const routesCliente = require('./routes/routesCliente.js')//importar las rutas para la gestion de clientes
+//const routesProducto = require('./routes/routesProducto.js')
+//const routesCategoria = require('./routes/routesCategoria.js')
+//const auth = require('./routes/auth.js')
+require('dotenv').config()
 
 // Establecer la conexión con MongoDB
 mongoose.connect(process.env.MONGO_URI, {
@@ -29,19 +29,20 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// Servir los archivos estáticos
-app.use(express.static('public'));
+//servir los archivos estaticos
+app.use(express.static('public'))
 
-// Prefijo para todas las rutas de registro
-app.use('/registro', registroRoutes);
+app.use('/',routesResultado) //habilitando las rutas de Resultado
+app.use('/',routesAmigo) //habilitando las rutas de Resultado
+app.use('/',routesEquipo) //habilitando las rutas de Resultado
+app.use('/',registroRoutes) //habilitando las rutas de Resultado
+//app.use('/',routesCliente) //habilitando las rutas del cliente
+//app.use('/',routesProducto) // habilitando las rutas del producto
+//app.use('/',routesCategoria)//habilitando las rutas de categoria
+//app.use('/',auth) //habilitar la autenticacion
 
-// Rutas adicionales si se necesitan en el futuro
-// app.use('/', routesCliente);
-// app.use('/', routesProducto);
-// app.use('/', routesCategoria);
-// app.use('/', auth);
 
-const PORT = 3000;
-app.listen(PORT, () => {
+const PORT = 3000
+app.listen(PORT,()=>{
     console.log(`Servidor corriendo en el puerto: ${PORT}`);
 });

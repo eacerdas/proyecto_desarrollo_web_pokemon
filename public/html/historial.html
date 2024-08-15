@@ -25,122 +25,18 @@
                   <button id="btn-regresar">Regresar</button>
                 </a>
           <div id="table-container" class="tabla-scroll">
-            <table class="tabla-historial">
+            <table id="tabla-historial">
               <thead> 
                 <tr>
                   <th>Rival</th>
-                  <th>Pokémon</th>
-                  <th>Daño causado</th>
-                  <th>Daño recibido</th>
+                  <th>Pokémon Rival</th>
+                  <th>Pokémon Aliado</th>
                   <th>Resultado</th>
-                  <tr>
-                      <td>ANGIE CABRERA</td>
-                      <td>BULBASAUR</td>
-                      <td>4200 HP</td>
-                      <td>6300 HP</td>
-                      <td>DERROTA</td>
-                    </tr>
-                    <tr>
-                      <td>ALEJANDRA CARRILLO</td>
-                      <td>DRAGONITE</td>
-                      <td>7200 HP</td>
-                      <td>5100 HP</td>
-                      <td>VICTORIA</td>
-                    </tr>
-                    <tr>
-                      <td>EDWARD CERDAS</td>
-                      <td>SLOWPOKE</td>
-                      <td>6700 HP</td>
-                      <td>4600 HP</td>
-                      <td>VICTORIA</td>
-                    </tr>
-                    <tr>
-                      <td>ADRIANA SEQUEIRA</td>
-                      <td>MACHOKE</td>
-                      <td>3700 HP</td>
-                      <td>5900 HP</td>
-                      <td>DERROTA</td>
-                    </tr>
-                    <tr>
-                      <td>STUART PINEIRO</td>
-                      <td>BLASTOISE</td>
-                      <td>6100 HP</td>
-                      <td>2700 HP</td>
-                      <td>VICTORIA</td>
-                    </tr>
-                    <tr>
-                      <td>ALEJANDRA CARRILLO</td>
-                      <td>WEEZING</td>
-                      <td>8200 HP</td>
-                      <td>6300 HP</td>
-                      <td>VICTORIA</td>
-                    </tr>
-                    <tr>
-                      <td>EDWARD CERDAS</td>
-                      <td>CHARMANDER</td>
-                      <td>7200 HP</td>
-                      <td>5600 HP</td>
-                      <td>VICTORIA</td>
-                    </tr>
-                    <tr>
-                      <td>ANGIE CABRERA</td>
-                      <td>NIDOQUEEN</td>
-                      <td>6700 HP</td>
-                      <td>4300 HP</td>
-                      <td>VICTORIA</td>
-                    </tr>
-                    <tr>
-                      <td>STUART PINEIRO</td>
-                      <td>MACHAMP</td>
-                      <td>2900 HP</td>
-                      <td>6300 HP</td>
-                      <td>DERROTA</td>
-                    </tr>
-                    <tr>
-                      <td>ADRIANA SEQUEIRA</td>
-                      <td>WEEZING</td>
-                      <td>6300 HP</td>
-                      <td>8200 HP</td>
-                      <td>DERROTA</td>
-                    </tr>
-                    <tr>
-                      <td>ANGIE CABRERA</td>
-                      <td>ALAKAZAM</td>
-                      <td>8200 HP</td>
-                      <td>6300 HP</td>
-                      <td>VICTORIA</td>
-                    </tr>
-                    <tr>
-                      <td>ALEJANDRA CARRILLO</td>
-                      <td>ONIX</td>
-                      <td>4500 HP</td>
-                      <td>6700 HP</td>
-                      <td>DERROTA</td>
-                    </tr>
-                    <tr>
-                      <td>EDWARD CERDAS</td>
-                      <td>VENOSAUR</td>
-                      <td>4900 HP</td>
-                      <td>6300 HP</td>
-                      <td>DERROTA</td>
-                    </tr>
-                    <tr>
-                      <td>ADRIANA SEQUEIRA</td>
-                      <td>GENGAR</td>
-                      <td>5400 HP</td>
-                      <td>1800 HP</td>
-                      <td>VICTORIA</td>
-                    </tr>
-                    <tr>
-                      <td>STUART PINEIRO</td>
-                      <td>ZAPDOS</td>
-                      <td>7200 HP</td>
-                      <td>2500 HP</td>
-                      <td>VICTORIA</td>
-                    </tr>
-                    
-              </tr>
+                </tr>
               </thead>
+              <tbody>
+                <!-- Los registros se cargarán aquí -->
+              </tbody>
             </table>
         </div>
     </section>
@@ -157,5 +53,15 @@
         <a href="softies-lp.html" target="_blank">Contact us</a>
       </div>
   </footer>
+
+    <!--Axios-->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!--Link sweet alert-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!--Link al servicio.js-->
+    <script src="../servicios/servicioResultado.js"></script>
+    <!--Link al controlador.js-->
+    <script src="../js/listadoHistorial.js"></script>
+
 </body>
 </html>

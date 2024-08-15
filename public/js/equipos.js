@@ -10,7 +10,7 @@ const closebuttonFriend = document.querySelector('#closeFriendButton');
 const teamList = document.querySelector('#teamList');
 const friendList = document.querySelector('#friendList');
 
-function disableCreateButton (state) {
+function disableCreateButton(state) {
     buttonTeam.disabled = state;
     buttonFriend.disabled = state;
 }
@@ -19,7 +19,7 @@ function disableCreateButton (state) {
 function openTeamPopup() {
     let popUpWindow = document.querySelector('#teamWindow');
     disableCreateButton(true);
-    popUpWindow.style.display = 'flex'; // Cambiar a display flex
+    popUpWindow.style.display = 'flex';
 }
 
 // Función para cerrar la ventana emergente de equipos
@@ -27,14 +27,14 @@ function closeTeamPopup() {
     userNameTeam.value = "";
     let popUpWindow = document.getElementById('teamWindow');
     disableCreateButton(false);
-    popUpWindow.style.display = 'none'; // Ocultar la ventana emergente
+    popUpWindow.style.display = 'none';
 }
 
 // Función para abrir la ventana emergente de amistades
 function openFriendPopup() {
     let popUpWindow = document.getElementById('friendWindow');
     disableCreateButton(true);
-    popUpWindow.style.display = 'flex'; // Cambiar a display flex
+    popUpWindow.style.display = 'flex';
 }
 
 // Función para cerrar la ventana emergente de amistades
@@ -42,17 +42,12 @@ function closeFriendPopup() {
     userNameFriend.value = "";
     let popUpWindow = document.getElementById('friendWindow');
     disableCreateButton(false);
-    popUpWindow.style.display = 'none'; // Ocultar la ventana emergente
+    popUpWindow.style.display = 'none';
 }
 
 function isAlphanN(str) {
     const regex = /^[a-zA-Z0-9ñÑ ]+$/;
     return regex.test(str);
-}
-
-function deleteTeam(element) {
-    // Remover el elemento de lista (li) del DOM
-    element.remove();
 }
 
 function mostrarAlerta(title, message, icon, confirmButtonText, messagecolor) {
@@ -65,16 +60,12 @@ function mostrarAlerta(title, message, icon, confirmButtonText, messagecolor) {
     });
 }
 
-formTeam.addEventListener('submit', function (event) {
+// Gestión de equipos
+formTeam.addEventListener('submit', async function (event) {
     event.preventDefault();
 
-    // Validaciones
     let isValid = true;
-    let errorMessage = '';
-    console.log(userNameTeam.value);
-    console.log(isAlphanN(userNameTeam.value.trim()));
 
-    // Validar Nombre equipo
     if (userNameTeam && isAlphanN(userNameTeam.value.trim())) {
         userNameTeam.classList.remove('invalid');
     } else {
@@ -83,87 +74,111 @@ formTeam.addEventListener('submit', function (event) {
     }
 
     if (isValid) {
-        // Redirigir a otra página si todas las validaciones son correctas
-        window.location.href = '#'; // Reemplazar con la URL deseada
-        const newTeam = document.createElement("li");
-        newTeam.textContent = userNameTeam.value;
-        teamList.appendChild(newTeam);
+        const teamName = userNameTeam.value.trim();
+        try {
+            await registrar_equipo(teamName,"Jugador1", "Jugador2"); // Reemplaza con la lógica de registrar equipo
 
-        // Crear el botón de eliminar
-        const deleteButton = document.createElement("button");
-        deleteButton.textContent = 'Eliminar';
-        deleteButton.addEventListener('click', function () {
-            deleteTeam(newTeam); // Llama a la función deleteTeam pasando el elemento a eliminar
-            mostrarAlerta("¡Listo!", "Se ha borrado con éxito\n", "Exitoso", "Ok", "#96C78C");
-        });
-
-        // Agregar el botón de eliminar al elemento de lista
-        newTeam.appendChild(deleteButton);
-
-        // Agregar el nuevo elemento de lista a teamList
-        teamList.appendChild(newTeam);
-
-        // Limpiar el campo de nombre de equipo y cerrar la ventana emergente
-        userNameTeam.value = "";
-        closeTeamPopup();
-        mostrarAlerta("¡Enhorabuena!", "Nombre agregado a la lista\n", "Error", "Ok", "#96C78C");
+            userNameTeam.value = "";
+            closeTeamPopup();
+            mostrarAlerta("¡Enhorabuena!", "Equipo agregado correctamente", "success", "Ok", "#96C78C");
+        } catch (error) {
+            mostrarAlerta("Error", "No se pudo agregar el equipo", "error", "Ok", "#FF4E4E");
+        }
     } else {
-        mostrarAlerta("Error", "Nombre inválido, ingresa tu nombre sin caracteres especiales\n", "Error", "Ok", "#FF4E4E");
+        mostrarAlerta("Error", "Nombre inválido, ingresa tu nombre sin caracteres especiales", "error", "Ok", "#FF4E4E");
     }
 });
 
-formFriend.addEventListener('submit', function (event) {
+// Gestión de amistades
+formFriend.addEventListener('submit', async function (event) {
     event.preventDefault();
 
-    // Validaciones
     let isValid = true;
-    let errorMessage = '';
-    console.log(userNameFriend.value);
-    console.log(isAlphanN(userNameFriend.value.trim()));
 
-    // Validar Nombre amistad
     if (userNameFriend && isAlphanN(userNameFriend.value.trim())) {
         userNameFriend.classList.remove('invalid');
     } else {
         isValid = false;
-        errorMessage += 'Ingresa tu nombre.\n';
         userNameFriend.classList.add('invalid');
     }
 
     if (isValid) {
-        // Redirigir a otra página si todas las validaciones son correctas
-        window.location.href = '#'; // Reemplazar con la URL deseada
-        const newFriend = document.createElement("li");
-        newFriend.textContent = userNameFriend.value;
-        friendList.appendChild(newFriend);
+        const friendName = userNameFriend.value.trim();
+        try {
+            await registrar_amigo("Jugador1", friendName);
 
-        // Crear el botón de eliminar
-        const deleteButton = document.createElement("button");
-        deleteButton.textContent = 'Eliminar';
-        deleteButton.addEventListener('click', function () {
-            deleteTeam(newFriend); // Llama a la función deleteTeam pasando el elemento a eliminar
-            mostrarAlerta("¡Listo!", "Se ha borrado con éxito\n", "Exitoso", "Ok", "#96C78C");
-        });
-
-        // Agregar el botón de eliminar al elemento de lista
-        newFriend.appendChild(deleteButton);
-
-        // Agregar el nuevo elemento de lista a teamList
-        friendList.appendChild(newFriend);
-
-        // Limpiar el campo de nombre de equipo y cerrar la ventana emergente
-        userNameFriend.value = "";
-        closeFriendPopup();
-        mostrarAlerta("¡Enhorabuena!", "Nombre agregado a la lista\n", "Exitoso", "Ok", "#96C78C");
+            userNameFriend.value = "";
+            closeFriendPopup();
+            mostrarAlerta("¡Enhorabuena!", "Amigo agregado correctamente", "success", "Ok", "#96C78C");
+        } catch (error) {
+            mostrarAlerta("Error", "No se pudo agregar el amigo", "error", "Ok", "#FF4E4E");
+        }
     } else {
-        mostrarAlerta("Error", "Nombre inválido, ingresa tu nombre sin caracteres especiales\n", "Error", "Ok", "#FF4E4E");
+        mostrarAlerta("Error", "Nombre inválido, ingresa tu nombre sin caracteres especiales", "error", "Ok", "#FF4E4E");
     }
 });
 
+// Carga de amigos y equipos
+document.addEventListener('DOMContentLoaded', async () => {
+    // carga de equipos
+    try {
+        const equipos = await listar_equipos(); // Reemplaza con la lógica de listar equipos
+        equipos.forEach(equipo => {
+            const newTeam = document.createElement("li");
+            newTeam.textContent = equipo.nombreEquipo;
+            newTeam.dataset.id = equipo._id;
+            
+            // boton de eliminar
+            const deleteButton = document.createElement("button");
+            deleteButton.textContent = 'Eliminar';
+            deleteButton.addEventListener('click', async function () {
+                await eliminarEquipo(newTeam.dataset.id); // Reemplaza con la lógica de eliminar equipo
+                newTeam.remove();
+                mostrarAlerta("¡Listo!", "Equipo borrado con éxito", "success", "Ok", "#96C78C");
+            });
+            
+            // boton de editar
+            const editButton = document.createElement("button");
+            editButton.textContent = 'Editar';
+            editButton.addEventListener('click', function () {
+                // poner aqui la logica de como editar, de momento no hace nada
+                editarEquipo(newTeam.dataset.id, equipo.nombreEquipo);
+            });
+
+            newTeam.appendChild(editButton);
+            newTeam.appendChild(deleteButton);
+            
+            teamList.appendChild(newTeam);
+        });
+    } catch (error) {
+        mostrarAlerta("Error", "No se pudieron cargar los equipos", "error", "Ok", "#FF4E4E");
+    }
+
+    // carga de amigos
+    try {
+        const amigos = await listar_amigos();
+        amigos.forEach(amigo => {
+            const newFriend = document.createElement("li");
+            newFriend.textContent = amigo.usuario2;
+            newFriend.dataset.id = amigo._id;
+
+            const deleteButton = document.createElement("button");
+            deleteButton.textContent = 'Eliminar';
+            deleteButton.addEventListener('click', async function () {
+                await eliminarAmigo(newFriend.dataset.id);
+                newFriend.remove();
+                mostrarAlerta("¡Listo!", "Amigo borrado con éxito", "success", "Ok", "#96C78C");
+            });
+
+            newFriend.appendChild(deleteButton);
+            friendList.appendChild(newFriend);
+        });
+    } catch (error) {
+        mostrarAlerta("Error", "No se pudieron cargar los amigos", "error", "Ok", "#FF4E4E");
+    }
+});
 
 buttonTeam.addEventListener("click", openTeamPopup);
 buttonFriend.addEventListener("click", openFriendPopup);
 closebuttonTeam.addEventListener("click", closeTeamPopup);
 closebuttonFriend.addEventListener("click", closeFriendPopup);
-
-

@@ -36,17 +36,6 @@ body {
     color: white;
 }
 
-.titulo-generales {
-    font-family: Arial, Helvetica, sans-serif;
-    margin-top: 10px;
-    margin-bottom: -20px;
-}
-
-.opciones-generales {
-    margin-bottom: 50px;
-    margin-top: 20px;
-    font-size: 24px;
-}
 
 #container-general {
     background-color: #f4f4f4;
@@ -56,8 +45,8 @@ body {
 }
 
 .container-settings {
-    height: 650px;
-    width: 350px;
+    height: 800px;
+    width: 650px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -68,9 +57,22 @@ body {
     margin-bottom: 20px;
 }
 
+.titulo-generales {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 35px;
+    margin-top: 20px;
+    margin-bottom: -50px;
+}
+
+.opciones-generales {
+    margin-bottom: 50px;
+    margin-top: 20px;
+    font-size: 30px;
+}
+
 .texto-opciones {
     margin-top: 50px;
-    font-size: 24px;
+    font-size: 30px;
     display: flex;
     flex-direction: column;
     justify-content: left;
@@ -79,13 +81,14 @@ body {
 
 .profile-pic {
     margin: auto;
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 160px;
+    background-color: #ccc;
 }
 
 .profile-pic img {
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 160px;
 }
 
 #btn-cambiar-foto{
