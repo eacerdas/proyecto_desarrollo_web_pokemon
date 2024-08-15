@@ -5,7 +5,7 @@ const cors = require('cors')
 const routesResultado = require('./routes/routesResultado.js')
 const routesAmigo = require('./routes/routesAmigo.js')
 const routesEquipo = require('./routes/routesEquipo.js')
-const registroRoutes = require('./routes/registroRoutes.js')
+const routesUsuario = require('./routes/routesUsuario.js')
 //const routesCliente = require('./routes/routesCliente.js')//importar las rutas para la gestion de clientes
 //const routesProducto = require('./routes/routesProducto.js')
 //const routesCategoria = require('./routes/routesCategoria.js')
@@ -35,7 +35,7 @@ app.use(express.static('public'))
 app.use('/',routesResultado) //habilitando las rutas de Resultado
 app.use('/',routesAmigo) //habilitando las rutas de Resultado
 app.use('/',routesEquipo) //habilitando las rutas de Resultado
-app.use('/',registroRoutes) //habilitando las rutas de Resultado
+app.use('/',routesUsuario) //habilitando las rutas de Resultado
 //app.use('/',routesCliente) //habilitando las rutas del cliente
 //app.use('/',routesProducto) // habilitando las rutas del producto
 //app.use('/',routesCategoria)//habilitando las rutas de categoria

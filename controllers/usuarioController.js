@@ -1,42 +1,57 @@
-const User = require('../models/registroModels');
-const registroServicio = require('../public/servicios/registroServicios');
-const crypto = require('crypto');
+const Usuario = require('../models/Usuario');
+
 const { sendRegistrationEmail } = require('../config/mailer'); // Ajusta la ruta según la ubicación de tu módulo Nodemailer
 
+const crypto = require('crypto');
 // Función para generar una contraseña aleatoria
 function generatePassword() {
     return crypto.randomBytes(8).toString('hex'); // Genera una contraseña aleatoria de 16 caracteres
 }
 
-// GRABAR UN USUARIO EN BD
+        
+// Grabar NUEVO usuario en BD
 exports.nuevoUsuario = async (req, res) => {
-    const password = generatePassword(); // Genera una contraseña aleatoria
-    const nuevoUsuario = new User({ ...req.body, password });
+    //console.log(req.body); // Verifica los datos recibidos
+    
+    const password = generatePassword();
+
+    const nuevoUsuario = new Usuario({
+        nombre: req.body.nombre,
+        apellido: req.body.apellido,
+        username: req.body.username,
+        email: req.body.email,
+        idType: req.body.idType,
+        id: req.body.id,
+        birthdate: req.body.birthdate,
+        password: password
+    });
+
     try {
         await nuevoUsuario.save();
-
-        // Envía la contraseña al usuario usando el módulo Nodemailer
-        sendRegistrationEmail(nuevoUsuario.email, nuevoUsuario.nombre, password);
+        console.log('Usuario guardado exitosamente');
 
         res.status(200).json({
-            usuario: nuevoUsuario,
-            mensaje: "Usuario creado exitosamente, la contraseña ha sido enviada por correo electrónico.",
-            resultado: true
+            usuario: true,
+            mensaje: "Usuario añadido exitosamente",
+            tipoAlerta: "success"
         });
     } catch (error) {
+        console.error('Error al guardar usuario:', error); // Registra el error en el servidor
         res.status(500).json({
-            resultado: false,
-            mensajeError: "No se pudo guardar el usuario. Ocurrió el siguiente error:",
-            error
+            usuario: false,
+            mensajeError: "No se pudo añadir el usuario. Ocurrió el siguiente error:",
+            error: error.message,
+            tipoAlerta: "error"
         });
     }
 };
 
 
+
 // LISTAR TODOS LOS USUARIOS
 exports.recuperarUsuarios = async (req, res) => {
     try {
-        const usuariosRecuperados = await User.find();
+        const usuariosRecuperados = await Usuario.find();
         res.status(200).json({
             listadoUsuarios: usuariosRecuperados,
             mensaje: "Usuarios recuperados exitosamente"
@@ -54,7 +69,7 @@ exports.recuperarUsuarios = async (req, res) => {
 exports.recuperarUsuarioID = async (req, res) => {
     const id = req.query.id;
     try {
-        const usuarioRecuperado = await User.findById(id);
+        const usuarioRecuperado = await Usuario.findById(id);
 
         if (!usuarioRecuperado) {
             return res.status(404).json({
@@ -79,7 +94,7 @@ exports.recuperarUsuarioID = async (req, res) => {
 exports.actualizarUsuario = async (req, res) => {
     const id = req.query.id;
     try {
-        const usuarioActualizado = await User.findByIdAndUpdate(id, req.body, { new: true });
+        const usuarioActualizado = await Usuario.findByIdAndUpdate(id, req.body, { new: true });
 
         if (!usuarioActualizado) {
             return res.status(400).json({
@@ -103,7 +118,7 @@ exports.actualizarUsuario = async (req, res) => {
 exports.eliminarUsuario = async (req, res) => {
     const id = req.query.id;
     try {
-        const usuarioEliminado = await User.findByIdAndDelete(id);
+        const usuarioEliminado = await Usuario.findByIdAndDelete(id);
 
         if (!usuarioEliminado) {
             return res.status(400).json({

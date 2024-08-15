@@ -5,7 +5,15 @@ const inputUsername = document.getElementById("username");
 const inputCorreo = document.getElementById("email");
 const inputIdentificacion = document.getElementById("id");
 const inputFechaNacimiento = document.getElementById("birthdate");
-const btnRegistrar = document.getElementById("btnRegistrar");
+const formRegistro = document.getElementById("form"); // Selecciona el formulario
+
+// Prevenir el comportamiento predeterminado del formulario
+formRegistro.addEventListener("submit", function(event) {
+    event.preventDefault(); // Evita que el formulario recargue la página
+
+    // Validar y enviar los datos si todo está correcto
+    enviarDatos();
+});
 
 // Función para validar campos vacíos
 function validarCamposVacios() {
@@ -92,10 +100,20 @@ function validarCorreoElectronico() {
 // Función para validar la identificación
 function validarIdentificacion() {
     const tipoIdentificacion = document.querySelector('input[name="id-type"]:checked');
-    let seleccionUsuario = tipoIdentificacion.value
+    let error = false;
+
+    if (!tipoIdentificacion) {
+        Swal.fire({
+            title: "Error en la selección de identificación",
+            text: "Por favor, selecciona un tipo de identificación.",
+            icon: "warning"
+        });
+        return true; // Devuelve true para indicar que hay un error
+    }
+
+    let seleccionUsuario = tipoIdentificacion.value;
     let textoUsuario = inputIdentificacion.value;
     let regex;
-    let error = false;
 
     if (seleccionUsuario == "nacional") {
         regex = /^[1-7]{1}-[0-9]{4}-[0-9]{4}$/;
@@ -103,12 +121,11 @@ function validarIdentificacion() {
         regex = /^[0-9]{11,12}$/;
     }
 
-    if (regex.test(textoUsuario) == false) {
+    if (regex && regex.test(textoUsuario) == false) {
         inputIdentificacion.classList.add('error');
         error = true;
     } else {
         inputIdentificacion.classList.remove('error');
-        error = false;
     }
     return error;
 }
@@ -190,38 +207,17 @@ function enviarDatos() {
             icon: "warning"
         });
     } else {
+        
         // Si todas las validaciones pasan, se procede a enviar los datos
         const nombre = inputNombre.value.trim();
         const apellido = inputApellido.value.trim();
         const username = inputUsername.value.trim();
-        const correo = inputCorreo.value.trim();
-        const tipoCedula = document.querySelector('input[name="id-type"]:checked').value;
-        const identificacion = inputIdentificacion.value.trim();
-        const fechaNacimiento = inputFechaNacimiento.value.trim();
+        const email = inputCorreo.value.trim();
+        const idType = document.querySelector('input[name="id-type"]:checked').value;
+        const id = inputIdentificacion.value.trim();
+        const birthdate = inputFechaNacimiento.value.trim();
 
-        registrar_usuario(nombre, apellido, username, correo, identificacion, tipoCedula, fechaNacimiento)
-            .then((res) => {
-                if (res.resultado) {
-                    Swal.fire({
-                        title: "¡Registro exitoso!",
-                        text: "Revisa tu correo para más detalles.",
-                        icon: "success"
-                    })
-                } else {
-                    Swal.fire({
-                        title: "Error en el registro",
-                        text: res.mensajeError || "Ocurrió un error durante el registro.",
-                        icon: "error"
-                    });
-                }
-            })
-            .catch((error) => {
-                Swal.fire({
-                    title: "Error de conexión",
-                    text: "No se pudo conectar con el servidor. Inténtalo de nuevo más tarde.",
-                    icon: "error"
-                });
-            });
+        registrar_usuario(nombre, apellido, username, email, idType, id, birthdate);
 
         limpiarCampos();
     }
