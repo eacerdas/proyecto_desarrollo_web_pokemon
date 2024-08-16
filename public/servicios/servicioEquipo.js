@@ -94,3 +94,48 @@ const eliminarEquipo = async (equipoId) => {
         });
     }
 };
+
+const modificarEquipo = async (pnombreEquipo,pusuario1,pusuario2,equipoId) => {
+    try {
+        const res = await axios({
+            method: "put",
+            url: `http://localhost:3000/equipo?id=${equipoId}`,
+            responseType: "json",
+            data: {
+                nombreEquipo:pnombreEquipo,
+                usuario1: pusuario1,
+                usuario2: pusuario2,
+            }
+        });
+
+        if (res.data.equipo == false) {
+            if (res.data.error.code == 11000) {
+                Swal.fire({
+                    title: "No se pudo editar el nombre del equipo",
+                    text: "Error de sistema, intente más tarde",
+                    icon: "error",
+                    confirmButtonColor: "#FF4E4E"
+                });
+            }
+        } else {
+            Swal.fire({
+                title: "Éxito",
+                text: "Equipo modificado correctamente",
+                icon: "success",
+                confirmButtonColor: "#96C78C"
+            });
+
+            setTimeout(() => {
+                window.location.href = "equipos.html";
+            }, 1000);
+        }
+    } catch (error) {
+        console.log(error);
+        Swal.fire({
+            title: "No se completó el cambio",
+            text: "Póngase en contacto con el admin del sistema",
+            icon: "error",
+            confirmButtonColor: "#FF4E4E"
+        });
+    }
+};
