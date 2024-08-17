@@ -1,4 +1,6 @@
 'use strict';
+let isEdit = false;
+let teamToEdit = null;
 const formTeam = document.querySelector('#addteam_window');
 const formFriend = document.querySelector('#addfriend_window');
 const userNameTeam = document.querySelector('#team');
@@ -9,6 +11,8 @@ const buttonFriend = document.querySelector('#openFriendButton');
 const closebuttonFriend = document.querySelector('#closeFriendButton');
 const teamList = document.querySelector('#teamList');
 const friendList = document.querySelector('#friendList');
+const memberDropdown = document.querySelector('#teamMember');
+const currentUserName = sessionStorage.getItem("nombre");
 
 function disableCreateButton(state) {
     buttonTeam.disabled = state;
@@ -20,11 +24,16 @@ function openTeamPopup() {
     let popUpWindow = document.querySelector('#teamWindow');
     disableCreateButton(true);
     popUpWindow.style.display = 'flex';
+    if (isEdit) {
+        memberDropdown.style.visibility = "hidden";
+    }
 }
 
 // Función para cerrar la ventana emergente de equipos
 function closeTeamPopup() {
     userNameTeam.value = "";
+    isEdit = false;
+    teamToEdit = null;
     let popUpWindow = document.getElementById('teamWindow');
     disableCreateButton(false);
     popUpWindow.style.display = 'none';
@@ -63,6 +72,7 @@ function mostrarAlerta(title, message, icon, confirmButtonText, messagecolor) {
 // Gestión de equipos
 formTeam.addEventListener('submit', async function (event) {
     event.preventDefault();
+    let errorMessage = "";
 
     let isValid = true;
 
@@ -71,21 +81,41 @@ formTeam.addEventListener('submit', async function (event) {
     } else {
         isValid = false;
         userNameTeam.classList.add('invalid');
+        errorMessage = "Nombre inválido, ingresa tu nombre sin caracteres especiales.";
+    }
+
+    if (memberDropdown.value == "empty" && !isEdit) {
+        isValid = false;
+        errorMessage = errorMessage.length == 0 ?"": errorMessage.concat(" ");
+        errorMessage = errorMessage.concat("El campo de seleccione amistad es requerido.");
     }
 
     if (isValid) {
         const teamName = userNameTeam.value.trim();
-        try {
-            await registrar_equipo(teamName,"Jugador1", "Jugador2"); // Reemplaza con la lógica de registrar equipo
-
-            userNameTeam.value = "";
-            closeTeamPopup();
-            mostrarAlerta("¡Enhorabuena!", "Equipo agregado correctamente", "success", "Ok", "#96C78C");
-        } catch (error) {
-            mostrarAlerta("Error", "No se pudo agregar el equipo", "error", "Ok", "#FF4E4E");
+        if (isEdit && teamToEdit != null){
+            try {
+                await modificarEquipo(teamName,teamToEdit.usuario1, teamToEdit.usuario2, teamToEdit.id); // AQUI CAMBIAR "jugador1" por la constante que trae el id del usuario registrado
+                userNameTeam.value = "";
+                closeTeamPopup();
+                mostrarAlerta("¡Enhorabuena!", "Equipo modificado correctamente", "success", "Ok", "#96C78C");
+            } catch (error) {
+                mostrarAlerta("Error", "No se pudo modificar el equipo", "error", "Ok", "#FF4E4E");
+            }
+        }
+        else {
+            const teamOption = memberDropdown.value;
+            try {
+                await registrar_equipo(teamName,currentUserName??"Jugador 1", teamOption); // Reemplaza con la lógica de registrar equipo
+                userNameTeam.value = "";
+                memberDropdown.value ="";
+                closeTeamPopup();
+                mostrarAlerta("¡Enhorabuena!", "Equipo agregado correctamente", "success", "Ok", "#96C78C");
+            } catch (error) {
+                mostrarAlerta("Error", "No se pudo agregar el equipo", "error", "Ok", "#FF4E4E");
+            }
         }
     } else {
-        mostrarAlerta("Error", "Nombre inválido, ingresa tu nombre sin caracteres especiales", "error", "Ok", "#FF4E4E");
+        mostrarAlerta("Error", errorMessage, "error", "Ok", "#FF4E4E");
     }
 });
 
@@ -118,6 +148,7 @@ formFriend.addEventListener('submit', async function (event) {
     }
 });
 
+
 // Carga de amigos y equipos
 document.addEventListener('DOMContentLoaded', async () => {
     // carga de equipos
@@ -125,9 +156,22 @@ document.addEventListener('DOMContentLoaded', async () => {
         const equipos = await listar_equipos(); // Reemplaza con la lógica de listar equipos
         equipos.forEach(equipo => {
             const newTeam = document.createElement("li");
-            newTeam.textContent = equipo.nombreEquipo;
             newTeam.dataset.id = equipo._id;
             
+            const contentLabel = document.createElement("div");
+            contentLabel.classList.add("contentLabel");
+            const versusPlayer = document.createElement("span");
+            const teamNameSpan = document.createElement("span");
+            
+            teamNameSpan.textContent = equipo.nombreEquipo;
+            versusPlayer.innerHTML = `${equipo.usuario1} <b>vs</b> ${equipo.usuario2}`;
+
+            contentLabel.appendChild(teamNameSpan);
+            contentLabel.appendChild(versusPlayer);
+
+            const actionContainer = document.createElement("div");
+            actionContainer.classList.add("actionContainer");
+
             // boton de eliminar
             const deleteButton = document.createElement("button");
             deleteButton.textContent = 'Eliminar';
@@ -141,13 +185,16 @@ document.addEventListener('DOMContentLoaded', async () => {
             const editButton = document.createElement("button");
             editButton.textContent = 'Editar';
             editButton.addEventListener('click', function () {
-                // poner aqui la logica de como editar, de momento no hace nada
-                editarEquipo(newTeam.dataset.id, equipo.nombreEquipo);
+                isEdit =true;
+                teamToEdit = {id:newTeam.dataset.id,nombreEquipo: equipo.nombreEquipo, usuario1: equipo.usuario1, usuario2: equipo.usuario2}; //EN ESTA CAMBIAR usuario1: POR EL USUARIO DEL JUEGO
+                openTeamPopup();
             });
 
-            newTeam.appendChild(editButton);
-            newTeam.appendChild(deleteButton);
-            
+            actionContainer.appendChild(editButton);
+            actionContainer.appendChild(deleteButton);
+
+            newTeam.appendChild(contentLabel);
+            newTeam.appendChild(actionContainer);
             teamList.appendChild(newTeam);
         });
     } catch (error) {
@@ -170,6 +217,10 @@ document.addEventListener('DOMContentLoaded', async () => {
                 mostrarAlerta("¡Listo!", "Amigo borrado con éxito", "success", "Ok", "#96C78C");
             });
 
+            const option = document.createElement("option");
+            option.text = amigo.usuario2;
+            option.value = amigo.usuario2; //preguntar a Edward si hacemos directamente con el ID para poder hacer la relación, habría que cambiar el modelo de equipos para que venga anidado la info dle usuario 1 y 2
+            memberDropdown.appendChild(option);
             newFriend.appendChild(deleteButton);
             friendList.appendChild(newFriend);
         });
@@ -177,6 +228,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         mostrarAlerta("Error", "No se pudieron cargar los amigos", "error", "Ok", "#FF4E4E");
     }
 });
+
+
 
 buttonTeam.addEventListener("click", openTeamPopup);
 buttonFriend.addEventListener("click", openFriendPopup);

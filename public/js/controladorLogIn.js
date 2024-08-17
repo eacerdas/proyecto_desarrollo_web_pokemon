@@ -9,13 +9,13 @@ function mostrarContra() {
 
   //Validaciones para la landing page
   const inputCorreo = document.getElementById("correo");
-  const inputContrasenna = document.getElementById("password");
+  const inputPassword = document.getElementById("password");
   const btnLogIn = document.getElementById("btnLogIn");
-  const formulario = document.getElementById("formulario");
+  /*   const formulario = document.getElementById("formulario"); */
 
   function validarCamposVacios() {
       let error = false;
-      let campos_requiridos = [inputCorreo, inputContrasenna];
+      let campos_requiridos = [inputCorreo, inputPassword];
       for (let i = 0; i < campos_requiridos.length; i++) {
           if (campos_requiridos[i].value === "") {
               campos_requiridos[i].classList.add('error');
@@ -44,23 +44,23 @@ function mostrarContra() {
   // Validar la contraseña
   function validarContrasenna() {
       let error = false;
-      let textoUsuario = inputContrasenna.value;
-      let regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*()\-_=+{}[\]:;"',.<>?\\|]).{8,}$/;
+      let textoUsuario = inputPassword.value;
+      let regex = /^(?=.*[a-z])(?=.*\d)[a-z\d]{8,}$/;
       if (regex.test(textoUsuario) === false) {
-          inputContrasenna.classList.add('error');
+        inputPassword.classList.add('error');
           error = true;
       } else {
-          inputContrasenna.classList.remove('error');
+        inputPassword.classList.remove('error');
       }
       return error;
   }
 
-  function limpiarCampos() {
+    /*function limpiarCampos() {
       inputCorreo.value = "";
-      inputContrasenna.value = "";
-  }
+      inputPassword.value = "";
+    } */
 
-  function enviarDatos(event) {
+  function iniciarSesion(event) {
       event.preventDefault();  // Prevenir el comportamiento por defecto del formulario
       let errorCamposVacios = validarCamposVacios();
       let errorCorreo = validarCorreoElectronico();
@@ -91,9 +91,11 @@ function mostrarContra() {
               confirmButtonColor: "#FF4E4E"
           });
       } else {
-          limpiarCampos();
-          window.location.href = "mainpage.html";  
+        let correo = inputCorreo.value;
+        let password = inputPassword.value;
+        validarCredenciales(correo,password)
+        /*limpiarCampos(); */
       }
   }
 
-  btnLogIn.addEventListener('click', enviarDatos);
+  btnLogIn.addEventListener('click', iniciarSesion);
