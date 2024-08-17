@@ -38,7 +38,7 @@ const registrar_usuario = async (pnombre, papellido, pusername, pemail, pidType,
                 icon: "success",
                 confirmButtonText: 'OK',
                 preConfirm: () => {
-                    window.location.href = 'mainpage.html'; // Redirige a mainpage.html
+                    window.location.href = 'landingPage.html'; // Redirige a landingPage.html
                 }
             });
         }
