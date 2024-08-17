@@ -64,7 +64,7 @@ table {
     color: #000000;
 }
   
-.tabla-historial th{
+#tabla-historial th{
     background-color: #375FAD;
     border: 2px solid #000000;
     text-align: left;
@@ -76,10 +76,10 @@ table {
     top: 0;
 }
 
-.tabla-historial td{
+tbody {
     border: 2px solid #000000;
     text-align: left;
     padding: 8px;
     color: #000000;
-    font-size: 20px;
+    font-size: 22px;
   }

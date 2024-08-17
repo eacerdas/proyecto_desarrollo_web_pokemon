@@ -48,6 +48,7 @@
             <form id="addteam_window" class="form_teamfriend">
                 <label for="team">Ingresa el usuario del equipo</label>
                 <input type="text" id="team" name="team" required>
+                <select required name="teamMember" id="teamMember"><option value="empty">Selecciona amistad</option></select>
                 <button type="submit" class ="windowButtons">Agregar</button> 
                 <button id="closeTeamButton" class ="windowButtons">Cerrar</button> 
             </form>
@@ -78,7 +79,10 @@
         </div>
     </footer>
     <script src="../js/equipos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../servicios/servicioAmigo.js"></script>
+    <script src="../servicios/servicioEquipo.js"></script>
 </body>
 
 </html>
