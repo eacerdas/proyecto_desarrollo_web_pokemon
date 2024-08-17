@@ -19,17 +19,22 @@
     </header>
 
     <section id="sct-formulario">
-        <h2>¿Olvidaste tu contraseña?</h2>
+        <h2>Restablecer contraseña</h2>
         <div id="formulario">
 
-            <p id="info">Ingresa el correo electrónico con el que te registraste y te enviaremos un enlace para restablecer tu contraseña.</p>
+            <p id="info">Por favor, ingresa tu nueva contraseña. Esta debe contener al menos 8 caracteres, incluyendo números, 
+                una letra mayúscula, una letra minúscula y un carácter especial.</p>
 
             <form action="">
-                <label>Correo:</label>
-                <input type="email" id="email" placeholder="a@gmail.com">
-                <br>
+                <label>Contraseña</label>
+                <input type="password" id="password" placeholder="Abc1234$">
 
-                <div class="button-container"><button id="btnLink">Solicitar link</button></div>
+                <div id="mostrarContra">
+                    <input id="showPass" type="checkbox" onclick="mostrarContra()">
+                    <label for="checkbox">Mostrar contraseña</label>
+                </div>
+
+                <div class="button-container"><button id="btnLink">Cambiar contraseña</button></div>
 
                 <a href="../html/landingPage.html">Iniciar sesión</a>
 

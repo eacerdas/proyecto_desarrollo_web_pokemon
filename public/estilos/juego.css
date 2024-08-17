@@ -5,7 +5,7 @@ body{
 
 #sct_banner {
     width: 100%;
-    height: 820px;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -27,17 +27,17 @@ main {
     display: flex;
     justify-content: center;
     align-items:center;
-    width: 80%;
+    width: 100%;
     margin: 2rem 0;
 }
 
 /* Contenedor de team */
 .team-selection {
-    height: 550px;
+    height:100%;
     background-color: #1e3c74;
     padding: 1rem;
     border-radius: 8px;
-    width: 400px;
+    width: 50%;
   
 }
 
@@ -48,6 +48,7 @@ main {
     align-items: center;
     justify-content: center;
 }
+
 
 h1 {
     font-size: 42px;
@@ -105,6 +106,7 @@ button {
 .link-button, .list-button, .play-button {
     background-color: #DA3335;
     color: #FFFFFF;
+    
 }
 
 .link-button:hover, .list-button:hover, .play-button:hover {
@@ -112,26 +114,23 @@ button {
     color: #FFFFFF;
 }
 
-.play-button {
-    width: 400px;
+.play-button{
+    width: 100%;
     height: 80px;
     margin-top: 1rem;
     font-size: 25px;
 }
 
+/* Estilo para los elementos de la lista de amigos */
 .amigo-item {
-    padding: 10px;
+    padding: 5px;
     margin-bottom: 5px;
     background-color: #f3f3f3;
     border-radius: 5px;
-}
-
-/* Estilo para los elementos de la lista de amigos */
-.amigo-item {
     display: flex;
     align-items: center; /* Alinea verticalmente los elementos */
-    margin-bottom: 10px; /* Espacio entre los ítems */
 }
+
 
 /* Estilo para el checkbox */
 .amigo-item input[type="radio"] {
@@ -140,5 +139,5 @@ button {
 
 /* Estilo para el nombre del amigo */
 .amigo-item label {
-    font-size: 16px; /* Tamaño de la fuente para el nombre del amigo */
+    font-size: 20px; /* Tamaño de la fuente para el nombre del amigo */
 }
