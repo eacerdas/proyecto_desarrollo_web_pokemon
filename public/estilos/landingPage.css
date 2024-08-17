@@ -116,5 +116,13 @@ input, select {
 #registro span, a {
     line-height: 1.5; 
     margin-right: 5px;
-    font-weight: 300;
+}
+
+#registro a {
+  font-weight: 700;
+}
+
+
+.error {
+  border: 2px solid red;
 }
