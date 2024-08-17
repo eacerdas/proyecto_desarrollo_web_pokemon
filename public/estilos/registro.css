@@ -31,7 +31,7 @@ h2 {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 400px; /* Ancho fijo */
+    width: 500px; /* Ancho fijo */
     max-width: 95%; /* Asegura que no se vea demasiado grande en pantallas pequeñas */
     margin: auto; /* Centra el contenedor en la página */
 }
