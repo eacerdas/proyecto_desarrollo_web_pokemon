@@ -12,6 +12,7 @@ const closebuttonFriend = document.querySelector('#closeFriendButton');
 const teamList = document.querySelector('#teamList');
 const friendList = document.querySelector('#friendList');
 const memberDropdown = document.querySelector('#teamMember');
+const currentUserName = sessionStorage.getItem("nombre");
 
 function disableCreateButton(state) {
     buttonTeam.disabled = state;
@@ -93,7 +94,7 @@ formTeam.addEventListener('submit', async function (event) {
         const teamName = userNameTeam.value.trim();
         if (isEdit && teamToEdit != null){
             try {
-                await modificarEquipo(teamName,"Jugador1", teamToEdit.usuario2, teamToEdit.id); // AQUI CAMBIAR "jugador1" por la constante que trae el id del usuario registrado
+                await modificarEquipo(teamName,teamToEdit.usuario1, teamToEdit.usuario2, teamToEdit.id); // AQUI CAMBIAR "jugador1" por la constante que trae el id del usuario registrado
                 userNameTeam.value = "";
                 closeTeamPopup();
                 mostrarAlerta("¡Enhorabuena!", "Equipo modificado correctamente", "success", "Ok", "#96C78C");
@@ -104,13 +105,12 @@ formTeam.addEventListener('submit', async function (event) {
         else {
             const teamOption = memberDropdown.value;
             try {
-                await registrar_equipo(teamName,"Jugador1", teamOption); // Reemplaza con la lógica de registrar equipo
+                await registrar_equipo(teamName,currentUserName??"Jugador 1", teamOption); // Reemplaza con la lógica de registrar equipo
                 userNameTeam.value = "";
                 memberDropdown.value ="";
                 closeTeamPopup();
                 mostrarAlerta("¡Enhorabuena!", "Equipo agregado correctamente", "success", "Ok", "#96C78C");
             } catch (error) {
-                console.log(error);
                 mostrarAlerta("Error", "No se pudo agregar el equipo", "error", "Ok", "#FF4E4E");
             }
         }
@@ -156,14 +156,19 @@ document.addEventListener('DOMContentLoaded', async () => {
         const equipos = await listar_equipos(); // Reemplaza con la lógica de listar equipos
         equipos.forEach(equipo => {
             const newTeam = document.createElement("li");
-            newTeam.textContent = equipo.nombreEquipo;
             newTeam.dataset.id = equipo._id;
             
             const contentLabel = document.createElement("div");
             contentLabel.classList.add("contentLabel");
-            const versusPlayer = document.createElement("spam");
-            const teamNameSpam = document.createElement("spam");
+            const versusPlayer = document.createElement("span");
+            const teamNameSpan = document.createElement("span");
             
+            teamNameSpan.textContent = equipo.nombreEquipo;
+            versusPlayer.innerHTML = `${equipo.usuario1} <b>vs</b> ${equipo.usuario2}`;
+
+            contentLabel.appendChild(teamNameSpan);
+            contentLabel.appendChild(versusPlayer);
+
             const actionContainer = document.createElement("div");
             actionContainer.classList.add("actionContainer");
 
@@ -187,7 +192,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             actionContainer.appendChild(editButton);
             actionContainer.appendChild(deleteButton);
-            
+
+            newTeam.appendChild(contentLabel);
             newTeam.appendChild(actionContainer);
             teamList.appendChild(newTeam);
         });
