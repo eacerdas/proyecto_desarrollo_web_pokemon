@@ -141,3 +141,23 @@ button {
 .amigo-item label {
     font-size: 20px; /* Tamaño de la fuente para el nombre del amigo */
 }
+
+/* Estilo para los elementos de la lista de equipos */
+.equipo-item {
+    display: flex; /* Alinea los elementos horizontalmente */
+    align-items: center; /* Centra verticalmente el contenido */
+    margin-bottom: 0.5rem;
+}
+
+/* Estilo para el radio button */
+.equipo-item input[type="radio"] {
+    margin-right: 10px; /* Espacio entre el radio y el nombre del equipo */
+}
+
+/* Estilo para el nombre del equipo */
+.equipo-item label {
+    font-size: 24px;
+    font-weight: 300;
+    color: #070707;
+    margin: 0; /* Asegura que no haya margen adicional */
+}
