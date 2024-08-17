@@ -93,7 +93,7 @@ formTeam.addEventListener('submit', async function (event) {
         const teamName = userNameTeam.value.trim();
         if (isEdit && teamToEdit != null){
             try {
-                await modificarEquipo(teamName,"Jugador1", teamToEdit.usuario2, teamToEdit.id); // Reemplaza con la lógica de registrar equipo
+                await modificarEquipo(teamName,"Jugador1", teamToEdit.usuario2, teamToEdit.id); // AQUI CAMBIAR "jugador1" por la constante que trae el id del usuario registrado
                 userNameTeam.value = "";
                 closeTeamPopup();
                 mostrarAlerta("¡Enhorabuena!", "Equipo modificado correctamente", "success", "Ok", "#96C78C");
@@ -159,6 +159,14 @@ document.addEventListener('DOMContentLoaded', async () => {
             newTeam.textContent = equipo.nombreEquipo;
             newTeam.dataset.id = equipo._id;
             
+            const contentLabel = document.createElement("div");
+            contentLabel.classList.add("contentLabel");
+            const versusPlayer = document.createElement("spam");
+            const teamNameSpam = document.createElement("spam");
+            
+            const actionContainer = document.createElement("div");
+            actionContainer.classList.add("actionContainer");
+
             // boton de eliminar
             const deleteButton = document.createElement("button");
             deleteButton.textContent = 'Eliminar';
@@ -172,15 +180,15 @@ document.addEventListener('DOMContentLoaded', async () => {
             const editButton = document.createElement("button");
             editButton.textContent = 'Editar';
             editButton.addEventListener('click', function () {
-                // poner aqui la logica de como editar, de momento no hace nada
                 isEdit =true;
-                teamToEdit = {id:newTeam.dataset.id,nombreEquipo: equipo.nombreEquipo, usuario1: equipo.usuario1, usuario2: equipo.usuario2};
+                teamToEdit = {id:newTeam.dataset.id,nombreEquipo: equipo.nombreEquipo, usuario1: equipo.usuario1, usuario2: equipo.usuario2}; //EN ESTA CAMBIAR usuario1: POR EL USUARIO DEL JUEGO
                 openTeamPopup();
             });
 
-            newTeam.appendChild(editButton);
-            newTeam.appendChild(deleteButton);
+            actionContainer.appendChild(editButton);
+            actionContainer.appendChild(deleteButton);
             
+            newTeam.appendChild(actionContainer);
             teamList.appendChild(newTeam);
         });
     } catch (error) {
