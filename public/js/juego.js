@@ -2,44 +2,44 @@ document.addEventListener('DOMContentLoaded', async () => {
     const playButton = document.querySelector('.play-button');
     const linkButton = document.querySelector('.link-button');
     const listButton = document.querySelector('.list-button');
-    const amigosContainer = document.querySelector('.team-list');
+    const equiposContainer = document.querySelector('.team-list');
 
-    if (!amigosContainer) {
-        console.error("No se encontró el contenedor de la lista de amigos.");
+    if (!equiposContainer) {
+        console.error("No se encontró el contenedor de la lista de equipos.");
         return;
     }
 
     try {
-        const amigos = await listar_amigos();
+        const equipos = await listar_equipos();
 
-        if (amigos.length > 0) {
-            amigosContainer.innerHTML = ''; 
+        if (equipos.length > 0) {
+            equiposContainer.innerHTML = ''; 
 
-            amigos.forEach((amigo, index) => {
-                const amigoElement = document.createElement('div');
-                amigoElement.className = 'amigo-item';
+            equipos.forEach((equipo, index) => {
+                const equipoElement = document.createElement('div');
+                equipoElement.className = 'equipo-item';
 
                 const checkbox = document.createElement('input');
                 checkbox.type = 'radio'; // Usamos radio en lugar de checkbox para seleccionar solo uno
-                checkbox.name = 'amigo-seleccionado'; // Todos los radios deben tener el mismo nombre
-                checkbox.value = amigo.usuario2;
-                checkbox.id = `amigo-${index}`;
+                checkbox.name = 'equipo-seleccionado'; // Todos los radios deben tener el mismo nombre
+                checkbox.value = equipo.usuario2; // Aquí dejamos que el valor sea el nombre del usuario contra el que vamos a jugar
+                checkbox.id = `equipo-${index}`;
 
                 const label = document.createElement('label');
-                label.setAttribute('for', `amigo-${index}`);
-                label.textContent = amigo.usuario2;
+                label.setAttribute('for', `equipo-${index}`);
+                label.textContent = `${equipo.nombreEquipo} (${equipo.usuario2})`; // Aquí hacemos que se muestre el nombre del equipo
 
-                amigoElement.appendChild(checkbox);
-                amigoElement.appendChild(label);
+                equipoElement.appendChild(checkbox);
+                equipoElement.appendChild(label);
 
-                amigosContainer.appendChild(amigoElement);
+                equiposContainer.appendChild(equipoElement);
             });
         } else {
-            amigosContainer.innerHTML = '<p>Lista de equipos vacía</p>';
+            equiposContainer.innerHTML = '<p>Lista de equipos vacía</p>';
         }
     } catch (error) {
-        amigosContainer.innerHTML = '<p>Error al cargar la lista de amigos</p>';
-        console.error("Error cargando amigos:", error);
+        equiposContainer.innerHTML = '<p>Error al cargar la lista de equipos</p>';
+        console.error("Error cargando equipos:", error);
     }
 
     playButton?.addEventListener('click', () => {
