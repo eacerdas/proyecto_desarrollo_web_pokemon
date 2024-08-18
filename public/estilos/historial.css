@@ -14,6 +14,7 @@ body{
     background-color: #f4f4f4;
     width: 100%;
     height: 500px;
+    padding-bottom: 15px;
 }
 
 /* Fondo del título */
@@ -47,12 +48,8 @@ table {
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: separate;
     width: 75%;
-    height: 600px;
+    height: 100%;
     background-color: #ffffff;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    padding-left: 5px;
-    padding-right: 5px;
   }
 
 #titulo-historial{
@@ -63,10 +60,22 @@ table {
     padding-bottom: 50px;
     color: #000000;
 }
-  
-#tabla-historial th{
+
+#tabla-historial tr {
+    height: 10px; 
+}
+
+#tabla-historial td { /* cuerpo del historial*/
+    padding: 12px; 
+    text-align: left;
+    font-size: 22px;
+    color: #000000;
+    border: 0px solid #000000;
+}
+
+#tabla-historial th{ /* títulos del historial*/
     background-color: #375FAD;
-    border: 2px solid #000000;
+    border: 1px solid #000000;
     text-align: left;
     padding: 8px;
     font-size: 24px;
@@ -77,9 +86,18 @@ table {
 }
 
 tbody {
-    border: 2px solid #000000;
+    display: block;
+    height: 100%;
+    overflow-y: auto; 
+    border: 1px solid #000000;
     text-align: left;
-    padding: 8px;
     color: #000000;
     font-size: 22px;
-  }
+    height: 500px;
+}
+
+thead, tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
