@@ -26,7 +26,7 @@ header {
 }
 
 .header-right {
-    padding-right: 100px;
+    padding-right: 40px;
     font-size: 20px;
 }
 
@@ -41,7 +41,6 @@ header {
     color: #ffcc0f;
 }
 
-
 /* Footer */
 footer{
     height: 200px;
@@ -50,6 +49,7 @@ footer{
     justify-content: space-between;
     align-items: center;
     color: #ffcc0f;
+    font-size: 20px;
 }
 
 #contactos{
@@ -75,4 +75,17 @@ footer a{
 
 footer a:hover{
     text-decoration: underline;
+}
+
+.login-link {
+    background: none; 
+    border: none; 
+    color: #ffcc0f; 
+    font-size: 20px;
+    cursor: pointer; 
+    text-decoration: none; 
+}
+
+.login-link:hover {
+    text-decoration: underline; /* Subrayado al pasar el mouse */
 }
