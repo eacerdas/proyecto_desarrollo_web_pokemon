@@ -2,23 +2,32 @@ const buttonDuel = document.getElementById('start-duel-button')
 
 // Espera a que todo el contenido del DOM esté cargado
 document.addEventListener('DOMContentLoaded', () => {
-    fetchAllPokemon() // Llenar cada uno de los selects
+    // Leer el nombre del jugador 1 desde el session storage
+    const nombreJugador1 = sessionStorage.getItem('nombre');
+    // Leer el nombre del jugador 2 desde el local storage
+    const nombreJugador2 = localStorage.getItem('usuario2');
+
+    // Asignar los nombres a los elementos correspondientes en el HTML
+    document.getElementById('nombre-jugador-1').textContent = nombreJugador1 || 'Desconocido';
+    document.getElementById('nombre-jugador-2').textContent = nombreJugador2 || 'Desconocido';
+
+    fetchAllPokemon(); // Llenar cada uno de los selects
     document.getElementById('pokemon-select-1').addEventListener('change', (event) => {
-        const pokemonSelected = event.target.value
+        const pokemonSelected = event.target.value;
         if (pokemonSelected) {
-            fetchPokemon(pokemonSelected, 1)
+            fetchPokemon(pokemonSelected, 1);
         }
-    })
+    });
 
     document.getElementById('pokemon-select-2').addEventListener('change', (event) => {
-        const pokemonSelected = event.target.value
+        const pokemonSelected = event.target.value;
         if (pokemonSelected) {
-            fetchPokemon(pokemonSelected, 2)
+            fetchPokemon(pokemonSelected, 2);
         }
-    })
+    });
 
-    buttonDuel.addEventListener('click', startDuel)
-})
+    buttonDuel.addEventListener('click', startDuel);
+});
 
 // Función que recupera la información de TODOS los pokemones
 async function fetchAllPokemon() {
@@ -215,7 +224,7 @@ function disableDuelButton() {
 function showNewGameButton() {
     const newGameButton = document.createElement('button');
     newGameButton.textContent = 'Nueva Partida';
-    newGameButton.style.fontWeight = 'bold';
+    newGameButton.stAyle.fontWeight = 'bold';
     newGameButton.style.backgroundColor = '#da3335';
     newGameButton.style.color = 'white';
     newGameButton.style.fontSize = '24px';

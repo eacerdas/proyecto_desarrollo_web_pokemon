@@ -130,3 +130,33 @@ strong {
     border-radius: 10px;
     transition: width 0.3s ease-in-out;
 }
+
+/* Estilo para los nombres de los jugadores */
+.player-name {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Ajustar la alineación de los contenedores */
+.container {
+    display: flex;
+    justify-content: space-around; /* Para que los Pokémon estén a los lados */
+    align-items: flex-start; /* Alinear los elementos desde la parte superior */
+    width: 100%;
+    height: 650px;
+    margin-bottom: 20px;
+}
+
+.pokemon-container {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 45%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

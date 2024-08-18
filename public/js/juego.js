@@ -43,7 +43,20 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     playButton?.addEventListener('click', () => {
-        window.location.href = 'batalla.html'; 
+        const selectedEquipo = document.querySelector('input[name="equipo-seleccionado"]:checked');
+        
+        if (selectedEquipo) {
+            const usuario2 = selectedEquipo.value;
+            localStorage.setItem('usuario2', usuario2); // Guardamos usuario2 en el localStorage
+            window.location.href = 'batalla.html'; // Redirigir a la página de batalla
+        } else {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Equipo no seleccionado',
+                text: 'Por favor selecciona un equipo antes de jugar.',
+                confirmButtonColor: "#96C78C"
+            });
+        }
     });
 
     linkButton?.addEventListener('click', () => {
