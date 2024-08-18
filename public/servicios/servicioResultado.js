@@ -29,10 +29,6 @@ const registrar_resultado = async (pjugador1,pjugador2,ppokemon1,ppokemon2,pgana
                 text:"Registro completo",
                 icon:"success"
             })
-
-            setTimeout(() => {
-                window.location.href="batalla.html"
-            }, 1000);
             
         }
     } catch (error) {

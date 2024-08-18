@@ -207,8 +207,9 @@ function startDuel() {
 }
 
 function registrarResultado(dataContainer1, dataContainer2, ganador, empate) {
-    const jugador1 = 'Jugador 1'; // Puedes ajustar esto para obtener los nombres reales
-    const jugador2 = 'Jugador 2';
+
+    const jugador1 = sessionStorage.getItem('nombre'); 
+    const jugador2 = localStorage.getItem('usuario2');
     const pokemon1 = dataContainer1.querySelector('h2').textContent.split(': ')[1];
     const pokemon2 = dataContainer2.querySelector('h2').textContent.split(': ')[1];
 
@@ -224,7 +225,7 @@ function disableDuelButton() {
 function showNewGameButton() {
     const newGameButton = document.createElement('button');
     newGameButton.textContent = 'Nueva Partida';
-    newGameButton.stAyle.fontWeight = 'bold';
+    newGameButton.style.fontWeight = 'bold';
     newGameButton.style.backgroundColor = '#da3335';
     newGameButton.style.color = 'white';
     newGameButton.style.fontSize = '24px';
