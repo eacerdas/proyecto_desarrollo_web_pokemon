@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const listButton = document.querySelector('.list-button');
     const equiposContainer = document.querySelector('.team-list');
     const currentUserName = sessionStorage.getItem("nombre");
+    
 
     if (!equiposContainer) {
         console.error("No se encontró el contenedor de la lista de equipos.");
@@ -28,6 +29,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 checkbox.name = 'equipo-seleccionado'; // Todos los radios deben tener el mismo nombre
                 checkbox.value = equipo.usuario2; // Aquí dejamos que el valor sea el nombre del usuario contra el que vamos a jugar
                 checkbox.id = `equipo-${index}`;
+                checkbox.setAttribute('data-nombre-equipo', equipo.nombreEquipo);
 
                 const label = document.createElement('label');
                 label.setAttribute('for', `equipo-${index}`);
@@ -39,7 +41,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                 equiposContainer.appendChild(equipoElement);
             });
         } else {
-            equiposContainer.innerHTML = '<p>Lista de equipos vacía</p>';
+            equiposContainer.innerHTML = '<p>La lista de equipos aún se encuentra vacía</p>';
         }
     } catch (error) {
         equiposContainer.innerHTML = '<p>Error al cargar la lista de equipos</p>';
@@ -51,33 +53,43 @@ document.addEventListener('DOMContentLoaded', async () => {
         
         if (selectedEquipo) {
             const usuario2 = selectedEquipo.value;
+            const nombreDelEquipo = selectedEquipo.getAttribute('data-nombre-equipo');
             localStorage.setItem('usuario2', usuario2); // Guardamos usuario2 en el localStorage
-            window.location.href = 'batalla.html'; // Redirigir a la página de batalla
+            localStorage.setItem('modoInvitado', "false"); // Ponemos la bandera de invitado en false
+
+            Swal.fire({
+                icon: 'success',
+                title: 'Equipo: ' + nombreDelEquipo + ' seleccionado con éxito!',
+                text: 'Iniciando batalla contra: ' + usuario2,
+                confirmButtonColor: "#FF4E4E",
+                preConfirm: () => {
+                    window.location.href = 'batalla.html'; // Redirige a batalla.html
+                }
+            });
+
         } else {
             Swal.fire({
                 icon: 'warning',
                 title: 'Equipo no seleccionado',
                 text: 'Por favor selecciona un equipo antes de jugar.',
-                confirmButtonColor: "#96C78C"
+                confirmButtonColor: "#FF4E4E"
             });
         }
     });
 
     linkButton?.addEventListener('click', () => {
-        const link = '#'; 
-        navigator.clipboard.writeText(link).then(() => {
-            Swal.fire({
-                icon: 'success',
-                title: 'Enlace copiado',
-                text: 'El enlace ha sido copiado al portapapeles.',
-                confirmButtonColor: "#96C78C"
-            });
-        }).catch(err => {
-            Swal.fire({
-                icon: 'error',
-                title: 'Error',
-                text: 'Error al copiar el enlace: ' + err
-            });
+        
+        localStorage.setItem('usuario2', "Invitado"); // Guardamos usuario2 como invitado en el localStorage
+        localStorage.setItem('modoInvitado', "true"); // Ponemos la bandera en true, para saber que se trata realmente de modo invitado
+
+        Swal.fire({
+            icon: 'success',
+            title: 'Iniciando partida en modo invitado',
+            text: 'Recuerda que los resultados del modo invitado no son tomados en cuenta como parte del historial!',
+            confirmButtonColor: "#FF4E4E",
+            preConfirm: () => {
+                window.location.href = 'batalla.html'; // Redirige a batalla.html
+            }
         });
     });
 
@@ -90,7 +102,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             icon: 'info',
             title: 'API de Pokémon',
             text: 'Esta funcionalidad estará disponible próximamente.',
-            confirmButtonColor: "#8CB7C7"
+            confirmButtonColor: "#FF4E4E"
         });
     }
 });

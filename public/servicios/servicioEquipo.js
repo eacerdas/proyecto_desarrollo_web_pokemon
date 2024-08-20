@@ -25,7 +25,7 @@ const registrar_equipo = async (pnombreEquipo,pusuario1,pusuario2) => {
                 title: "Éxito",
                 text: "Registro completo",
                 icon: "success",
-                confirmButtonColor: "#96C78C"
+                confirmButtonColor: "#FF4E4E"
             });
 
             setTimeout(() => {
@@ -122,7 +122,7 @@ const modificarEquipo = async (pnombreEquipo,pusuario1,pusuario2,equipoId) => {
                 title: "Éxito",
                 text: "Equipo modificado correctamente",
                 icon: "success",
-                confirmButtonColor: "#96C78C"
+                confirmButtonColor: "#FF4E4E"
             });
 
             setTimeout(() => {

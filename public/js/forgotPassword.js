@@ -58,7 +58,7 @@ function enviarDatos(event) {
             text: "Contraseña actualizada exitosamente.",
             icon: "success",
             confirmButton: "Ok",
-            confirmButtonColor: "#96C78C"
+            confirmButtonColor: "#FF4E4E"
           });
           limpiarCampos()
           setTimeout(() => {

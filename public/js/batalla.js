@@ -1,4 +1,5 @@
 const buttonDuel = document.getElementById('start-duel-button')
+const modoInvitadoFlag = localStorage.getItem("modoInvitado");
 
 // Espera a que todo el contenido del DOM esté cargado
 document.addEventListener('DOMContentLoaded', () => {
@@ -180,7 +181,7 @@ function startDuel() {
         }).then(() => {
             disableDuelButton();
             showNewGameButton();
-            registrarResultado(dataContainer1, dataContainer2, ganador, empate);
+            registrarResultado(dataContainer1, dataContainer2, ganador, empate, modoInvitadoFlag);
         });
     } else if (hp1 === 0 || hp2 === 0) {
         ganador = hp1 > hp2 ? 'Pokémon 1' : 'Pokémon 2';
@@ -188,16 +189,18 @@ function startDuel() {
             icon: 'success',
             title: '¡Batalla terminada!',
             text: `${ganador} ha ganado la batalla`,
+            confirmButtonColor: "#FF4E4E",
             confirmButtonText: 'Aceptar'
         }).then(() => {
             disableDuelButton();
             showNewGameButton();
-            registrarResultado(dataContainer1, dataContainer2, ganador, empate);
+            registrarResultado(dataContainer1, dataContainer2, ganador, empate, modoInvitadoFlag);
         });
     } else {
         Swal.fire({
             icon: 'info',
             title: 'Resultado del turno',
+            confirmButtonColor: "#FF4E4E",
             html: `
                 <p>Pokémon 1 atacó con: ${attack1.name} y causó ${attack1.power} de daño</p>
                 <p>Pokémon 2 atacó con: ${attack2.name} y causó ${attack2.power} de daño</p>
@@ -206,14 +209,25 @@ function startDuel() {
     }
 }
 
-function registrarResultado(dataContainer1, dataContainer2, ganador, empate) {
+function registrarResultado(dataContainer1, dataContainer2, ganador, empate, modoInvitadoFlag) {
 
-    const jugador1 = sessionStorage.getItem('nombre'); 
-    const jugador2 = localStorage.getItem('usuario2');
-    const pokemon1 = dataContainer1.querySelector('h2').textContent.split(': ')[1];
-    const pokemon2 = dataContainer2.querySelector('h2').textContent.split(': ')[1];
+    if(modoInvitadoFlag == "true"){
+        Swal.fire({
+            icon: 'success',
+            title: '¡Recuerda!',
+            text: 'El resultado no se guarda debido al modo invitado!',
+            confirmButtonText: 'Aceptar',
+            confirmButtonColor: "#FF4E4E",
+        });
+    } 
+    else if (modoInvitadoFlag == "false"){
+        const jugador1 = sessionStorage.getItem('nombre'); 
+        const jugador2 = localStorage.getItem('usuario2');
+        const pokemon1 = dataContainer1.querySelector('h2').textContent.split(': ')[1];
+        const pokemon2 = dataContainer2.querySelector('h2').textContent.split(': ')[1];
 
-    registrar_resultado(jugador1, jugador2, pokemon1, pokemon2, ganador, empate);
+        registrar_resultado(jugador1, jugador2, pokemon1, pokemon2, ganador, empate);
+    }
 }
 
 function disableDuelButton() {

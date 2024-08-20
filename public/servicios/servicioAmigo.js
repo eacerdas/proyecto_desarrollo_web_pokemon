@@ -24,7 +24,7 @@ const registrar_amigo = async (pusuario1,pusuario2) => {
                 title: "Éxito",
                 text: "Registro completo",
                 icon: "success",
-                confirmButtonColor: "#96C78C"
+                confirmButtonColor: "#FF4E4E"
             });
 
             setTimeout(() => {
