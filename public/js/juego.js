@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const linkButton = document.querySelector('.link-button');
     const listButton = document.querySelector('.list-button');
     const equiposContainer = document.querySelector('.team-list');
+    const currentUserName = sessionStorage.getItem("nombre");
 
     if (!equiposContainer) {
         console.error("No se encontró el contenedor de la lista de equipos.");
@@ -16,6 +17,9 @@ document.addEventListener('DOMContentLoaded', async () => {
             equiposContainer.innerHTML = ''; 
 
             equipos.forEach((equipo, index) => {
+                if (equipo.usuario1 != currentUserName && equipo.usuario2 != currentUserName){
+                    return;
+                }
                 const equipoElement = document.createElement('div');
                 equipoElement.className = 'equipo-item';
 

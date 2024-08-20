@@ -135,7 +135,7 @@ formFriend.addEventListener('submit', async function (event) {
     if (isValid) {
         const friendName = userNameFriend.value.trim();
         try {
-            await registrar_amigo("Jugador1", friendName);
+            await registrar_amigo(currentUserName, friendName);
 
             userNameFriend.value = "";
             closeFriendPopup();
@@ -155,6 +155,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     try {
         const equipos = await listar_equipos(); // Reemplaza con la lógica de listar equipos
         equipos.forEach(equipo => {
+            if (equipo.usuario1 != currentUserName && equipo.usuario2 != currentUserName){
+                return;
+            }
             const newTeam = document.createElement("li");
             newTeam.dataset.id = equipo._id;
             
@@ -164,7 +167,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             const teamNameSpan = document.createElement("span");
             
             teamNameSpan.textContent = equipo.nombreEquipo;
-            versusPlayer.innerHTML = `${equipo.usuario1} <b>vs</b> ${equipo.usuario2}`;
+            versusPlayer.innerHTML = `Equipo con: ${equipo.usuario2}`;
 
             contentLabel.appendChild(teamNameSpan);
             contentLabel.appendChild(versusPlayer);
@@ -205,6 +208,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     try {
         const amigos = await listar_amigos();
         amigos.forEach(amigo => {
+            if (amigo.usuario1 != currentUserName && amigo.usuario2 != currentUserName){
+                return;
+            }
             const newFriend = document.createElement("li");
             newFriend.textContent = amigo.usuario2;
             newFriend.dataset.id = amigo._id;
