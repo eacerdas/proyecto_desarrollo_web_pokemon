@@ -3,11 +3,11 @@ const Usuario = require('../models/Usuario');
 const { sendRegistrationEmail } = require('../config/mailer'); // Ajusta la ruta según la ubicación de tu módulo Nodemailer
 
 const crypto = require('crypto');
+const { error } = require('console');
 // Función para generar una contraseña aleatoria
 function generatePassword() {
-    return crypto.randomBytes(8).toString('hex'); // Genera una contraseña aleatoria de 16 caracteres
+    return crypto.randomBytes(8).toString('hex'); // Genera una contraseña aleatoria de 16 caracteres
 }
-
         
 // Grabar NUEVO usuario en BD
 exports.nuevoUsuario = async (req, res) => {
@@ -29,12 +29,24 @@ exports.nuevoUsuario = async (req, res) => {
     try {
         await nuevoUsuario.save();
         console.log('Usuario guardado exitosamente');
+        try {
+            sendRegistrationEmail(nuevoUsuario.nombre, nuevoUsuario.email, nuevoUsuario.password)
 
-        res.status(200).json({
-            usuario: true,
-            mensaje: "Usuario añadido exitosamente",
-            tipoAlerta: "success"
-        });
+            res.status(200).json({
+                usuario: true,
+                mensaje: "Usuario añadido exitosamente",
+                tipoAlerta: "success"
+            })
+        } catch (errorEmail) {
+            console.error('Error al enviar el correo:', errorEmail); // Registra el error en el servidor
+            res.status(500).json({
+                Usuario: false,
+                mensajeError: "Cliente creado pero hubo un error al enviar el correo",
+                error: error.message,
+                tipoAlerta: "error"
+            });
+        }
+
     } catch (error) {
         console.error('Error al guardar usuario:', error); // Registra el error en el servidor
         res.status(500).json({
