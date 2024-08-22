@@ -16,7 +16,7 @@
         <a href="../html/mainpage.html" class="header-left">PokéDuels</a>
         
         <div class="header-right">
-            <a href="softies-lp.html" target="_blank">About us</a>
+            <span id="username-display">Username</span>
         </div>
     </header>
     
@@ -28,9 +28,9 @@
                     <h2>Elige tu equipo</h2>
                     <div class="team-list">
                         <!-- Aquí se cargarán los equipos desde el backend -->
-                        <p>Lista de equipos vacía</p>
+                        <p>La lista de equipos aún se encuentra vacía</p>
                     </div>
-                    <button class="link-button">Link para jugar con invitado</button>
+                    <button class="link-button">Jugar con un amigo en modo de invitado</button>
                     
                      <div class="boton-jugar">
                     <button class="play-button">Jugar</button>
@@ -53,7 +53,11 @@
             <a href="softies-lp.html" target="_blank">Contact us</a>
         </div>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../js/juego.js"></script>
+    <script src="../servicios/servicioEquipo.js"></script>
+    <script src="../js/username_display.js"></script>
+
 </body>
 </html>

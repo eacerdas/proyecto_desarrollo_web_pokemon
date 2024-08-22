@@ -17,7 +17,7 @@
     <header>
         <a href="../html/mainpage.html" class="header-left">PokéDuels</a>
         <div class="header-right">
-            <a href="softies-lp.html" target="_blank">About us</a>
+            <span id="username-display">Username</span>
         </div>
     </header>
 
@@ -46,10 +46,14 @@
         <!-- Sección emergente agregar equipo-->
         <div class="add_teamfriend" id="teamWindow">
             <form id="addteam_window" class="form_teamfriend">
-                <label for="team">Ingresa el usuario del equipo</label>
-                <input type="text" id="team" name="team" required>
-                <button type="submit" class ="windowButtons">Agregar</button> 
-                <button id="closeTeamButton" class ="windowButtons">Cerrar</button> 
+                <label for="team">Ponle un nombre al equipo</label>
+                <input class="inputField" type="text" id="team" name="team">
+                <select name="teamMember" id="teamMember" class="estiloDropDown"><option value="empty">Selecciona amistad</option></select>
+                <div class="formsActions">
+                    <button type="submit" class ="windowButtons">Aceptar</button> 
+                    <button type="button" id="closeTeamButton" class ="windowButtons">Cerrar</button>
+                </div>
+                 
             </form>
         </div>
 
@@ -57,9 +61,11 @@
         <div class="add_teamfriend" id="friendWindow">
             <form id="addfriend_window" class="form_teamfriend">
                 <label for="friend">Ingresa el usuario de tu amistad</label>
-                <input type="text" id="friend" name="friend" required>
-                <button type="submit" class ="windowButtons">Agregar</button> 
-                <button id="closeFriendButton" class ="windowButtons">Cerrar</button> 
+                <input class="inputField" type="text" id="friend" name="friend">
+                <div class="formsActions">
+                <button type="submit" class ="windowButtons">Aceptar</button> 
+                <button type="button" id="closeFriendButton" class ="windowButtons">Cerrar</button> 
+                </div>
             </form>
 
         </div>
@@ -78,7 +84,11 @@
         </div>
     </footer>
     <script src="../js/equipos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../servicios/servicioAmigo.js"></script>
+    <script src="../servicios/servicioEquipo.js"></script>
+    <script src="../js/username_display.js"></script>
 </body>
 
 </html>

@@ -1,4 +1,5 @@
 const cuerpoTabla = document.querySelector("#tabla-historial tbody");
+const currentUserName = sessionStorage.getItem("nombre");
 
 let lista_historial_recuperado = [];
 
@@ -28,7 +29,14 @@ const mostrar_datos_en_tabla = async () => {
 
         // Datos recuperados de la lista
         const resultado = lista_historial_recuperado[i];
+        
+        const jugador1 = resultado['jugador1'];
         const jugador2 = resultado['jugador2'];
+
+        if (jugador1 != currentUserName && jugador2 != currentUserName){
+            continue;
+        }
+
         const pokemon2 = resultado['pokemon2'];
         const pokemon1 = resultado['pokemon1'];
         const ganador = resultado['ganador']; // 'Pokémon 1' = "Victoria", 'Pokémon 2' = "Derrota", o 'Empate'

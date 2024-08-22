@@ -14,7 +14,7 @@
     <header>
         <a href="../html/mainpage.html" class="header-left">PokéDuels</a>
         <div class="header-right">
-            <a href="softies-lp.html" target="_blank">About us</a>
+            <span id="username-display">Username</span>
         </div>
     </header>
 
@@ -22,24 +22,28 @@
     <section id="sct_batalla" class="sct">
         <div class="div_generico">
             <h2>Batalla</h2>
+
+            
             <div class="container">
-                <!--Container para Pokemon 1-->
+                <!-- Container para Pokémon 1 y Jugador 1 -->
                 <div class="pokemon-container" id="pokemon-container-1">
+                    <p class="player-name">Jugador 1: <span id="nombre-jugador-1"></span></p>
                     <select id="pokemon-select-1">
                         <option value="">--Select Pokémon--</option>
                     </select>
                     <div class="pokemon-info" id="pokemon-info-1"></div>
                 </div>
-                <!--Container para Pokemon 2-->
+            
+                <!-- Container para Pokémon 2 y Jugador 2 -->
                 <div class="pokemon-container" id="pokemon-container-2">
+                    <p class="player-name">Jugador 2: <span id="nombre-jugador-2"></span></p>
                     <select id="pokemon-select-2">
                         <option value="">--Select Pokémon--</option>
                     </select>
-                    <div class="pokemon-info" id="pokemon-info-2" >
-                        
-                    </div>
+                    <div class="pokemon-info" id="pokemon-info-2"></div>
                 </div>
             </div>
+            
             <div class="duel-container">
                 <button id="start-duel-button">Iniciar turno</button>
             </div>
@@ -63,6 +67,8 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../js/batalla.js"></script>
     <script src="../servicios/servicioResultado.js"></script>
+    <script src="../js/username_display.js"></script>
+
 
 </body>
 </html>

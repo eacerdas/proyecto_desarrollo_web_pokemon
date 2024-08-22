@@ -1,5 +1,5 @@
 /* Estilos Generales */
-body{
+body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -14,23 +14,24 @@ body{
 
 /* CSS de registro */
 
-h2{
+h2 {
     font-size: 40px;
     font-weight: 600;
     text-align: center;
     padding-bottom: 20px;
     color: #070707;
 }
+
 .registration-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: #ffff;
+    background-color: #fff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 400px; /* Ancho fijo */
+    width: 500px; /* Ancho fijo */
     max-width: 95%; /* Asegura que no se vea demasiado grande en pantallas pequeñas */
     margin: auto; /* Centra el contenedor en la página */
 }
@@ -58,7 +59,8 @@ h2{
 
 .registration-container form input[type="email"],
 .registration-container form input[type="text"],
-.registration-container form input[type="password"] {
+.registration-container form input[type="password"],
+.registration-container form input[type="date"] {
     margin-bottom: 15px;
     padding: 10px;
     border: 1px solid #ccc;
@@ -123,6 +125,6 @@ h2{
     font-weight: 600;
 }
 
-.registration-container a:hover{
+.registration-container a:hover {
     text-decoration: underline;
 }

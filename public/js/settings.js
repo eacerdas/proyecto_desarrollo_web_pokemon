@@ -9,7 +9,7 @@ document.getElementById('btn-cambiar-foto').addEventListener('click', function()
         text: "La foto de perfil se cambió exitosamente.",
         icon: "success",
         confirmButtonText: "Ok",
-        confirmButtonColor: "green",
+        confirmButtonColor: "#FF4E4E",
         customClass: {
             icon: 'swal2-center',
         }
@@ -31,7 +31,7 @@ document.getElementById('passwordForm').addEventListener('submit', function(even
             text: "Por favor rellena todos los espacios.",
             icon: "error",
             confirmButtonText: "Ok",
-            confirmButtonColor: "red",
+            confirmButtonColor: "#FF4E4E",
             customClass: {
                 icon: 'swal2-center',
             }
@@ -55,7 +55,7 @@ document.getElementById('passwordForm').addEventListener('submit', function(even
             text: "La contraseña no cumple con los requerimientos.",
             icon: "error",
             confirmButtonText: "Ok",
-            confirmButtonColor: "red",
+            confirmButtonColor: "#FF4E4E",
             customClass: {
                 icon: 'swal2-center',
             }
@@ -67,7 +67,7 @@ document.getElementById('passwordForm').addEventListener('submit', function(even
             text: "Las contraseñas no coinciden.",
             icon: "error",
             confirmButtonText: "Ok",
-            confirmButtonColor: "red",
+            confirmButtonColor: "#FF4E4E",
             customClass: {
                 icon: 'swal2-center',
             }
@@ -78,7 +78,7 @@ document.getElementById('passwordForm').addEventListener('submit', function(even
             text: "La contraseña ha sido cambiada con éxito.",
             icon: "success",
             confirmButtonText: "Ok",
-            confirmButtonColor: "green",
+            confirmButtonColor: "#FF4E4E",
             customClass: {
                 icon: 'swal2-center',
             }

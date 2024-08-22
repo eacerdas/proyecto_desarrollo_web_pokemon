@@ -2,36 +2,41 @@ const express = require('express')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser') 
 const cors = require('cors')
+const auth = require('./routes/auth.js')
 const routesResultado = require('./routes/routesResultado.js')
-//const routesCliente = require('./routes/routesCliente.js')//importar las rutas para la gestion de clientes
-//const routesProducto = require('./routes/routesProducto.js')
-//const routesCategoria = require('./routes/routesCategoria.js')
-//const auth = require('./routes/auth.js')
+const routesAmigo = require('./routes/routesAmigo.js')
+const routesEquipo = require('./routes/routesEquipo.js')
+const routesUsuario = require('./routes/routesUsuario.js')
 require('dotenv').config()
 
-//establecer la conexion con mongo
-mongoose.connect(process.env.MONGO_URI)
+// Establecer la conexión con MongoDB
+mongoose.connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
+.then(() => console.log('Conectado a MongoDB'))
+.catch(err => console.error('Error al conectar a MongoDB:', err));
 
-const app = express()
+const app = express();
 
-//habilitar cors
+// Habilitar CORS
 app.use(cors());
 
-//habilitar body parser
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({extended:true}))
+// Habilitar body-parser
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 //servir los archivos estaticos
 app.use(express.static('public'))
 
+app.use('/',auth) //habilita la autenticacion
 app.use('/',routesResultado) //habilitando las rutas de Resultado
-//app.use('/',routesCliente) //habilitando las rutas del cliente
-//app.use('/',routesProducto) // habilitando las rutas del producto
-//app.use('/',routesCategoria)//habilitando las rutas de categoria
-//app.use('/',auth) //habilitar la autenticacion
+app.use('/',routesAmigo)
+app.use('/',routesEquipo)
+app.use('/',routesUsuario)
 
 
 const PORT = 3000
 app.listen(PORT,()=>{
     console.log(`Servidor corriendo en el puerto: ${PORT}`);
-})
+});
