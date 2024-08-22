@@ -10,7 +10,7 @@ const generatePassword = () => {
     const mayusculas = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     const minusculas = 'abcdefghijklmnopqrstuvwxyz';
     const numeros = '0123456789';
-    const caracteresEspeciales = '!@#$%^&*()_+{}[]:;<>?,./';
+    const caracteresEspeciales = '!@#$%^&*()_+[]:;?,./';
 
     // Asegurando que la contraseña tenga al menos un carácter de cada categoría
     let contrasenaTemporal = [];
