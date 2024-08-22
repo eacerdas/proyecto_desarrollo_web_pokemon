@@ -2,7 +2,7 @@ const nodemailer = require("nodemailer")
 //accesar a las variables de entorno
 require("dotenv").config()
 
-const sendRegistrationEmail=(pnombre,pemail,ppassword)=>{
+const sendRegistrationEmail=(nombre,email,password)=>{
     let transporter = nodemailer.createTransport({
         service:"Gmail",
         auth:{
@@ -17,10 +17,11 @@ const sendRegistrationEmail=(pnombre,pemail,ppassword)=>{
         logger:true,
         debug:true
     })
+    console.log('Usuario de correo:', process.env.MAILUSER);
 
     let mail_options={
         from:process.env.MAILUSER,
-        to:pemail,
+        to:email,
         subject:"Confirmación de Cuenta",
         html: `
         <table border="0" cellpadding="0" cellspacing="0" width="100%" background-color="#6b7a8f" bgcolor="#2d3436">
@@ -28,12 +29,12 @@ const sendRegistrationEmail=(pnombre,pemail,ppassword)=>{
           <td bgcolor="" width="100%">
             <h1 style="color: #fff; text-align:center">Bienvenido</h1>
             <p  style="color: #fff; text-align:center">
-              <span style="color: #f7822f">${pnombre}</span> 
+              <span style="color: #f7822f">${nombre}</span> 
               a la aplicación
             </p>
             <p style="color: #fff; text-align:center">Su clave temporal de acceso es:</p>
             <p  style="color: #fff; text-align:center">
-              <span style="color: #f7822f">${ppassword}</span> 
+              <span style="color: #f7822f">${password}</span> 
               por favor cámbiela al entrar.
             </p>
           </td>

@@ -43,7 +43,6 @@ const registrar_usuario = async (pnombre, papellido, pusername, pemail, pidType,
             });
         }
     } catch (error) {
-        console.error('Error en la solicitud:', error); // Imprime el error de la solicitud
 
         Swal.fire({
             title: "Error de conexión",

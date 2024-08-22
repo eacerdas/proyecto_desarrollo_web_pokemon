@@ -12,9 +12,7 @@ function generatePassword() {
 // Grabar NUEVO usuario en BD
 exports.nuevoUsuario = async (req, res) => {
     //console.log(req.body); // Verifica los datos recibidos
-    
     const password = generatePassword();
-
     const nuevoUsuario = new Usuario({
         nombre: req.body.nombre,
         apellido: req.body.apellido,
@@ -28,6 +26,7 @@ exports.nuevoUsuario = async (req, res) => {
 
     try {
         await nuevoUsuario.save();
+        
         console.log('Usuario guardado exitosamente');
         try {
             sendRegistrationEmail(nuevoUsuario.nombre, nuevoUsuario.email, nuevoUsuario.password)
