@@ -97,42 +97,7 @@ function validarCorreoElectronico() {
     return error
 }
 
-const generatePassword = () => {
-    // Longitud de la contraseña temporal
-    const longitud = 16;
 
-    // Caracteres divididos en diferentes categorías
-    const mayusculas = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    const minusculas = 'abcdefghijklmnopqrstuvwxyz';
-    const numeros = '0123456789';
-    const caracteresEspeciales = '!@#$%^&*()_+{}[]:;<>?,./';
-
-    // Asegurando que la contraseña tenga al menos un carácter de cada categoría
-    let contrasenaTemporal = '';
-    contrasenaTemporal += mayusculas.charAt(Math.floor(Math.random() * mayusculas.length));
-    contrasenaTemporal += minusculas.charAt(Math.floor(Math.random() * minusculas.length));
-    contrasenaTemporal += numeros.charAt(Math.floor(Math.random() * numeros.length));
-    contrasenaTemporal += caracteresEspeciales.charAt(Math.floor(Math.random() * caracteresEspeciales.length));
-
-    // Mezclando los caracteres restantes aleatoriamente sin repetición
-    const caracteres = mayusculas + minusculas + numeros + caracteresEspeciales;
-    let usados = contrasenaTemporal.split('');  // Almacena caracteres ya usados
-
-    while (contrasenaTemporal.length < longitud) {
-        const indice = Math.floor(Math.random() * caracteres.length);
-        const nuevoCaracter = caracteres.charAt(indice);
-
-        if (!usados.includes(nuevoCaracter)) {  // Evitar repetición
-            contrasenaTemporal += nuevoCaracter;
-            usados.push(nuevoCaracter);  // Agregar a la lista de usados
-        }
-    }
-
-    // Mezclar los caracteres para no tener una estructura predecible
-    contrasenaTemporal = contrasenaTemporal.split('').sort(() => 0.5 - Math.random()).join('');
-
-    return contrasenaTemporal;
-};
 
 
 // Función para validar la identificación
