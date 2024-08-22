@@ -32,10 +32,9 @@
                 <ul class="texto-opciones">
                     <li class="opciones-generales">- Cambiar foto de perfil:</li>
                     <div class="profile-pic">
-                        <img id="profileImage" src="default-profile.png">
+                        <img id="foto-usuario"> 
                     </div>
-                    <input type="file" id="profilePicInput" accept="image/*">
-                    <button id="btn-cambiar-foto">Cambiar foto</button>
+                    <button type="button" id="btn-cambiar-foto">Cambiar Foto</button>
                     
                     <li class="titulo-cambiar-contraseña">- Cambiar contraseña:</li>
                     <form id="passwordForm">
@@ -63,8 +62,14 @@
         </div>
     </footer>
     
+    <!--Axios-->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!--Script Cloudinary-->
+    <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>    
     <!--Link sweet alert-->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!--Link al servicioImagen.js-->
+    <script src="../servicios/servicioImagen.js"></script>
     <!--Link al script.js-->
     <script src="/js/settings.js"></script>
 </body>

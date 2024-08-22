@@ -1,8 +1,9 @@
-document.getElementById('btn-cambiar-foto').addEventListener('click', function() {
-    // Simula el cambio exitoso de la foto
-    // Normalmente, el código para cambiar la foto en tu aplicación iría aquí
+// falta hacer funcion para cambio de contraseña
 
-    // Muestra alerta de éxito
+const input_foto = document.querySelector('#foto_usuario') //ref a la etiqueta img
+
+
+document.getElementById('btn-cambiar-foto').addEventListener('click', function() {
     Swal.fire({
         title: "Éxito",
         text: "La foto de perfil se cambió exitosamente.",
@@ -14,6 +15,8 @@ document.getElementById('btn-cambiar-foto').addEventListener('click', function()
         }
     });
 });
+
+
 
 document.getElementById('passwordForm').addEventListener('submit', function(event) {
     event.preventDefault();

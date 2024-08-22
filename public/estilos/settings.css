@@ -46,7 +46,7 @@ body {
 
 .container-settings {
     height: 800px;
-    width: 650px;
+    width: 750px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -82,17 +82,17 @@ body {
 .profile-pic {
     margin: auto;
     width: 150px;
-    height: 160px;
+    height: 180px;
     background-color: #ccc;
 }
 
 .profile-pic img {
     width: 150px;
-    height: 160px;
+    height: 180px;
 }
 
 #btn-cambiar-foto{
-    margin-top: -15px;
+    margin-top: 15px;
     margin-bottom: 10px;
     padding: 10px;
     background-color: #da3335;
@@ -105,10 +105,6 @@ body {
 
 #btn-cambiar-foto:hover{
     background-color: #a72a2c;
-}
-
-input[type="file"] {
-    margin-bottom: 60px;
 }
 
 form {
