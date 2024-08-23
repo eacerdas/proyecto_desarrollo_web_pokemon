@@ -1,6 +1,16 @@
 const inputPassword = document.getElementById("password"); 
 const btn_guardar_contrasenna = document.getElementById("btn_guardar_contrasenna");
 
+let id = sessionStorage.getItem("id_mongo")
+
+//Llenar los inputs con los datos de la persona
+const llenar_campos = async()=>{
+    let usuario = await recuperarUsuarioID(id)
+    inputPassword.value = usuario.password
+}
+
+llenar_campos()
+
 function validarCamposVacios() {
     let error = false;
     let campos_requiridos = [inputPassword];
@@ -18,7 +28,7 @@ function validarCamposVacios() {
 function validarContrasenna() {
     let error = false;
     let textoUsuario = inputPassword.value;
-    let regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%&*?])[A-Za-z\d!@#$%&*?]{8,}$/;
+    let regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&()\-_=+{}[\]:;"',.<>?\\|]).{8,}$/;
     if (regex.test(textoUsuario) === false) {
       inputPassword.classList.add('error');
         error = true;
@@ -32,7 +42,7 @@ function limpiarCampos() {
     inputPassword.value = "";
 }
 
-function enviarDatos(event) {
+function actualizarContrasenna(event) {
     event.preventDefault(); 
     let errorCamposVacios = validarCamposVacios();
     let errorContrasenna = validarContrasenna();
@@ -54,20 +64,17 @@ function enviarDatos(event) {
             confirmButtonColor: "#FF4E4E"
         });
     } else {
-        Swal.fire({
-            text: "Contraseña actualizada exitosamente.",
-            icon: "success",
-            confirmButton: "Ok",
-            confirmButtonColor: "#FF4E4E"
-          });
-          limpiarCampos()
-          setTimeout(() => {
-            window.location.href = "landingPage.html"
-          }, 1500);
+        const data = {
+        password : inputPassword.value,
+        }
+
+        actualizarUsuario(id,data)
+
+        limpiarCampos()
     }
 }
 
-btn_guardar_contrasenna.addEventListener('click', enviarDatos);
+btn_guardar_contrasenna.addEventListener('click', actualizarContrasenna);
 
 function mostrarContra() {
     var x = document.getElementById("password");
@@ -76,4 +83,4 @@ function mostrarContra() {
     } else {
       x.type = "password";
     }
-  }
+}
