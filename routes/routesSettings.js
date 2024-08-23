@@ -10,8 +10,8 @@ const settingsController = require('../controllers/settingsController');
 router.post('/setting', settingsController.nuevoCliente);
 
 
-//GET DE UN CLIENTE POR SU ID -->filtrar
-//http://localhost:3000/usuario
+//GET DE USUARIO POR SU ID -->filtrar
+//http://localhost:3000/usuario  
 // Ruta para obtener un usuario por ID (GET)
 router.get('/usuarioID', usuarioController.recuperarUsuarioID);
 

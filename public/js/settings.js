@@ -18,71 +18,8 @@ document.getElementById('btn-cambiar-foto').addEventListener('click', function()
 });
 
 
-function validarCamposVacios() {
-    let error = false;
-    let campos_requiridos = [inputPassword];
-    for (let i = 0; i < campos_requiridos.length; i++) {
-        if (campos_requiridos[i].value === "") {
-            campos_requiridos[i].classList.add('error');
-            error = true;
-        } else {
-            campos_requiridos[i].classList.remove('error');
-        }
-    }
-    return error;
-}
-
-function validarContrasenna() {
-    let error = false;
-    let textoUsuario = inputPassword.value;
-    let regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%&*?])[A-Za-z\d!@#$%&*?]{8,}$/;
-    if (regex.test(textoUsuario) === false) {
-      inputPassword.classList.add('error');
-        error = true;
-    } else {
-      inputPassword.classList.remove('error');
-    }
-    return error;
-}
-
-function limpiarCampos() {
-    inputPassword.value = "";
-}
-
-function enviarDatos(event) {
-    event.preventDefault(); 
-    let errorCamposVacios = validarCamposVacios();
-    let errorContrasenna = validarContrasenna();
-
-    if (errorCamposVacios) {
-        Swal.fire({
-            title: "Dejaste campos en blanco.",
-            text: "Por favor rellena todos los espacios.",
-            icon: "error",
-            confirmButtonText: "Ok",
-            confirmButtonColor: "#FF4E4E"
-        });
-    } else if (errorContrasenna) {
-        Swal.fire({
-            title: "Error",
-            text: "Ingresa una contraseña válida.",
-            icon: "error",
-            confirmButtonText: "Ok",
-            confirmButtonColor: "#FF4E4E"
-        });
-    } else {
-        Swal.fire({
-            text: "Contraseña actualizada exitosamente.",
-            icon: "success",
-            confirmButton: "Ok",
-            confirmButtonColor: "#FF4E4E"
-          });
-          limpiarCampos()
-          setTimeout(() => {
-            window.location.href = "settings.html"
-          }, 1500);
-    }
-}
+//function enviarDatos(event) {
+    
 
 
 btn_guardar_cambios.addEventListener('click', enviarDatos);
