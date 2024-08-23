@@ -97,6 +97,9 @@ function validarCorreoElectronico() {
     return error
 }
 
+
+
+
 // Función para validar la identificación
 function validarIdentificacion() {
     const tipoIdentificacion = document.querySelector('input[name="id-type"]:checked');
@@ -153,6 +156,25 @@ function limpiarCampos() {
     inputIdentificacion.value = "";
     inputFechaNacimiento.value = "";
 }
+function esMayorDeEdad(birthdate) {
+    // Convertir la fecha de nacimiento en un objeto Date
+    const fechaNacimientoDate = new Date(birthdate);
+    
+    // Obtener la fecha actual
+    const fechaActual = new Date();
+    
+    // Calcular la edad en años
+    let edad = fechaActual.getFullYear() - fechaNacimientoDate.getFullYear();
+    
+    // Ajustar si la fecha de cumpleaños no ha ocurrido aún este año
+    const mes = fechaActual.getMonth() - fechaNacimientoDate.getMonth();
+    if (mes < 0 || (mes === 0 && fechaActual.getDate() < fechaNacimientoDate.getDate())) {
+        edad--;
+    }
+    
+    // Verificar si la edad es 18 o más
+    return edad >= 18;
+}
 
 // Función para enviar datos
 function enviarDatos() {
@@ -163,8 +185,10 @@ function enviarDatos() {
     let errorCorreo = validarCorreoElectronico();
     let errorIdentificacion = validarIdentificacion();
     let errorFechaNacimiento = validarFechaNacimiento();
-
-    if (errorCamposVacios) {
+       // Obtener la fecha de nacimiento para validar la edad
+       const birthdate = inputFechaNacimiento.value.trim();
+       const esAdulto = esMayorDeEdad(birthdate);
+       if (errorCamposVacios) {
         Swal.fire({
             title: "Campos vacíos",
             text: "Por favor, revisa los campos marcados",
@@ -206,23 +230,27 @@ function enviarDatos() {
             text: "Por favor, ingresa una fecha de nacimiento válida.",
             icon: "warning"
         });
+    } else if (!esAdulto) {
+        Swal.fire({
+            title: "Edad insuficiente",
+            text: "Debes ser mayor de 18 años para registrarte.",
+            icon: "error"
+        });
     } else {
-        
-        // Si todas las validaciones pasan, se procede a enviar los datos
+        // Si todas las validaciones pasan y el usuario es mayor de edad, se procede a enviar los datos
         const nombre = inputNombre.value.trim();
         const apellido = inputApellido.value.trim();
         const username = inputUsername.value.trim();
         const email = inputCorreo.value.trim();
         const idType = document.querySelector('input[name="id-type"]:checked').value;
         const id = inputIdentificacion.value.trim();
-        const birthdate = inputFechaNacimiento.value.trim();
 
         registrar_usuario(nombre, apellido, username, email, idType, id, birthdate);
 
         limpiarCampos();
     }
 }
-
+    
 btnRegistrar.addEventListener('click', enviarDatos);
 
 

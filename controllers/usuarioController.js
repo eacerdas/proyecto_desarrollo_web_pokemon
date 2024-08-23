@@ -1,20 +1,44 @@
-const Usuario = require('../models/Usuario');
-
+const Usuario = require('../models/Usuario'); 
 const { sendRegistrationEmail } = require('../config/mailer'); // Ajusta la ruta según la ubicación de tu módulo Nodemailer
 
-const crypto = require('crypto');
-// Función para generar una contraseña aleatoria
-function generatePassword() {
-    return crypto.randomBytes(8).toString('hex'); // Genera una contraseña aleatoria de 16 caracteres
-}
+const { error } = require('console');
 
-        
+const generatePassword = () => {
+    const longitud = 16;
+
+    // Caracteres divididos en diferentes categorías
+    const mayusculas = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const minusculas = 'abcdefghijklmnopqrstuvwxyz';
+    const numeros = '0123456789';
+    const caracteresEspeciales = '!@#$%^&*()_+[]:;?,./';
+
+    // Asegurando que la contraseña tenga al menos un carácter de cada categoría
+    let contrasenaTemporal = [];
+    contrasenaTemporal.push(mayusculas.charAt(Math.floor(Math.random() * mayusculas.length)));
+    contrasenaTemporal.push(minusculas.charAt(Math.floor(Math.random() * minusculas.length)));
+    contrasenaTemporal.push(numeros.charAt(Math.floor(Math.random() * numeros.length)));
+    contrasenaTemporal.push(caracteresEspeciales.charAt(Math.floor(Math.random() * caracteresEspeciales.length)));
+
+    // Crear una lista de todos los caracteres posibles
+    const todosLosCaracteres = mayusculas + minusculas + numeros + caracteresEspeciales;
+
+    // Completar la contraseña hasta la longitud deseada
+    for (let i = contrasenaTemporal.length; i < longitud; i++) {
+        contrasenaTemporal.push(todosLosCaracteres.charAt(Math.floor(Math.random() * todosLosCaracteres.length)));
+    }
+
+    // Mezclar los caracteres para evitar cualquier patrón predecible
+    contrasenaTemporal = contrasenaTemporal.sort(() => 0.5 - Math.random());
+
+    // Convertir el array de caracteres en una cadena
+    return contrasenaTemporal.join('');
+};
+
+    
 // Grabar NUEVO usuario en BD
 exports.nuevoUsuario = async (req, res) => {
     //console.log(req.body); // Verifica los datos recibidos
-    
     const password = generatePassword();
-
     const nuevoUsuario = new Usuario({
         nombre: req.body.nombre,
         apellido: req.body.apellido,
@@ -28,13 +52,26 @@ exports.nuevoUsuario = async (req, res) => {
 
     try {
         await nuevoUsuario.save();
+        
         console.log('Usuario guardado exitosamente');
+        try {
+            sendRegistrationEmail(nuevoUsuario.nombre, nuevoUsuario.email, nuevoUsuario.password)
 
-        res.status(200).json({
-            usuario: true,
-            mensaje: "Usuario añadido exitosamente",
-            tipoAlerta: "success"
-        });
+            res.status(200).json({
+                usuario: true,
+                mensaje: "Usuario añadido exitosamente",
+                tipoAlerta: "success"
+            })
+        } catch (errorEmail) {
+            console.error('Error al enviar el correo:', errorEmail); // Registra el error en el servidor
+            res.status(500).json({
+                Usuario: false,
+                mensajeError: "Cliente creado pero hubo un error al enviar el correo",
+                error: error.message,
+                tipoAlerta: "error"
+            });
+        }
+
     } catch (error) {
         console.error('Error al guardar usuario:', error); // Registra el error en el servidor
         res.status(500).json({
@@ -45,7 +82,6 @@ exports.nuevoUsuario = async (req, res) => {
         });
     }
 };
-
 
 
 // LISTAR TODOS LOS USUARIOS

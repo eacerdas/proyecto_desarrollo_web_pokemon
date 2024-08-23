@@ -1,30 +1,57 @@
-const nodemailer = require('nodemailer');
+const nodemailer = require("nodemailer")
+//accesar a las variables de entorno
+require("dotenv").config()
 
-const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-        user: 'developerssofties@gmail.com',
-        pass: process.env.EMAIL_PASSWORD
+const sendRegistrationEmail=(nombre,email,password)=>{
+    let transporter = nodemailer.createTransport({
+        service:"Gmail",
+        auth:{
+            user:process.env.MAILUSER,//su cuenta del equipo
+            pass:process.env.PASS //el api key que genera gmail
+        },
+        connectionTimeout:5*60*1000,
+        tls:{
+            rejectUnauthorized: false, 
+            ciphers:"SSLv3"
+        },
+        logger:true,
+        debug:true
+    })
+    console.log('Usuario de correo:', process.env.MAILUSER);
+
+    let mail_options={
+        from:process.env.MAILUSER,
+        to:email,
+        subject:"Confirmación de Cuenta",
+        html: `
+        <table border="0" cellpadding="0" cellspacing="0" width="100%" background-color="#6b7a8f" bgcolor="#2d3436">
+        <tr height="500px">  
+          <td bgcolor="" width="100%">
+            <h1 style="color: #fff; text-align:center">Bienvenido</h1>
+            <p  style="color: #fff; text-align:center">
+              <span style="color: #f7822f">${nombre}</span> 
+              a la aplicación
+            </p>
+            <p style="color: #fff; text-align:center">Su clave temporal de acceso es:</p>
+            <p  style="color: #fff; text-align:center">
+              <span style="color: #f7822f">${password}</span> 
+              por favor cámbiela al entrar.
+            </p>
+          </td>
+        </tr>
+      </table>
+      `
     }
-});
 
-const sendRegistrationEmail = (email, nombre, password) => {
-    const mailOptions = {
-        from: 'developerssofties@gmail.com',
-        to: email,
-        subject: 'Registro Exitoso - Tu Contraseña Temporal',
-        text: `Hola ${nombre},\n\nGracias por registrarte en PokéDuels. Tu contraseña temporal es: ${password}\n\nPor favor, cámbiala después de iniciar sesión.\n\n¡Saludos!\nEquipo PokéDuels`
-    };
-
-    transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-            console.error('Error al enviar el correo:', error);
-        } else {
-            console.log('Correo enviado:', info.response);
+    transporter.sendMail(mail_options,(error,info)=>{
+        if(error){
+            console.log(error)
+        }else{
+            console.log("El correo se envio correctamente: ",info.response)
         }
-    });
-};
+    })
 
-module.exports = {
-    sendRegistrationEmail
-};
+
+}
+
+module.exports = {sendRegistrationEmail}

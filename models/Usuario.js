@@ -9,8 +9,7 @@ const UsuarioSchema = new mongoose.Schema({
     id:         { type: String, required: true, unique: true },
     birthdate:  { type: Date,   required: true }, // Tipo Date para almacenar la fecha de nacimiento
     password:   { type: String, required: true } // Esto será generado automáticamente
-}, {
-    timestamps: true,
+
 });
 
 module.exports = mongoose.model('Usuario', UsuarioSchema);
