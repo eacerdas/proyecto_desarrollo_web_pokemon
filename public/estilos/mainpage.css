@@ -8,7 +8,7 @@ body {
 /* SECCION MEDIA */
 .main_container {
     min-height: calc(100vh - 270px); /* Asegura que la sección ocupe al menos el 100% de la altura de la ventana menos el tamaño del footer + header*/
-    background-image: url("../images/bgmain.png"); 
+    background-image: url("../images/pokeballs.png"); 
     background-color: #ffffff;
     background-size:contain;
     background-position: center;
@@ -52,6 +52,7 @@ body {
     font-weight: bold;
     transition: all 0.3s ease-in-out;
     cursor: pointer;
+
 }
 
 /* Division de los botones */
@@ -60,6 +61,7 @@ body {
     border-bottom-right-radius: 70px;
     text-align: end;
     padding-right: 50px;
+    box-shadow: -7px 7px 7px 5px #a12022;
 }
 
 .buttons_main_right {
@@ -67,6 +69,7 @@ body {
     border-bottom-left-radius: 70px;
     text-align: left;
     padding-left: 50px;
+    box-shadow: 7px 7px 7px 5px #a12022;
 }
 
 .buttons_main:hover {
