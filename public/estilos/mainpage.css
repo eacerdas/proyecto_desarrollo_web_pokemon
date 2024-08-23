@@ -28,7 +28,7 @@ body {
     justify-content: center;
     row-gap: 50px;
     height: 100%;
-    width: 350px;
+    width: 375px;
 }
 
 .main_menu {
@@ -42,51 +42,43 @@ body {
     justify-content: center;
 }
 
-/* Division de los botones */
-.buttons_main {
+.buttons_main, .buttons_main_right {
     background-color: #da3335;
     border: none;
-    width: 350px;
-    height: 100px;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-    padding: 30px 24px;
-    font-size: 27px;
+    width: 375px;
+    height: 150px;
+    font-size: 32px;
     color: #ffffff;
-    text-align: end;
     font-weight: bold;
-    transition: all 0.1s ease-in-out;
+    transition: all 0.3s ease-in-out;
     cursor: pointer;
 }
 
-.banners_info {
+/* Division de los botones */
+.buttons_main {
+    border-top-right-radius: 70px;
+    border-bottom-right-radius: 70px;
+    text-align: end;
+    padding-right: 50px;
+}
 
-    background-color: #da3335;
-    
-    width: 350px; 
-    height: 100px;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-    padding: 30px 24px;
-    border: none;
-    font-size: 27px;
-    color: #ffffff;
+.buttons_main_right {
+    border-top-left-radius: 70px;
+    border-bottom-left-radius: 70px;
     text-align: left;
-    font-weight: bold;
-    transition: all 0.1s ease-in-out;
-    cursor: pointer;
+    padding-left: 50px;
 }
 
 .buttons_main:hover {
     background-color: #a72a2c;
-    width: 325px;
+    width: 340px;
     color: white;    
 }
 
 
-.banners_info:hover {
+.buttons_main_right:hover {
     background-color: #a72a2c;
     color: white; 
-    width: 325px;
-    margin-left: 25px;
+    width: 340px;
+    margin-left: 35px;
 }
