@@ -7,6 +7,7 @@ body {
 
 /* SECCION MEDIA */
 .team_container {
+    min-height: calc(100vh - 320px); /* Asegura que la sección ocupe al menos el 100% de la altura de la ventana menos el tamaño del footer + header*/
     background-color: #f4f4f4;
     width: 100%;
     height: 500px; 

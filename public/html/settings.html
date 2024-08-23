@@ -21,29 +21,20 @@
     <!-- Sección de Configuración -->
     <section id="sct-settings">
         <h1 class="titulo-settings">Configuraciones</h1>
-        <a href="../html/mainpage.html">
-            <button id="btn-regresar">Regresar</button>
-        </a>
+        
         <div id="container-general">
             <div class="container-settings">
-                <div class="titulo-generales">
-                    <i class="fa fa-gear" style="font-size:36px; color: rgb(0, 0, 0);">   Generales</i>
-                </div>
+                
                 <ul class="texto-opciones">
-                    <li class="opciones-generales">- Cambiar foto de perfil:</li>
                     <div class="profile-pic">
-                        <img id="profileImage" src="default-profile.png">
+                        <img id="foto-usuario"> 
                     </div>
-                    <input type="file" id="profilePicInput" accept="image/*">
-                    <button id="btn-cambiar-foto">Cambiar foto</button>
+                    <button type="button" id="btn-cambiar-foto">Cambiar Foto</button>
                     
-                    <li class="titulo-cambiar-contraseña">- Cambiar contraseña:</li>
                     <form id="passwordForm">
-                        <label for="newPassword">Nueva contraseña:</label>
-                        <input type="password" id="newPassword">
-                        <label for="confirmPassword">Confirmar nueva contraseña:</label>
-                        <input type="password" id="confirmPassword">
-                        <button id="btn-crear-contraseña" type="submit">Cambiar contraseña</button>
+                    <a href="editarPassword.html">
+                        <button id="btn_crear_contrasenna" type="button">Cambiar contraseña</button>
+                    </a>
                     </form>
                 </ul>
             </div>
@@ -63,8 +54,14 @@
         </div>
     </footer>
     
+    <!--Axios-->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!--Script Cloudinary-->
+    <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>    
     <!--Link sweet alert-->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!--Link al servicioImagen.js-->
+    <script src="../servicios/servicioImagen.js"></script>
     <!--Link al script.js-->
     <script src="../js/settings.js"></script>
     <script src="../js/username_display.js"></script>

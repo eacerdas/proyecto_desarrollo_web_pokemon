@@ -4,6 +4,7 @@ body {
 
 /* Fondo del título */
 #sct-settings {
+    min-height: calc(100vh - 270px); /* Asegura que la sección ocupe al menos el 100% de la altura de la ventana menos el tamaño del footer + header*/
     background-color: #f4f4f4;
 }
 
@@ -46,7 +47,7 @@ body {
 
 .container-settings {
     height: 800px;
-    width: 650px;
+    width: 750px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -82,17 +83,17 @@ body {
 .profile-pic {
     margin: auto;
     width: 150px;
-    height: 160px;
+    height: 180px;
     background-color: #ccc;
 }
 
 .profile-pic img {
     width: 150px;
-    height: 160px;
+    height: 180px;
 }
 
 #btn-cambiar-foto{
-    margin-top: -15px;
+    margin-top: 15px;
     margin-bottom: 10px;
     padding: 10px;
     background-color: #da3335;
@@ -107,17 +108,15 @@ body {
     background-color: #a72a2c;
 }
 
-input[type="file"] {
-    margin-bottom: 60px;
-}
-
 form {
     display: flex;
     flex-direction: column;
 }
 
 .titulo-cambiar-contraseña{
+    margin-top: 40px;
     margin-bottom: 25px;
+    display: flex;
 }
 
 label {
@@ -132,7 +131,25 @@ input[type="password"] {
     border-radius: 5px;
 }
 
-#btn-crear-contraseña{
+#btn_crear_contrasenna{
+    margin-top: 30px;
+    padding: 10px;
+    background-color: #da3335;
+    color: white;
+    font-size: 24px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 350px;
+    height: 50px;
+}
+
+#btn-crear-contraseña:hover {
+    background-color: #a72a2c;
+}
+
+#btn_guardar_cambios {
+    margin-top: 75px;
     padding: 10px;
     background-color: #da3335;
     color: white;
@@ -142,7 +159,7 @@ input[type="password"] {
     cursor: pointer;
 }
 
-#btn-crear-contraseña:hover {
+#btn_guardar_cambios:hover {
     background-color: #a72a2c;
 }
 

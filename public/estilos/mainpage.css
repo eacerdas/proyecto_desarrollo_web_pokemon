@@ -7,6 +7,7 @@ body {
 
 /* SECCION MEDIA */
 .main_container {
+    min-height: calc(100vh - 270px); /* Asegura que la sección ocupe al menos el 100% de la altura de la ventana menos el tamaño del footer + header*/
     background-image: url("../images/bgmain.png"); 
     background-color: #ffffff;
     background-size:contain;
@@ -19,70 +20,65 @@ body {
     justify-content: space-between;
 }
 
-.main_menu {
-    background-color: #ffffff;
-    border: none;
-    height: 100%;
-    width: 16%;
-    display: flex;
-    flex-direction: column;
-    row-gap: 50px;
-    justify-content: center;
-}
-
-/* Division de los botones */
-.buttons_main {
-    background-color: #da3335;
-    border: none;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-    padding: 30px 24px;
-    width: 350px;
-    font-size: 20px;
-    color: #ffffff;
-    text-align: end;
-    font-weight: bold;
-    transition: all 0.2s ease-in-out;
-    cursor: pointer;
-}
-
-.buttons_main:hover {
-    background-color: #a72a2c;
-    width: 325px;
-    color: white;    
-}
-
-
 /* Clase de la */
 .banners_container {
     background-color: #ffffff;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    row-gap: 25px;
+    row-gap: 70px;
     height: 100%;
-    width: 350px;
+    width: 375px;
 }
 
-.banners_info {
-    height: 150px;
-    width: calc(100% - 48px); 
-    background-color: #da3335;
-    border-top-left-radius: 8px;
-    border-bottom-left-radius: 8px;
-    padding: 16px 24px;
+.main_menu {
+    background-color: #ffffff;
+    border: none;
+    height: 100%;
+    width: 375px;
     display: flex;
-    justify-content: space-between;
     flex-direction: column;
-    align-items: flex-start;
-
-    font-size: 15px;
-    color: #ffffff;
-    text-align: left;
-    font-weight: bold;
+    row-gap: 70px;
+    justify-content: center;
 }
 
-.banners_info:hover {
+.buttons_main, .buttons_main_right {
+    background-color: #da3335;
+    border: none;
+    width: 375px;
+    height: 150px;
+    font-size: 32px;
+    color: #ffffff;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+/* Division de los botones */
+.buttons_main {
+    border-top-right-radius: 70px;
+    border-bottom-right-radius: 70px;
+    text-align: end;
+    padding-right: 50px;
+}
+
+.buttons_main_right {
+    border-top-left-radius: 70px;
+    border-bottom-left-radius: 70px;
+    text-align: left;
+    padding-left: 50px;
+}
+
+.buttons_main:hover {
     background-color: #a72a2c;
-    
+    width: 340px;
+    color: white;    
+}
+
+
+.buttons_main_right:hover {
+    background-color: #a72a2c;
+    color: white; 
+    width: 340px;
+    margin-left: 35px;
 }
