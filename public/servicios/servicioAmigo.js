@@ -24,7 +24,7 @@ const registrar_amigo = async (pusuario1,pusuario2) => {
                 title: "Éxito",
                 text: "Registro completo",
                 icon: "success",
-                confirmButtonColor: "#FF4E4E"
+                confirmButtonColor: "#96C78C"
             });
 
             setTimeout(() => {
@@ -76,7 +76,9 @@ const eliminarAmigo = async (amigoId) => {
             Swal.fire({
                 title: "Éxito",
                 text: "Amigo eliminado",
-                icon: "success"
+                icon: "success",
+                confirmButtonText: 'Ok',
+                confirmButtonColor: "#96C78C",
             });
         } else {
             Swal.fire({

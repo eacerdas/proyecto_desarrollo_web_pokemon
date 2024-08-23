@@ -17,9 +17,12 @@ const registrar_resultado = async (pjugador1,pjugador2,ppokemon1,ppokemon2,pgana
         if(res.data.resultado==false){
             if(res.data.error.code==11000){
                 Swal.fire({
-                    title:"No se completo el registro",
-                    text:"El resultado ya esta registrado",
-                    icon:"error"
+                    title:"No se completó el registro",
+                    text:"El resultado ya está registrado",
+                    icon:"error",
+                    confirmButtonText: 'Ok',
+                    confirmButtonColor: "#FF4E4E",
+                    
                 })
         }
         
@@ -27,16 +30,20 @@ const registrar_resultado = async (pjugador1,pjugador2,ppokemon1,ppokemon2,pgana
             Swal.fire({
                 title:"¡Éxito!",
                 text:"Registro completo",
-                icon:"success"
+                icon:"success",
+                confirmButtonText: 'Ok',
+                confirmButtonColor: "#96C78C",
             })
             
         }
     } catch (error) {
         console.log(error);
         Swal.fire({
-            title:"No se completo el registro",
-            text:"Pongase en contacto con el admin del sistema",
-            icon:"error"
+            title:"No se completó el registro",
+            text:"Póngase en contacto con el admin del sistema",
+            icon:"error",
+            confirmButtonText: 'Ok',
+            confirmButtonColor: "#FF4E4E",
         })
         
     }
@@ -56,7 +63,9 @@ const listar_resultados = async()=>{
         console.log(error);
         Swal.fire({
             text:"No se pudo recuperar los resultados de la BD",
-            icon:"error"
+            icon:"error",
+            confirmButtonText: 'Ok',
+            confirmButtonColor: "#FF4E4E",
         })
     }
 

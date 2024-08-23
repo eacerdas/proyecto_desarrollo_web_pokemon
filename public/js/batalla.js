@@ -144,7 +144,9 @@ function startDuel() {
     if (attackPokemon1.length === 0 || attackPokemon2.length === 0) {
         Swal.fire({
             icon: 'error',
-            text: 'Seleccione primero un Pokémon'
+            text: 'Seleccione primero un Pokémon',
+            confirmButtonText: "Ok",
+            confirmButtonColor: "#FF4E4E"
         });
         return;
     }
@@ -177,7 +179,8 @@ function startDuel() {
             icon: 'info',
             title: '¡Empate!',
             text: 'Ambos Pokémon han sido derrotados',
-            confirmButtonText: 'Aceptar'
+            confirmButtonText: 'Aceptar',
+            confirmButtonColor: "#3FC3EE"
         }).then(() => {
             disableDuelButton();
             showNewGameButton();
@@ -189,7 +192,7 @@ function startDuel() {
             icon: 'success',
             title: '¡Batalla terminada!',
             text: `${ganador} ha ganado la batalla`,
-            confirmButtonColor: "#FF4E4E",
+            confirmButtonColor: "#96C78C",
             confirmButtonText: 'Aceptar'
         }).then(() => {
             disableDuelButton();
@@ -200,7 +203,9 @@ function startDuel() {
         Swal.fire({
             icon: 'info',
             title: 'Resultado del turno',
-            confirmButtonColor: "#FF4E4E",
+            confirmButtonText: "Ok",
+            confirmButtonColor: "#3FC3EE",
+
             html: `
                 <p>Pokémon 1 atacó con: ${attack1.name} y causó ${attack1.power} de daño</p>
                 <p>Pokémon 2 atacó con: ${attack2.name} y causó ${attack2.power} de daño</p>
@@ -215,9 +220,9 @@ function registrarResultado(dataContainer1, dataContainer2, ganador, empate, mod
         Swal.fire({
             icon: 'success',
             title: '¡Recuerda!',
-            text: 'El resultado no se guarda debido al modo invitado!',
+            text: 'El resultado no se guarda debido al modo invitado.',
             confirmButtonText: 'Aceptar',
-            confirmButtonColor: "#FF4E4E",
+            confirmButtonColor: "#96C78C",
         });
     } 
     else if (modoInvitadoFlag == "false"){

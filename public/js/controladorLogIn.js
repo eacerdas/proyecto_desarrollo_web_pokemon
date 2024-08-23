@@ -45,7 +45,7 @@ function mostrarContra() {
   function validarContrasenna() {
       let error = false;
       let textoUsuario = inputPassword.value;
-      let regex = /^(?=.*[a-z])(?=.*\d)[a-z\d]{8,}$/;
+      let regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&()\-_=+{}[\]:;"',.<>?\\|]).{8,}$/;
       if (regex.test(textoUsuario) === false) {
         inputPassword.classList.add('error');
           error = true;

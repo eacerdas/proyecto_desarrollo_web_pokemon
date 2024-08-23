@@ -8,7 +8,7 @@ document.getElementById('btn-cambiar-foto').addEventListener('click', function()
         text: "La foto de perfil se cambió exitosamente.",
         icon: "success",
         confirmButtonText: "Ok",
-        confirmButtonColor: "#FF4E4E",
+        confirmButtonColor: "#96C78C",
         customClass: {
             icon: 'swal2-center',
         }
@@ -75,7 +75,7 @@ document.getElementById('passwordForm').addEventListener('submit', function(even
             text: "La contraseña ha sido cambiada con éxito.",
             icon: "success",
             confirmButtonText: "Ok",
-            confirmButtonColor: "#FF4E4E",
+            confirmButtonColor: "#96C78C",
             customClass: {
                 icon: 'swal2-center',
             }
