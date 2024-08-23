@@ -50,7 +50,7 @@ body {
     font-size: 32px;
     color: #ffffff;
     font-weight: bold;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.2s ease-in-out;
     cursor: pointer;
 
 }
@@ -74,14 +74,18 @@ body {
 
 .buttons_main:hover {
     background-color: #a72a2c;
-    width: 340px;
-    color: white;    
+    color: white;
+    width: 365px; 
+    height: 148px;
+    box-shadow: -5px 5px 5px 3px #86191b;
 }
 
 
 .buttons_main_right:hover {
     background-color: #a72a2c;
     color: white; 
-    width: 340px;
-    margin-left: 35px;
+    width: 365px;
+    margin-left: 10px;
+    height: 148px;
+    box-shadow: 5px 5px 5px 3px #86191b;
 }
