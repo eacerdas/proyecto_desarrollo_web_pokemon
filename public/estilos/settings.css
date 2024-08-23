@@ -6,6 +6,7 @@ body {
 #sct-settings {
     min-height: calc(100vh - 270px); /* Asegura que la sección ocupe al menos el 100% de la altura de la ventana menos el tamaño del footer + header*/
     background-color: #f4f4f4;
+    
 }
 
 .titulo-settings {
@@ -13,30 +14,10 @@ body {
     font-size: 42px;
     text-align: center;
     padding-top: 50px;
-    padding-bottom: 50px;
+    padding-bottom: 25px;
     color: #000000;
+    
 }
-
-#btn-regresar {
-    margin-top: -50px;
-    margin-bottom: 20px; 
-    margin-left: 50px;
-    font-weight: bold;
-    background-color: #da3335;
-    color: white;
-    font-size: 24px;
-    padding: 15px 30px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-#btn-regresar:hover {
-    background-color: #a72a2c;
-    color: white;
-}
-
 
 #container-general {
     background-color: #f4f4f4;
@@ -46,8 +27,8 @@ body {
 }
 
 .container-settings {
-    height: 800px;
-    width: 750px;
+    height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -56,6 +37,7 @@ body {
     border-radius: 15px;
     margin-top: 20px;
     margin-bottom: 20px;
+    padding: 50px;
 }
 
 .titulo-generales {
@@ -72,7 +54,6 @@ body {
 }
 
 .texto-opciones {
-    margin-top: 50px;
     font-size: 30px;
     display: flex;
     flex-direction: column;
@@ -82,18 +63,23 @@ body {
 
 .profile-pic {
     margin: auto;
-    width: 150px;
-    height: 180px;
+    width: 200px;
+    height: 200px;
     background-color: #ccc;
 }
 
 .profile-pic img {
-    width: 150px;
-    height: 180px;
+    width: 200px;
+    height: 200px;
+    background-image: url("../images/defaultUser.png");
+    background-size:contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: solid black 5px;
 }
 
 #btn-cambiar-foto{
-    margin-top: 15px;
+    margin-top: 25px;
     margin-bottom: 10px;
     padding: 10px;
     background-color: #da3335;
@@ -104,18 +90,13 @@ body {
     cursor: pointer;
 }
 
-#btn-cambiar-foto:hover{
-    background-color: #a72a2c;
-}
-
 form {
     display: flex;
     flex-direction: column;
 }
 
 .titulo-cambiar-contraseña{
-    margin-top: 40px;
-    margin-bottom: 25px;
+    margin: 25px;
     display: flex;
 }
 
@@ -124,15 +105,8 @@ label {
     text-align: left;
 }
 
-input[type="password"] {
-    margin-bottom: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
 #btn_crear_contrasenna{
-    margin-top: 30px;
+    margin-top: 10px;
     padding: 10px;
     background-color: #da3335;
     color: white;
@@ -144,22 +118,12 @@ input[type="password"] {
     height: 50px;
 }
 
-#btn-crear-contraseña:hover {
+
+#btn-cambiar-foto:hover{
     background-color: #a72a2c;
 }
 
-#btn_guardar_cambios {
-    margin-top: 75px;
-    padding: 10px;
-    background-color: #da3335;
-    color: white;
-    font-size: 24px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-#btn_guardar_cambios:hover {
+#btn_crear_contrasenna:hover {
     background-color: #a72a2c;
 }
 

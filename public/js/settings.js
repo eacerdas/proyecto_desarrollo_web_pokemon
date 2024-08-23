@@ -1,20 +1,3 @@
-document.getElementById('btn-cambiar-foto').addEventListener('click', function() {
-    // Simula el cambio exitoso de la foto
-    // Normalmente, el código para cambiar la foto en tu aplicación iría aquí
-
-    // Muestra alerta de éxito
-    Swal.fire({
-        title: "Éxito",
-        text: "La foto de perfil se cambió exitosamente.",
-        icon: "success",
-        confirmButtonText: "Ok",
-        confirmButtonColor: "green",
-        customClass: {
-            icon: 'swal2-center',
-        }
-    });
-});
-
 document.getElementById('passwordForm').addEventListener('submit', function(event) {
     event.preventDefault();
 
@@ -96,3 +79,26 @@ function validarCamposVacios(...campos) {
     }
     return error;
 }
+
+window.onload = function() {
+    const userId = sessionStorage.getItem('id_mongo');
+    
+    if (!userId) {
+        console.error('No se encontró userId en sessionStorage.');
+        return;
+    }
+
+    const backendUrl = `http://localhost:3000/usuarioID`;
+
+    recuperarUsuarioID(userId)
+        .then(usuario => {
+            if (usuario && usuario.foto) {
+                document.querySelector("#foto-usuario").src = usuario.foto;
+            } else {
+                console.error('No se encontró la propiedad "foto" en el usuario:', usuario);
+            }
+        })
+        .catch(error => {
+            console.error('Error al cargar la imagen de perfil:', error);
+        });
+};

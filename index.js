@@ -8,6 +8,7 @@ const routesAmigo = require('./routes/routesAmigo.js')
 const routesEquipo = require('./routes/routesEquipo.js')
 const routesUsuario = require('./routes/routesUsuario.js')
 const routesContrasenna =  require ('./routes/routesContrasenna.js')
+const routesImagen =  require ('./routes/routesImagen.js')
 require('dotenv').config()
 
 // Establecer la conexión con MongoDB
@@ -36,7 +37,7 @@ app.use('/',routesAmigo)
 app.use('/',routesEquipo)
 app.use('/',routesUsuario)
 app.use('/',routesContrasenna)
-
+app.use('/',routesImagen)
 
 const PORT = 3000
 app.listen(PORT,()=>{

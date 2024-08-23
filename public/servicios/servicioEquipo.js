@@ -27,10 +27,6 @@ const registrar_equipo = async (pnombreEquipo,pusuario1,pusuario2) => {
                 icon: "success",
                 confirmButtonColor: "#96C78C"
             });
-
-            setTimeout(() => {
-                window.location.href = "equipos.html";
-            }, 1000);
         }
     } catch (error) {
         console.log(error);
@@ -127,10 +123,6 @@ const modificarEquipo = async (pnombreEquipo,pusuario1,pusuario2,equipoId) => {
                 confirmButtonText: 'Ok',
                 confirmButtonColor: "#96C78C",
             });
-
-            setTimeout(() => {
-                window.location.href = "equipos.html";
-            }, 1000);
         }
     } catch (error) {
         console.log(error);
