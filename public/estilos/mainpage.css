@@ -7,6 +7,7 @@ body {
 
 /* SECCION MEDIA */
 .main_container {
+    min-height: calc(100vh - 270px); /* Asegura que la sección ocupe al menos el 100% de la altura de la ventana menos el tamaño del footer + header*/
     background-image: url("../images/bgmain.png"); 
     background-color: #ffffff;
     background-size:contain;
@@ -86,5 +87,6 @@ body {
 .banners_info:hover {
     background-color: #a72a2c;
     color: white; 
+    width: 325px;
     margin-left: 25px;
 }

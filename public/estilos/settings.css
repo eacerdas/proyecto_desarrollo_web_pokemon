@@ -4,6 +4,7 @@ body {
 
 /* Fondo del título */
 #sct-settings {
+    min-height: calc(100vh - 270px); /* Asegura que la sección ocupe al menos el 100% de la altura de la ventana menos el tamaño del footer + header*/
     background-color: #f4f4f4;
 }
 

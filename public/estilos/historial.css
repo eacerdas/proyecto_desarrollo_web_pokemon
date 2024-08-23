@@ -23,7 +23,7 @@
 
 #sct-historial {
     background-color: #f4f4f4;
-    min-height: calc(100vh - 200px); /* Asegura que la sección ocupe al menos el 100% de la altura de la ventana menos el tamaño del footer */
+    min-height: calc(100vh - 150px); /* Asegura que la sección ocupe al menos el 100% de la altura de la ventana menos el tamaño del footer */
     display: flex;
     flex-direction: column;
 }

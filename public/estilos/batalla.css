@@ -47,6 +47,7 @@ h2 {
 }
 
 #sct_batalla{
+    min-height: calc(100vh - 270px); /* Asegura que la sección ocupe al menos el 100% de la altura de la ventana menos el tamaño del footer + header*/
     text-align: center;
 }
 
