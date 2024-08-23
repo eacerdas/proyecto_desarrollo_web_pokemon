@@ -7,6 +7,8 @@ const inputIdentificacion = document.getElementById("id");
 const inputFechaNacimiento = document.getElementById("birthdate");
 const formRegistro = document.getElementById("form"); // Selecciona el formulario
 
+const input_foto = document.getElementById("foto_usuario") //ref a la etiqueta img stu
+
 // Prevenir el comportamiento predeterminado del formulario
 formRegistro.addEventListener("submit", function(event) {
     event.preventDefault(); // Evita que el formulario recargue la página
@@ -216,8 +218,9 @@ function enviarDatos() {
         const idType = document.querySelector('input[name="id-type"]:checked').value;
         const id = inputIdentificacion.value.trim();
         const birthdate = inputFechaNacimiento.value.trim();
+        const foto = input_foto.src.trim() //stu
 
-        registrar_usuario(nombre, apellido, username, email, idType, id, birthdate);
+        registrar_usuario(nombre, apellido, username, email, idType, id, birthdate, foto);
 
         limpiarCampos();
     }

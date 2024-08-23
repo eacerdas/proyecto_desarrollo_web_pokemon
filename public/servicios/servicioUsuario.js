@@ -1,4 +1,4 @@
-const registrar_usuario = async (pnombre, papellido, pusername, pemail, pidType, pid, pbirthdate) => {
+const registrar_usuario = async (pnombre, papellido, pusername, pemail, pidType, pid, pbirthdate, pfoto) => {
     try {
         const res = await axios({
             method: "post",
@@ -12,6 +12,7 @@ const registrar_usuario = async (pnombre, papellido, pusername, pemail, pidType,
                 idType: pidType,
                 id: pid,
                 birthdate: pbirthdate,
+                foto: pfoto,
             }
         });
 

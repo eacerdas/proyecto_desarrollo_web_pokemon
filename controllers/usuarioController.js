@@ -23,7 +23,8 @@ exports.nuevoUsuario = async (req, res) => {
         idType: req.body.idType,
         id: req.body.id,
         birthdate: req.body.birthdate,
-        password: password
+        password: password,
+        foto: req.body.foto //stu
     });
 
     try {

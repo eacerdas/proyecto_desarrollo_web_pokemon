@@ -1,8 +1,6 @@
 // falta hacer funcion para cambio de contraseña
 
 const input_foto = document.getElementById('foto_usuario') //ref a la etiqueta img
-const inputPassword = document.getElementById("password"); 
-const btn_guardar_cambios = document.getElementById("btn_guardar_cambios");
 
 document.getElementById('btn-cambiar-foto').addEventListener('click', function() {
     Swal.fire({
