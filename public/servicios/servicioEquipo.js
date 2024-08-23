@@ -25,7 +25,7 @@ const registrar_equipo = async (pnombreEquipo,pusuario1,pusuario2) => {
                 title: "Éxito",
                 text: "Registro completo",
                 icon: "success",
-                confirmButtonColor: "#FF4E4E"
+                confirmButtonColor: "#96C78C"
             });
 
             setTimeout(() => {
@@ -77,7 +77,9 @@ const eliminarEquipo = async (equipoId) => {
             Swal.fire({
                 title: "Éxito",
                 text: "Equipo eliminado",
-                icon: "success"
+                icon: "success",
+                confirmButtonText: 'Ok',
+                confirmButtonColor: "#96C78C",
             });
         } else {
             Swal.fire({
@@ -122,7 +124,8 @@ const modificarEquipo = async (pnombreEquipo,pusuario1,pusuario2,equipoId) => {
                 title: "Éxito",
                 text: "Equipo modificado correctamente",
                 icon: "success",
-                confirmButtonColor: "#FF4E4E"
+                confirmButtonText: 'Ok',
+                confirmButtonColor: "#96C78C",
             });
 
             setTimeout(() => {

@@ -36,7 +36,8 @@ const registrar_usuario = async (pnombre, papellido, pusername, pemail, pidType,
                 title: "Éxito",
                 text: "Registro completo",
                 icon: "success",
-                confirmButtonText: 'OK',
+                confirmButtonText: 'Ok',
+                confirmButtonColor: "#96C78C",
                 preConfirm: () => {
                     window.location.href = 'landingPage.html'; // Redirige a landingPage.html
                 }
@@ -47,7 +48,9 @@ const registrar_usuario = async (pnombre, papellido, pusername, pemail, pidType,
         Swal.fire({
             title: "Error de conexión",
             text: "No se pudo conectar con el servidor. Inténtalo de nuevo más tarde.",
-            icon: "error"
+            icon: "error",
+            confirmButtonText: 'Ok',
+            confirmButtonColor: "#FF4E4E",
         });
     }
 }

@@ -109,7 +109,9 @@ function validarIdentificacion() {
         Swal.fire({
             title: "Error en la selección de identificación",
             text: "Por favor, selecciona un tipo de identificación.",
-            icon: "warning"
+            icon: "warning",
+            confirmButtonText: "Ok",
+            confirmButtonColor: "#F8BB86"
         });
         return true; // Devuelve true para indicar que hay un error
     }
@@ -192,43 +194,58 @@ function enviarDatos() {
         Swal.fire({
             title: "Campos vacíos",
             text: "Por favor, revisa los campos marcados",
-            icon: "warning"
+            icon: "warning",
+            confirmButtonText: "Ok",
+            confirmButtonColor: "#F8BB86"
         });
     } else if (errorNombreUsuario) {
         Swal.fire({
             title: "Error en el nombre",
             text: "El nombre solo debe contener letras",
-            icon: "warning"
+            icon: "warning",
+            confirmButtonText: "Ok",
+            confirmButtonColor: "#F8BB86"
         });
     } else if (errorApellido) {
         Swal.fire({
             title: "Error en el apellido",
             text: "El apellido solo debe contener letras",
-            icon: "warning"
+            icon: "warning",
+            confirmButtonText: "Ok",
+            confirmButtonColor: "#F8BB86"
         });
     } else if (errorUsername) {
         Swal.fire({
             title: "Error en el nombre de usuario",
             text: "El nombre de usuario debe tener entre 4 y 20 caracteres, sin espacios.",
-            icon: "warning"
+            icon: "warning",
+            confirmButtonText: "Ok",
+            confirmButtonColor: "#F8BB86"
         });
     } else if (errorCorreo) {
         Swal.fire({
             title: "Error en el correo electrónico",
             text: "Por favor, ingresa un correo electrónico válido.",
-            icon: "warning"
+            icon: "warning",
+            confirmButtonText: "Ok",
+            confirmButtonColor: "#F8BB86"
         });
     } else if (errorIdentificacion) {
         Swal.fire({
             title: "Error en la identificación",
             text: "Revisa que el formato de identificación sea correcto.",
-            icon: "warning"
+            icon: "warning",
+            confirmButtonText: "Ok",
+            confirmButtonColor: "#F8BB86"
         });
     } else if (errorFechaNacimiento) {
         Swal.fire({
             title: "Error en la fecha de nacimiento",
             text: "Por favor, ingresa una fecha de nacimiento válida.",
-            icon: "warning"
+            icon: "warning",
+            confirmButtonText: "Ok",
+            confirmButtonColor: "#F8BB86"
+
         });
     } else if (!esAdulto) {
         Swal.fire({

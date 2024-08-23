@@ -61,7 +61,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                 icon: 'success',
                 title: 'Equipo: ' + nombreDelEquipo + ' seleccionado con éxito!',
                 text: 'Iniciando batalla contra: ' + usuario2,
-                confirmButtonColor: "#FF4E4E",
+                confirmButtonText: "Ok",
+                confirmButtonColor: "#96C78C",
                 preConfirm: () => {
                     window.location.href = 'batalla.html'; // Redirige a batalla.html
                 }
@@ -72,7 +73,8 @@ document.addEventListener('DOMContentLoaded', async () => {
                 icon: 'warning',
                 title: 'Equipo no seleccionado',
                 text: 'Por favor selecciona un equipo antes de jugar.',
-                confirmButtonColor: "#FF4E4E"
+                confirmButtonText: "Ok",
+                confirmButtonColor: "#F8BB86"
             });
         }
     });
@@ -86,7 +88,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             icon: 'success',
             title: 'Iniciando partida en modo invitado',
             text: 'Recuerda que los resultados del modo invitado no son tomados en cuenta como parte del historial!',
-            confirmButtonColor: "#FF4E4E",
+            confirmButtonColor: "#96C78C",
+            confirmButtonText: "Ok",
             preConfirm: () => {
                 window.location.href = 'batalla.html'; // Redirige a batalla.html
             }
@@ -102,6 +105,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             icon: 'info',
             title: 'API de Pokémon',
             text: 'Esta funcionalidad estará disponible próximamente.',
+            confirmButtonText: "Ok",
             confirmButtonColor: "#FF4E4E"
         });
     }

@@ -19,10 +19,15 @@
         <h2>Restablecer contraseña</h2>
         <div id="formulario">
 
-            <p id="info">Por favor, ingresa tu nueva contraseña. Esta debe contener al menos 8 caracteres, incluyendo números, 
+            <p id="info">Por favor, ingresa tu correo eléctronico y tu nueva contraseña. Esta debe contener al menos 8 caracteres, incluyendo números, 
                 una letra mayúscula, una letra minúscula y un carácter especial.</p>
 
             <form action="">
+
+                <label>Correo</label>
+                <input type="email" id="correo" placeholder="a@gmail.com">
+                <br>
+
                 <label>Contraseña</label>
                 <input type="password" id="password" placeholder="Abc1234$">
 
@@ -59,7 +64,13 @@
         </div>
     </footer>
 
+    <!--axios-->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- sweet alert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- servicio js -->
+     <script src="../servicios/servicioContrasenna.js"></script>
+     <!-- controlador -->
     <script src="../js/forgotPassword.js"></script>
 </body>
 </html>

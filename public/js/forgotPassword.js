@@ -1,3 +1,4 @@
+const inputCorreo = document.getElementById("correo");
 const inputPassword = document.getElementById("password"); 
 const btnLink = document.getElementById("btnLink");
 
@@ -11,6 +12,19 @@ function validarCamposVacios() {
         } else {
             campos_requiridos[i].classList.remove('error');
         }
+    }
+    return error;
+}
+
+function validarCorreoElectronico() {
+    let error = false;
+    let textoUsuario = inputCorreo.value;
+    let regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (regex.test(textoUsuario) === false) {
+        inputCorreo.classList.add('error');
+        error = true;
+    } else {
+        inputCorreo.classList.remove('error');
     }
     return error;
 }
@@ -30,12 +44,14 @@ function validarContrasenna() {
 
 function limpiarCampos() {
     inputPassword.value = "";
+    inputCorreo.value = "";
 }
 
-function enviarDatos(event) {
+function actualizarContra(event) {
     event.preventDefault(); 
     let errorCamposVacios = validarCamposVacios();
     let errorContrasenna = validarContrasenna();
+    let errorCorreo = validarCorreoElectronico();
 
     if (errorCamposVacios) {
         Swal.fire({
@@ -45,6 +61,7 @@ function enviarDatos(event) {
             confirmButtonText: "Ok",
             confirmButtonColor: "#FF4E4E"
         });
+
     } else if (errorContrasenna) {
         Swal.fire({
             title: "Error",
@@ -53,21 +70,26 @@ function enviarDatos(event) {
             confirmButtonText: "Ok",
             confirmButtonColor: "#FF4E4E"
         });
-    } else {
+
+    } else if (errorCorreo) {
         Swal.fire({
-            text: "Contraseña actualizada exitosamente.",
-            icon: "success",
-            confirmButton: "Ok",
+            title: "Error",
+            text: "Ingresa una contraseña válida.",
+            icon: "error",
+            confirmButtonText: "Ok",
             confirmButtonColor: "#FF4E4E"
-          });
+        });
+
+    } else {
+        let email = inputCorreo.value;
+        let password = inputPassword.value;
+        actualizarContrasenna(email,password)
+
           limpiarCampos()
-          setTimeout(() => {
-            window.location.href = "landingPage.html"
-          }, 1500);
     }
 }
 
-btnLink.addEventListener('click', enviarDatos);
+btnLink.addEventListener('click', actualizarContra);
 
 function mostrarContra() {
     var x = document.getElementById("password");
