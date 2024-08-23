@@ -104,3 +104,59 @@ const eliminarUsuario = async (usuarioId) => {
         });
     }
 };
+
+// servicio para recuperar al usuario por su id
+const recuperarUsuarioID = async(id)=>{
+    try {
+        const response = await axios({
+            method:'get',
+            url:'http://localhost:3000/usuarioID',
+            params:{id:id},
+            responseType:'json'
+        });
+        if(response.status == 200){
+            return response.data.usuario
+        }else{
+            Swal.fire({
+                text:"No se encontro al usuario",
+                icon:"error"
+            });
+            return null
+        }
+    } catch (error) {
+        console.log(error);
+        
+    }
+}
+
+
+//servicio para a actualizar a la usuario
+const actualizarUsuario = async(id,data)=>{
+    try {
+        const response = await axios({
+            method:"put",
+            url:"http://localhost:3000/usuario",
+            params:{id:id},//req.query
+            data:data,//req.body
+            responseType:"json"          
+
+        });
+
+        if(response.status == 200){
+            Swal.fire({
+                text:"Datos Actualizados",
+                icon:"success"
+            });
+
+            
+        }else{
+            Swal.fire({
+                text:"No se pudo actualizar al usuario, usuario no existe",
+                icon:"Error"
+            })
+        }
+
+    } catch (error) {
+        console.log(error);
+    }
+}
