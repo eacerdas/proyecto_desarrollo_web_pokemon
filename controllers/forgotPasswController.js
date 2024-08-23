@@ -26,7 +26,7 @@ exports.recuperarUsuarioCorreo = async(req, res) => {
 };
 
 
-    exports.actualizarContrasenna = async(req, res) => {
+    exports.actualizarContrasennaCorreo = async(req, res) => {
         const email = req.query.email;
         const nuevaContrasenna = req.body.password;
     

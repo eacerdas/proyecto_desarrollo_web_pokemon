@@ -74,7 +74,7 @@ function actualizarContra(event) {
     } else if (errorCorreo) {
         Swal.fire({
             title: "Error",
-            text: "Ingresa una contraseña válida.",
+            text: "Ingresa un correo válido",
             icon: "error",
             confirmButtonText: "Ok",
             confirmButtonColor: "#FF4E4E"
@@ -83,7 +83,7 @@ function actualizarContra(event) {
     } else {
         let email = inputCorreo.value;
         let password = inputPassword.value;
-        actualizarContrasenna(email,password)
+        actualizarContrasennaCorreo(email,password)
 
           limpiarCampos()
     }

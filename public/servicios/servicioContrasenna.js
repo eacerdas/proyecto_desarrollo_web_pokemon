@@ -1,10 +1,9 @@
 const recuperarUsuarioCorreo = async(email)=>{
     try {
         const response = await axios({
-            method: "put",
+            method: "get",
             url: "http://localhost:3000/usuarioContrasenna",
             params: { email: email },
-            data: { password: password }, 
             responseType: "json"
         });
         if(response.status == 200){
@@ -22,13 +21,13 @@ const recuperarUsuarioCorreo = async(email)=>{
     }
 }
 
-const actualizarContrasenna = async(email,password)=>{
+const actualizarContrasennaCorreo = async(email,password)=>{
     try {
         const response = await axios({
             method:"put",
             url:"http://localhost:3000/usuarioContrasenna",
             params:{email:email},
-            password:password,
+            data:{password:password},
             responseType:"json"          
 
         });

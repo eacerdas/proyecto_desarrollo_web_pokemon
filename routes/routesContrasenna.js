@@ -6,9 +6,9 @@ const forgotPasswController = require('../controllers/forgotPasswController');
 
 
 // recuperar usuario por correo (get)
-router.get('/usuarioteEmail', forgotPasswController.recuperarUsuarioCorreo)
+router.get('/usuarioContrasenna', forgotPasswController.recuperarUsuarioCorreo)
 
 // actualizar contrasenna (put)
-router.put('/usuarioContrasenna',forgotPasswController.actualizarContrasenna);
+router.put('/usuarioContrasenna',forgotPasswController.actualizarContrasennaCorreo);
 
 module.exports = router;
