@@ -78,17 +78,6 @@ body {
     border: solid black 5px;
 }
 
-#btn-cambiar-foto{
-    margin-top: 25px;
-    margin-bottom: 10px;
-    padding: 10px;
-    background-color: #da3335;
-    color: white;
-    font-size: 24px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
 
 form {
     display: flex;
@@ -105,16 +94,29 @@ label {
     text-align: left;
 }
 
-#btn_crear_contrasenna{
-    margin-top: 10px;
+#btn-cambiar-foto{
+    margin-top: 35px;
     padding: 10px;
     background-color: #da3335;
     color: white;
     font-size: 24px;
+    font-weight: bold;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    width: 350px;
+}
+
+#btn_crear_contrasenna{
+    margin-top: 25px;
+    padding: 10px;
+    background-color: #da3335;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 300px;
     height: 50px;
 }
 
