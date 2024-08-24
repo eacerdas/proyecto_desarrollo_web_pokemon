@@ -34,12 +34,12 @@ const registrar_usuario = async (pnombre, papellido, pusername, pemail, pidType,
         } else {
             Swal.fire({
                 title: "Éxito",
-                text: "Registro completo",
+                text: "Registro completo. La contraseña temporal ha sido enviada a su correo.",
                 icon: "success",
                 confirmButtonText: 'Ok',
                 confirmButtonColor: "#96C78C",
                 preConfirm: () => {
-                    window.location.href = 'landingPage.html'; // Redirige a landingPage.html
+                    window.location.href = 'landingPage.html'; 
                 }
             });
         }
@@ -147,7 +147,9 @@ const actualizarUsuario = async(id,data)=>{
         if(response.status == 200){
             Swal.fire({
                 text:"Datos Actualizados",
-                icon:"success"
+                icon:"success",
+                confirmButtonText: "Ok",
+                confirmButtonColor: "#96C78C"
             });
 
             

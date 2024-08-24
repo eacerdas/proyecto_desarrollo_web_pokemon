@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             Swal.fire({
                 icon: 'success',
-                title: 'Equipo: ' + nombreDelEquipo + ' seleccionado con éxito!',
+                title: 'Equipo: ¡' + nombreDelEquipo + ' seleccionado con éxito!',
                 text: 'Iniciando batalla contra: ' + usuario2,
                 confirmButtonText: "Ok",
                 confirmButtonColor: "#96C78C",

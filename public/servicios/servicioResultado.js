@@ -29,7 +29,7 @@ const registrar_resultado = async (pjugador1,pjugador2,ppokemon1,ppokemon2,pgana
         }else{
             Swal.fire({
                 title:"¡Éxito!",
-                text:"Registro completo",
+                text:"Resultado guardado en el historial",
                 icon:"success",
                 confirmButtonText: 'Ok',
                 confirmButtonColor: "#96C78C",
